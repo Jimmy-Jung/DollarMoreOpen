@@ -7,23 +7,45 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		558CB2042A0CE933000BF91D /* Charts in Frameworks */ = {isa = PBXBuildFile; productRef = 558CB2032A0CE933000BF91D /* Charts */; };
 		55A295DC2A0CC199004905F1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55A295DB2A0CC199004905F1 /* AppDelegate.swift */; };
 		55A295DE2A0CC199004905F1 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55A295DD2A0CC199004905F1 /* SceneDelegate.swift */; };
-		55A295E02A0CC199004905F1 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55A295DF2A0CC199004905F1 /* ViewController.swift */; };
 		55A295E32A0CC199004905F1 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 55A295E12A0CC199004905F1 /* Main.storyboard */; };
 		55A295E52A0CC19B004905F1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 55A295E42A0CC19B004905F1 /* Assets.xcassets */; };
 		55A295E82A0CC19B004905F1 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 55A295E62A0CC19B004905F1 /* LaunchScreen.storyboard */; };
+		55A295F02A0CC25C004905F1 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55A295EF2A0CC25C004905F1 /* MainViewController.swift */; };
+		55AC16B42A0CDB6A00967DB2 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 55AC16B32A0CDB6A00967DB2 /* Alamofire */; };
+		55AC16BA2A0CDB8F00967DB2 /* SwiftSoup in Frameworks */ = {isa = PBXBuildFile; productRef = 55AC16B92A0CDB8F00967DB2 /* SwiftSoup */; };
+		55AC16C32A0CE56200967DB2 /* JGProgressHUD in Frameworks */ = {isa = PBXBuildFile; productRef = 55AC16C22A0CE56200967DB2 /* JGProgressHUD */; };
+		55C339DC2A0CF67D00D6057E /* HanaBankAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55C339DB2A0CF67D00D6057E /* HanaBankAPI.swift */; };
+		55C339DF2A0CFB9C00D6057E /* YahooFinanceAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55C339DE2A0CFB9C00D6057E /* YahooFinanceAPI.swift */; };
+		55C339E12A0CFBB700D6057E /* URLSession+AsyncLinux.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55C339E02A0CFBB700D6057E /* URLSession+AsyncLinux.swift */; };
+		55C339E32A0CFBCE00D6057E /* ChartRange.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55C339E22A0CFBCE00D6057E /* ChartRange.swift */; };
+		55C339E52A0CFBDF00D6057E /* Chart.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55C339E42A0CFBDF00D6057E /* Chart.swift */; };
+		55C339E72A0CFBFA00D6057E /* APIError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55C339E62A0CFBFA00D6057E /* APIError.swift */; };
+		55C339F22A0D0CF200D6057E /* HapticsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55C339F12A0D0CF200D6057E /* HapticsManager.swift */; };
+		55C339F42A0D0D0600D6057E /* StocksDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55C339F32A0D0D0600D6057E /* StocksDataManager.swift */; };
+		55C339F82A0D17CF00D6057E /* MainViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55C339F72A0D17CF00D6057E /* MainViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		55A295D82A0CC199004905F1 /* DollarMoreRefactor.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DollarMoreRefactor.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		55A295DB2A0CC199004905F1 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		55A295DD2A0CC199004905F1 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		55A295DF2A0CC199004905F1 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		55A295E22A0CC199004905F1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		55A295E42A0CC19B004905F1 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		55A295E72A0CC19B004905F1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		55A295E92A0CC19B004905F1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		55A295EF2A0CC25C004905F1 /* MainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
+		55C339DB2A0CF67D00D6057E /* HanaBankAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HanaBankAPI.swift; sourceTree = "<group>"; };
+		55C339DE2A0CFB9C00D6057E /* YahooFinanceAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YahooFinanceAPI.swift; sourceTree = "<group>"; };
+		55C339E02A0CFBB700D6057E /* URLSession+AsyncLinux.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "URLSession+AsyncLinux.swift"; sourceTree = "<group>"; };
+		55C339E22A0CFBCE00D6057E /* ChartRange.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChartRange.swift; sourceTree = "<group>"; };
+		55C339E42A0CFBDF00D6057E /* Chart.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Chart.swift; sourceTree = "<group>"; };
+		55C339E62A0CFBFA00D6057E /* APIError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIError.swift; sourceTree = "<group>"; };
+		55C339F12A0D0CF200D6057E /* HapticsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HapticsManager.swift; sourceTree = "<group>"; };
+		55C339F32A0D0D0600D6057E /* StocksDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StocksDataManager.swift; sourceTree = "<group>"; };
+		55C339F72A0D17CF00D6057E /* MainViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -31,6 +53,10 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				55AC16C32A0CE56200967DB2 /* JGProgressHUD in Frameworks */,
+				55AC16B42A0CDB6A00967DB2 /* Alamofire in Frameworks */,
+				55AC16BA2A0CDB8F00967DB2 /* SwiftSoup in Frameworks */,
+				558CB2042A0CE933000BF91D /* Charts in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -56,15 +82,80 @@
 		55A295DA2A0CC199004905F1 /* DollarMoreRefactor */ = {
 			isa = PBXGroup;
 			children = (
-				55A295DB2A0CC199004905F1 /* AppDelegate.swift */,
-				55A295DD2A0CC199004905F1 /* SceneDelegate.swift */,
-				55A295DF2A0CC199004905F1 /* ViewController.swift */,
-				55A295E12A0CC199004905F1 /* Main.storyboard */,
-				55A295E42A0CC19B004905F1 /* Assets.xcassets */,
-				55A295E62A0CC19B004905F1 /* LaunchScreen.storyboard */,
-				55A295E92A0CC19B004905F1 /* Info.plist */,
+				55C339F52A0D0D3900D6057E /* APIs */,
+				55C339EC2A0D0CC600D6057E /* Models */,
+				55C339EA2A0D0C9400D6057E /* Views */,
+				55C339F62A0D0D5800D6057E /* ViewModels */,
+				55C339E92A0D0C7C00D6057E /* Other */,
 			);
 			path = DollarMoreRefactor;
+			sourceTree = "<group>";
+		};
+		55C339DD2A0CFB8300D6057E /* YahooFinanceAPI */ = {
+			isa = PBXGroup;
+			children = (
+				55C339DE2A0CFB9C00D6057E /* YahooFinanceAPI.swift */,
+				55C339E02A0CFBB700D6057E /* URLSession+AsyncLinux.swift */,
+				55C339E22A0CFBCE00D6057E /* ChartRange.swift */,
+				55C339E42A0CFBDF00D6057E /* Chart.swift */,
+				55C339E62A0CFBFA00D6057E /* APIError.swift */,
+			);
+			path = YahooFinanceAPI;
+			sourceTree = "<group>";
+		};
+		55C339E82A0CFCAD00D6057E /* HanaBankAPI */ = {
+			isa = PBXGroup;
+			children = (
+				55C339DB2A0CF67D00D6057E /* HanaBankAPI.swift */,
+			);
+			path = HanaBankAPI;
+			sourceTree = "<group>";
+		};
+		55C339E92A0D0C7C00D6057E /* Other */ = {
+			isa = PBXGroup;
+			children = (
+				55A295DD2A0CC199004905F1 /* SceneDelegate.swift */,
+				55A295DB2A0CC199004905F1 /* AppDelegate.swift */,
+				55A295E42A0CC19B004905F1 /* Assets.xcassets */,
+				55A295E92A0CC19B004905F1 /* Info.plist */,
+			);
+			path = Other;
+			sourceTree = "<group>";
+		};
+		55C339EA2A0D0C9400D6057E /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				55A295EF2A0CC25C004905F1 /* MainViewController.swift */,
+				55A295E12A0CC199004905F1 /* Main.storyboard */,
+				55A295E62A0CC19B004905F1 /* LaunchScreen.storyboard */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		55C339EC2A0D0CC600D6057E /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				55C339F12A0D0CF200D6057E /* HapticsManager.swift */,
+				55C339F32A0D0D0600D6057E /* StocksDataManager.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		55C339F52A0D0D3900D6057E /* APIs */ = {
+			isa = PBXGroup;
+			children = (
+				55C339E82A0CFCAD00D6057E /* HanaBankAPI */,
+				55C339DD2A0CFB8300D6057E /* YahooFinanceAPI */,
+			);
+			path = APIs;
+			sourceTree = "<group>";
+		};
+		55C339F62A0D0D5800D6057E /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				55C339F72A0D17CF00D6057E /* MainViewModel.swift */,
+			);
+			path = ViewModels;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -83,6 +174,12 @@
 			dependencies = (
 			);
 			name = DollarMoreRefactor;
+			packageProductDependencies = (
+				55AC16B32A0CDB6A00967DB2 /* Alamofire */,
+				55AC16B92A0CDB8F00967DB2 /* SwiftSoup */,
+				55AC16C22A0CE56200967DB2 /* JGProgressHUD */,
+				558CB2032A0CE933000BF91D /* Charts */,
+			);
 			productName = DollarMoreRefactor;
 			productReference = 55A295D82A0CC199004905F1 /* DollarMoreRefactor.app */;
 			productType = "com.apple.product-type.application";
@@ -111,6 +208,12 @@
 				Base,
 			);
 			mainGroup = 55A295CF2A0CC199004905F1;
+			packageReferences = (
+				55AC16B22A0CDB6A00967DB2 /* XCRemoteSwiftPackageReference "Alamofire" */,
+				55AC16B82A0CDB8F00967DB2 /* XCRemoteSwiftPackageReference "SwiftSoup" */,
+				55AC16C12A0CE56200967DB2 /* XCRemoteSwiftPackageReference "JGProgressHUD" */,
+				558CB2022A0CE933000BF91D /* XCRemoteSwiftPackageReference "Charts" */,
+			);
 			productRefGroup = 55A295D92A0CC199004905F1 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -138,9 +241,18 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				55A295E02A0CC199004905F1 /* ViewController.swift in Sources */,
+				55C339DC2A0CF67D00D6057E /* HanaBankAPI.swift in Sources */,
+				55C339E32A0CFBCE00D6057E /* ChartRange.swift in Sources */,
+				55C339E72A0CFBFA00D6057E /* APIError.swift in Sources */,
+				55C339F22A0D0CF200D6057E /* HapticsManager.swift in Sources */,
+				55C339DF2A0CFB9C00D6057E /* YahooFinanceAPI.swift in Sources */,
+				55C339F42A0D0D0600D6057E /* StocksDataManager.swift in Sources */,
 				55A295DC2A0CC199004905F1 /* AppDelegate.swift in Sources */,
+				55C339E12A0CFBB700D6057E /* URLSession+AsyncLinux.swift in Sources */,
 				55A295DE2A0CC199004905F1 /* SceneDelegate.swift in Sources */,
+				55C339E52A0CFBDF00D6057E /* Chart.swift in Sources */,
+				55A295F02A0CC25C004905F1 /* MainViewController.swift in Sources */,
+				55C339F82A0D17CF00D6057E /* MainViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -293,8 +405,8 @@
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -321,8 +433,8 @@
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -358,6 +470,64 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		558CB2022A0CE933000BF91D /* XCRemoteSwiftPackageReference "Charts" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/danielgindi/Charts.git";
+			requirement = {
+				branch = master;
+				kind = branch;
+			};
+		};
+		55AC16B22A0CDB6A00967DB2 /* XCRemoteSwiftPackageReference "Alamofire" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Alamofire/Alamofire.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.0.0;
+			};
+		};
+		55AC16B82A0CDB8F00967DB2 /* XCRemoteSwiftPackageReference "SwiftSoup" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/scinfu/SwiftSoup.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.0.0;
+			};
+		};
+		55AC16C12A0CE56200967DB2 /* XCRemoteSwiftPackageReference "JGProgressHUD" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/JonasGessner/JGProgressHUD.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		558CB2032A0CE933000BF91D /* Charts */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 558CB2022A0CE933000BF91D /* XCRemoteSwiftPackageReference "Charts" */;
+			productName = Charts;
+		};
+		55AC16B32A0CDB6A00967DB2 /* Alamofire */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 55AC16B22A0CDB6A00967DB2 /* XCRemoteSwiftPackageReference "Alamofire" */;
+			productName = Alamofire;
+		};
+		55AC16B92A0CDB8F00967DB2 /* SwiftSoup */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 55AC16B82A0CDB8F00967DB2 /* XCRemoteSwiftPackageReference "SwiftSoup" */;
+			productName = SwiftSoup;
+		};
+		55AC16C22A0CE56200967DB2 /* JGProgressHUD */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 55AC16C12A0CE56200967DB2 /* XCRemoteSwiftPackageReference "JGProgressHUD" */;
+			productName = JGProgressHUD;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 55A295D02A0CC199004905F1 /* Project object */;
 }

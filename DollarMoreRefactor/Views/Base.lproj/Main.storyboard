@@ -1,0 +1,671 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="lo3-tc-eeD">
+    <device id="retina6_12" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21678"/>
+        <capability name="Image references" minToolsVersion="12.0"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="Stack View standard spacing" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--환율-->
+        <scene sceneID="GHc-Ch-IQx">
+            <objects>
+                <viewController id="kkF-xT-fmA" customClass="MainViewController" customModule="DollarMoreRefactor" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="KU9-aW-a0n">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Evn-c7-zMz" userLabel="1.기준시간 스택뷰">
+                                <rect key="frame" x="16" y="59" width="361" height="50"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="01월 01일 00:00:00 기준" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dgf-JJ-1pY" userLabel="기준시간">
+                                        <rect key="frame" x="0.0" y="0.0" width="311" height="50"/>
+                                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="14"/>
+                                        <color key="textColor" systemColor="secondaryLabelColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="t3D-WB-MzB" userLabel="새로고침 버튼">
+                                        <rect key="frame" x="311" y="0.0" width="50" height="50"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="50" id="2CR-a5-HQb"/>
+                                            <constraint firstAttribute="height" constant="50" id="F6L-kU-nF9"/>
+                                        </constraints>
+                                        <color key="tintColor" systemColor="secondaryLabelColor"/>
+                                        <state key="normal" title="Button"/>
+                                        <buttonConfiguration key="configuration" style="plain" buttonSize="large">
+                                            <imageReference key="image" image="arrow.clockwise.circle" catalog="system" symbolScale="large"/>
+                                            <preferredSymbolConfiguration key="preferredSymbolConfigurationForImage" weight="bold"/>
+                                        </buttonConfiguration>
+                                        <connections>
+                                            <action selector="refreshButtonTapped:" destination="kkF-xT-fmA" eventType="touchUpInside" id="tpG-DH-gg4"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                            </stackView>
+                            <stackView opaque="NO" contentMode="scaleToFill" alignment="center" spacingType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="PqU-En-LEI" userLabel="2.실시간스택뷰">
+                                <rect key="frame" x="16" y="109" width="361" height="100"/>
+                                <subviews>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacingType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="KFj-NE-U45" userLabel="USD 실시간 스택뷰">
+                                        <rect key="frame" x="0.0" y="3" width="172" height="94.333333333333329"/>
+                                        <subviews>
+                                            <stackView opaque="NO" contentMode="scaleToFill" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="Ooa-pN-CNT" userLabel="USD실시간">
+                                                <rect key="frame" x="22" y="0.0" width="128" height="22"/>
+                                                <subviews>
+                                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="US - United States" translatesAutoresizingMaskIntoConstraints="NO" id="QCo-aO-m8v">
+                                                        <rect key="frame" x="0.0" y="0.0" width="22" height="22"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="height" constant="22" id="HdU-4T-FZy"/>
+                                                            <constraint firstAttribute="width" constant="22" id="RsC-Ft-PhV"/>
+                                                        </constraints>
+                                                    </imageView>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="USD 실시간" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="X89-Ub-4W8">
+                                                        <rect key="frame" x="30" y="0.0" width="98" height="22"/>
+                                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
+                                                        <nil key="textColor"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                </subviews>
+                                            </stackView>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1,000.00" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0tR-OO-VEp">
+                                                <rect key="frame" x="23.666666666666657" y="30" width="125" height="36"/>
+                                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="30"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <stackView opaque="NO" contentMode="scaleToFill" spacing="6" translatesAutoresizingMaskIntoConstraints="NO" id="DEG-Fb-mm6" userLabel="등락">
+                                                <rect key="frame" x="23.333333333333336" y="74" width="125.66666666666666" height="20.333333333333329"/>
+                                                <subviews>
+                                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="arrowtriangle.down.fill" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="4gc-hE-W3w">
+                                                        <rect key="frame" x="0.0" y="2.3333333333333313" width="16.666666666666668" height="15.666666666666668"/>
+                                                        <color key="tintColor" systemColor="systemBlueColor"/>
+                                                    </imageView>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0.00" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="s0F-lX-KsD">
+                                                        <rect key="frame" x="22.666666666666661" y="0.0" width="36.333333333333343" height="20.333333333333332"/>
+                                                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
+                                                        <color key="textColor" systemColor="systemBlueColor"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="-0.00%" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YVx-TB-4Bi">
+                                                        <rect key="frame" x="65" y="0.0" width="60.666666666666657" height="20.333333333333332"/>
+                                                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
+                                                        <color key="textColor" systemColor="systemBlueColor"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                </subviews>
+                                            </stackView>
+                                        </subviews>
+                                    </stackView>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="oQ5-5o-879" userLabel="구분선">
+                                        <rect key="frame" x="180" y="0.0" width="1" height="100"/>
+                                        <color key="backgroundColor" systemColor="placeholderTextColor"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="1" id="TJ5-SS-U9y"/>
+                                            <constraint firstAttribute="height" constant="100" id="h4q-dp-aO0"/>
+                                        </constraints>
+                                    </view>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacingType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="LCc-1O-9ZX" userLabel="달러인덱스 스택뷰">
+                                        <rect key="frame" x="189" y="2" width="172" height="96.333333333333329"/>
+                                        <subviews>
+                                            <stackView opaque="NO" contentMode="scaleToFill" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="Ql8-A3-VnP" userLabel="USD실시간">
+                                                <rect key="frame" x="32.33333333333335" y="0.0" width="107.66666666666669" height="24"/>
+                                                <subviews>
+                                                    <stackView opaque="NO" contentMode="scaleToFill" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="XwZ-LQ-l3O" userLabel="USD실시간">
+                                                        <rect key="frame" x="0.0" y="0.0" width="13" height="24"/>
+                                                        <subviews>
+                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="$" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="P8Y-3W-ncl">
+                                                                <rect key="frame" x="0.0" y="0.0" width="13" height="24"/>
+                                                                <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
+                                                                <color key="textColor" name="Dollar Green"/>
+                                                                <nil key="highlightedColor"/>
+                                                            </label>
+                                                        </subviews>
+                                                    </stackView>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="달러인덱스" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hrN-Sx-OmP">
+                                                        <rect key="frame" x="20.999999999999979" y="0.0" width="86.666666666666686" height="24"/>
+                                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
+                                                        <nil key="textColor"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                </subviews>
+                                            </stackView>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="100.00" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kTT-Oc-Hwt">
+                                                <rect key="frame" x="36.666666666666657" y="32" width="99" height="36"/>
+                                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="30"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <stackView opaque="NO" contentMode="scaleToFill" spacing="6" translatesAutoresizingMaskIntoConstraints="NO" id="rbX-69-Egd" userLabel="등락">
+                                                <rect key="frame" x="23.33333333333335" y="76" width="125.66666666666669" height="20.333333333333329"/>
+                                                <subviews>
+                                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="arrowtriangle.down.fill" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="jPY-gW-s31">
+                                                        <rect key="frame" x="0.0" y="2.3333333333333313" width="16.666666666666668" height="15.666666666666668"/>
+                                                        <color key="tintColor" systemColor="systemBlueColor"/>
+                                                    </imageView>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0.00" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="R5X-BV-V6q">
+                                                        <rect key="frame" x="22.666666666666661" y="0.0" width="36.333333333333343" height="20.333333333333332"/>
+                                                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
+                                                        <color key="textColor" systemColor="systemBlueColor"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="-0.00%" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="R56-Hi-BIS">
+                                                        <rect key="frame" x="64.999999999999972" y="0.0" width="60.666666666666657" height="20.333333333333332"/>
+                                                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
+                                                        <color key="textColor" systemColor="systemBlueColor"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                </subviews>
+                                            </stackView>
+                                        </subviews>
+                                    </stackView>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="oQ5-5o-879" firstAttribute="centerX" secondItem="PqU-En-LEI" secondAttribute="centerX" id="Ndu-bH-R0V"/>
+                                </constraints>
+                            </stackView>
+                            <stackView opaque="NO" contentMode="scaleToFill" distribution="equalSpacing" spacingType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="2iS-S3-xvh" userLabel="3.그래프 버튼 스택뷰">
+                                <rect key="frame" x="40" y="225" width="313" height="30"/>
+                                <subviews>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="FfW-Eb-j0t" userLabel="환율+인덱스">
+                                        <rect key="frame" x="0.0" y="0.0" width="92" height="30"/>
+                                        <subviews>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XZv-fZ-rxT">
+                                                <rect key="frame" x="0.0" y="0.0" width="92" height="27"/>
+                                                <fontDescription key="fontDescription" type="boldSystem" pointSize="12"/>
+                                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                                <state key="normal" title="환율 + 인덱스">
+                                                    <color key="titleColor" systemColor="labelColor"/>
+                                                </state>
+                                                <connections>
+                                                    <action selector="graphButtonTapped:" destination="kkF-xT-fmA" eventType="touchUpInside" id="Sz1-6l-DSG"/>
+                                                </connections>
+                                            </button>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1qL-Gk-Qve" userLabel="선택 라인">
+                                                <rect key="frame" x="0.0" y="27" width="92" height="3"/>
+                                                <color key="backgroundColor" systemColor="systemOrangeColor"/>
+                                                <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="3" id="9oj-6b-1VG"/>
+                                                </constraints>
+                                            </view>
+                                        </subviews>
+                                        <constraints>
+                                            <constraint firstItem="XZv-fZ-rxT" firstAttribute="trailing" secondItem="1qL-Gk-Qve" secondAttribute="trailing" id="7wd-RG-zTf"/>
+                                            <constraint firstItem="1qL-Gk-Qve" firstAttribute="leading" secondItem="XZv-fZ-rxT" secondAttribute="leading" id="dF6-vX-qyI"/>
+                                        </constraints>
+                                    </stackView>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="kG2-T0-n6c" userLabel="환율">
+                                        <rect key="frame" x="115" y="0.0" width="50" height="30"/>
+                                        <subviews>
+                                            <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NoN-yy-oiy">
+                                                <rect key="frame" x="0.0" y="0.0" width="50" height="27"/>
+                                                <fontDescription key="fontDescription" type="boldSystem" pointSize="12"/>
+                                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                                <state key="normal" title="환율">
+                                                    <color key="titleColor" systemColor="labelColor"/>
+                                                </state>
+                                                <connections>
+                                                    <action selector="graphButtonTapped:" destination="kkF-xT-fmA" eventType="touchUpInside" id="cLe-Wl-50W"/>
+                                                </connections>
+                                            </button>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ZLj-Jx-EeO" userLabel="선택 라인">
+                                                <rect key="frame" x="0.0" y="27" width="50" height="3"/>
+                                                <color key="backgroundColor" systemColor="systemOrangeColor"/>
+                                                <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="3" id="gJA-2S-oOT"/>
+                                                </constraints>
+                                            </view>
+                                        </subviews>
+                                        <constraints>
+                                            <constraint firstItem="ZLj-Jx-EeO" firstAttribute="leading" secondItem="NoN-yy-oiy" secondAttribute="leading" id="6bb-cq-rVN"/>
+                                            <constraint firstItem="NoN-yy-oiy" firstAttribute="trailing" secondItem="ZLj-Jx-EeO" secondAttribute="trailing" id="7vG-FL-RZu"/>
+                                        </constraints>
+                                    </stackView>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="RcL-KF-QaX" userLabel="달러인덱스">
+                                        <rect key="frame" x="188" y="0.0" width="52" height="30"/>
+                                        <subviews>
+                                            <button opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Bo6-mt-bHg">
+                                                <rect key="frame" x="0.0" y="0.0" width="52" height="27"/>
+                                                <fontDescription key="fontDescription" type="boldSystem" pointSize="12"/>
+                                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                                <state key="normal" title="달러인덱스">
+                                                    <color key="titleColor" systemColor="labelColor"/>
+                                                </state>
+                                                <connections>
+                                                    <action selector="graphButtonTapped:" destination="kkF-xT-fmA" eventType="touchUpInside" id="26r-Ad-tZQ"/>
+                                                </connections>
+                                            </button>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Nyl-7B-X4j" userLabel="선택 라인">
+                                                <rect key="frame" x="0.0" y="27" width="52" height="3"/>
+                                                <color key="backgroundColor" systemColor="systemOrangeColor"/>
+                                                <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="3" id="lnJ-4v-3lS"/>
+                                                </constraints>
+                                            </view>
+                                        </subviews>
+                                        <constraints>
+                                            <constraint firstItem="Bo6-mt-bHg" firstAttribute="trailing" secondItem="Nyl-7B-X4j" secondAttribute="trailing" id="hoi-lc-HbM"/>
+                                            <constraint firstItem="Nyl-7B-X4j" firstAttribute="leading" secondItem="Bo6-mt-bHg" secondAttribute="leading" id="lEA-kZ-TgS"/>
+                                        </constraints>
+                                    </stackView>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="WFA-qW-Kzs" userLabel="하나은행">
+                                        <rect key="frame" x="263" y="0.0" width="50" height="30"/>
+                                        <subviews>
+                                            <button opaque="NO" tag="3" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sCV-1h-wFh">
+                                                <rect key="frame" x="0.0" y="0.0" width="50" height="27"/>
+                                                <fontDescription key="fontDescription" type="boldSystem" pointSize="12"/>
+                                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                                <state key="normal" title="하나은행">
+                                                    <color key="titleColor" systemColor="labelColor"/>
+                                                </state>
+                                                <connections>
+                                                    <action selector="graphButtonTapped:" destination="kkF-xT-fmA" eventType="touchUpInside" id="0Lg-KN-THC"/>
+                                                </connections>
+                                            </button>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Qfe-Uu-k8Z" userLabel="선택 라인">
+                                                <rect key="frame" x="0.0" y="27" width="50" height="3"/>
+                                                <color key="backgroundColor" systemColor="systemOrangeColor"/>
+                                                <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="3" id="arc-KA-71v"/>
+                                                </constraints>
+                                            </view>
+                                        </subviews>
+                                        <constraints>
+                                            <constraint firstItem="Qfe-Uu-k8Z" firstAttribute="leading" secondItem="sCV-1h-wFh" secondAttribute="leading" id="4ZD-xP-tdm"/>
+                                            <constraint firstItem="sCV-1h-wFh" firstAttribute="trailing" secondItem="Qfe-Uu-k8Z" secondAttribute="trailing" id="G4Y-wA-Cw5"/>
+                                        </constraints>
+                                    </stackView>
+                                </subviews>
+                            </stackView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vVM-62-YoO" userLabel="3.1.그래프 버튼 구분선">
+                                <rect key="frame" x="0.0" y="253" width="393" height="2"/>
+                                <color key="backgroundColor" systemColor="placeholderTextColor"/>
+                                <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="2" id="L24-C5-qeG"/>
+                                </constraints>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bAm-MI-Ewr" userLabel="4.그래프">
+                                <rect key="frame" x="16" y="255.00000000000003" width="361" height="309.66666666666674"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <gestureRecognizers/>
+                            </view>
+                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="12" translatesAutoresizingMaskIntoConstraints="NO" id="7d7-nM-dle" userLabel="5.범위 버튼">
+                                <rect key="frame" x="20" y="572.66666666666663" width="353" height="27"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MTA-d7-bVj">
+                                        <rect key="frame" x="0.0" y="0.0" width="49" height="27"/>
+                                        <color key="backgroundColor" systemColor="secondarySystemFillColor"/>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="12"/>
+                                        <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                        <state key="normal" title="1일">
+                                            <color key="titleColor" systemColor="labelColor"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="rangeButtonTapped:" destination="kkF-xT-fmA" eventType="touchUpInside" id="Pq7-wr-CCl"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fbR-b0-wQh">
+                                        <rect key="frame" x="61" y="0.0" width="48.666666666666657" height="27"/>
+                                        <color key="backgroundColor" systemColor="secondarySystemFillColor"/>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="12"/>
+                                        <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                        <state key="normal" title="7일">
+                                            <color key="titleColor" systemColor="labelColor"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="rangeButtonTapped:" destination="kkF-xT-fmA" eventType="touchUpInside" id="pnf-hV-PFJ"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KQE-LT-2Vt">
+                                        <rect key="frame" x="121.66666666666666" y="0.0" width="49" height="27"/>
+                                        <color key="backgroundColor" systemColor="secondarySystemFillColor"/>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="12"/>
+                                        <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                        <state key="normal" title="1달">
+                                            <color key="titleColor" systemColor="labelColor"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="rangeButtonTapped:" destination="kkF-xT-fmA" eventType="touchUpInside" id="J4V-qn-UQU"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" tag="3" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dkW-BO-oZy">
+                                        <rect key="frame" x="182.66666666666666" y="0.0" width="48.666666666666657" height="27"/>
+                                        <color key="backgroundColor" systemColor="secondarySystemFillColor"/>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="12"/>
+                                        <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                        <state key="normal" title="3달">
+                                            <color key="titleColor" systemColor="labelColor"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="rangeButtonTapped:" destination="kkF-xT-fmA" eventType="touchUpInside" id="Htx-tD-zWV"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" tag="4" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6jq-sW-wef">
+                                        <rect key="frame" x="243.33333333333331" y="0.0" width="49" height="27"/>
+                                        <color key="backgroundColor" systemColor="secondarySystemFillColor"/>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="12"/>
+                                        <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                        <state key="normal" title="1년">
+                                            <color key="titleColor" systemColor="labelColor"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="rangeButtonTapped:" destination="kkF-xT-fmA" eventType="touchUpInside" id="Z6q-xz-5FG"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" tag="5" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hsT-8W-fqm">
+                                        <rect key="frame" x="304.33333333333331" y="0.0" width="48.666666666666686" height="27"/>
+                                        <color key="backgroundColor" systemColor="secondarySystemFillColor"/>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="12"/>
+                                        <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                        <state key="normal" title="5년">
+                                            <color key="titleColor" systemColor="labelColor"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="rangeButtonTapped:" destination="kkF-xT-fmA" eventType="touchUpInside" id="uzp-x2-Pbl"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                            </stackView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="E84-W5-kvv" userLabel="6.하나은행 뷰">
+                                <rect key="frame" x="0.0" y="599.66666666666663" width="393" height="160.33333333333337"/>
+                                <subviews>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacingType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="2ib-Nt-llD" userLabel="하나은행 스택뷰">
+                                        <rect key="frame" x="24" y="15.999999999999993" width="345" height="122.33333333333331"/>
+                                        <subviews>
+                                            <stackView opaque="NO" contentMode="scaleToFill" spacingType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="geg-9y-gfa">
+                                                <rect key="frame" x="0.0" y="0.0" width="345" height="14.333333333333334"/>
+                                                <subviews>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="01월 01일 00:00:00 기준" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kl8-9S-6TO">
+                                                        <rect key="frame" x="0.0" y="0.0" width="234" height="14.333333333333334"/>
+                                                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="12"/>
+                                                        <color key="textColor" systemColor="secondaryLabelColor"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text=" 환율 우대 90% 기준" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="f2B-Zf-YM9">
+                                                        <rect key="frame" x="242" y="0.0" width="103" height="14.333333333333334"/>
+                                                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="12"/>
+                                                        <color key="textColor" systemColor="secondaryLabelColor"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                </subviews>
+                                            </stackView>
+                                            <stackView opaque="NO" contentMode="scaleToFill" distribution="equalSpacing" spacingType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="ac0-Wq-JFc" userLabel="하나은행 스택스택뷰">
+                                                <rect key="frame" x="0.0" y="22.333333333333371" width="345" height="100"/>
+                                                <subviews>
+                                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacingType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="98B-nG-gx1" userLabel="하나은행 환율">
+                                                        <rect key="frame" x="0.0" y="0.0" width="125.66666666666667" height="100"/>
+                                                        <subviews>
+                                                            <stackView opaque="NO" contentMode="scaleToFill" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="71j-yM-vCj" userLabel="하나은행실시간">
+                                                                <rect key="frame" x="13.333333333333336" y="0.0" width="99.333333333333314" height="22"/>
+                                                                <subviews>
+                                                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="하나은행" translatesAutoresizingMaskIntoConstraints="NO" id="muT-vS-1i4">
+                                                                        <rect key="frame" x="0.0" y="0.0" width="22" height="22"/>
+                                                                        <constraints>
+                                                                            <constraint firstAttribute="width" constant="22" id="Gud-jz-5bL"/>
+                                                                            <constraint firstAttribute="height" constant="22" id="bpi-IE-wf4"/>
+                                                                        </constraints>
+                                                                    </imageView>
+                                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="하나은행" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SIq-I8-ori">
+                                                                        <rect key="frame" x="29.999999999999993" y="0.0" width="69.333333333333314" height="22"/>
+                                                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
+                                                                        <nil key="textColor"/>
+                                                                        <nil key="highlightedColor"/>
+                                                                    </label>
+                                                                </subviews>
+                                                            </stackView>
+                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1,000.00" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JMn-NE-Ri2">
+                                                                <rect key="frame" x="0.3333333333333286" y="29.999999999999996" width="125" height="41.666666666666657"/>
+                                                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="30"/>
+                                                                <nil key="textColor"/>
+                                                                <nil key="highlightedColor"/>
+                                                            </label>
+                                                            <stackView opaque="NO" contentMode="scaleToFill" spacing="6" translatesAutoresizingMaskIntoConstraints="NO" id="ChC-tV-DjV" userLabel="등락">
+                                                                <rect key="frame" x="0.0" y="79.666666666666629" width="125.66666666666667" height="20.333333333333329"/>
+                                                                <subviews>
+                                                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="arrowtriangle.down.fill" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="5rl-s3-ayR">
+                                                                        <rect key="frame" x="0.0" y="2.3333333333333313" width="16.666666666666668" height="15.666666666666668"/>
+                                                                        <color key="tintColor" systemColor="systemBlueColor"/>
+                                                                    </imageView>
+                                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0.00" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Z7h-pG-Dew">
+                                                                        <rect key="frame" x="22.666666666666661" y="0.0" width="36.333333333333343" height="20.333333333333332"/>
+                                                                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
+                                                                        <color key="textColor" systemColor="systemBlueColor"/>
+                                                                        <nil key="highlightedColor"/>
+                                                                    </label>
+                                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="-0.00%" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bfC-dv-3u7">
+                                                                        <rect key="frame" x="65" y="0.0" width="60.666666666666657" height="20.333333333333332"/>
+                                                                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
+                                                                        <color key="textColor" systemColor="systemBlueColor"/>
+                                                                        <nil key="highlightedColor"/>
+                                                                    </label>
+                                                                </subviews>
+                                                            </stackView>
+                                                        </subviews>
+                                                    </stackView>
+                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dmy-vZ-hSg" userLabel="구분선">
+                                                        <rect key="frame" x="158.33333333333334" y="0.0" width="1" height="100"/>
+                                                        <color key="backgroundColor" systemColor="placeholderTextColor"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="height" constant="100" id="Jm9-1i-4YT"/>
+                                                            <constraint firstAttribute="width" constant="1" id="ik3-kq-sPN"/>
+                                                        </constraints>
+                                                    </view>
+                                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacingType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="BCZ-5p-y2K">
+                                                        <rect key="frame" x="191.66666666666663" y="0.0" width="153.33333333333337" height="100"/>
+                                                        <subviews>
+                                                            <stackView opaque="NO" contentMode="scaleToFill" spacingType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="OXS-Nh-v4k">
+                                                                <rect key="frame" x="0.0" y="0.0" width="153.33333333333334" height="46"/>
+                                                                <subviews>
+                                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="팔때" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="v7R-Jh-Fyj">
+                                                                        <rect key="frame" x="0.0" y="0.0" width="41.666666666666664" height="46"/>
+                                                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="24"/>
+                                                                        <color key="textColor" systemColor="systemBlueColor"/>
+                                                                        <nil key="highlightedColor"/>
+                                                                    </label>
+                                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1,000.00" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ofV-MO-8ix">
+                                                                        <rect key="frame" x="49.666666666666664" y="0.0" width="103.66666666666669" height="46"/>
+                                                                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="25"/>
+                                                                        <nil key="textColor"/>
+                                                                        <nil key="highlightedColor"/>
+                                                                    </label>
+                                                                </subviews>
+                                                            </stackView>
+                                                            <stackView opaque="NO" contentMode="scaleToFill" spacingType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="aJC-fz-ke6">
+                                                                <rect key="frame" x="0.0" y="54" width="153.33333333333334" height="46"/>
+                                                                <subviews>
+                                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="살때" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ajw-Q9-LIh">
+                                                                        <rect key="frame" x="0.0" y="0.0" width="41.666666666666664" height="46"/>
+                                                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="24"/>
+                                                                        <color key="textColor" systemColor="systemRedColor"/>
+                                                                        <nil key="highlightedColor"/>
+                                                                    </label>
+                                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1,000.00" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7NE-L3-25n">
+                                                                        <rect key="frame" x="49.666666666666664" y="0.0" width="103.66666666666669" height="46"/>
+                                                                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="25"/>
+                                                                        <nil key="textColor"/>
+                                                                        <nil key="highlightedColor"/>
+                                                                    </label>
+                                                                </subviews>
+                                                            </stackView>
+                                                        </subviews>
+                                                    </stackView>
+                                                </subviews>
+                                            </stackView>
+                                        </subviews>
+                                    </stackView>
+                                </subviews>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="bottom" secondItem="2ib-Nt-llD" secondAttribute="bottom" constant="22" id="EWO-Bg-n8J"/>
+                                    <constraint firstItem="2ib-Nt-llD" firstAttribute="leading" secondItem="E84-W5-kvv" secondAttribute="leading" constant="24" id="W3k-AA-Pbe"/>
+                                    <constraint firstItem="2ib-Nt-llD" firstAttribute="top" secondItem="E84-W5-kvv" secondAttribute="top" constant="16" id="awU-xn-Rh0"/>
+                                    <constraint firstAttribute="trailing" secondItem="2ib-Nt-llD" secondAttribute="trailing" constant="24" id="g6I-jy-XT2"/>
+                                </constraints>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="N89-yp-rdc" userLabel="7.탭바 구분선">
+                                <rect key="frame" x="0.0" y="760" width="393" height="1"/>
+                                <color key="backgroundColor" systemColor="placeholderTextColor"/>
+                                <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="1" id="2lT-u5-Aod"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="wnq-sJ-6xM"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="7d7-nM-dle" firstAttribute="top" secondItem="bAm-MI-Ewr" secondAttribute="bottom" constant="8" id="2GH-9b-m3N"/>
+                            <constraint firstItem="wnq-sJ-6xM" firstAttribute="trailing" secondItem="bAm-MI-Ewr" secondAttribute="trailing" constant="16" id="2j4-1Z-Jsx"/>
+                            <constraint firstItem="bAm-MI-Ewr" firstAttribute="leading" secondItem="wnq-sJ-6xM" secondAttribute="leading" constant="16" id="BIx-gm-1Ga"/>
+                            <constraint firstAttribute="trailing" secondItem="N89-yp-rdc" secondAttribute="trailing" id="DNv-ku-4V2"/>
+                            <constraint firstItem="Evn-c7-zMz" firstAttribute="leading" secondItem="wnq-sJ-6xM" secondAttribute="leading" constant="16" id="E9a-lR-AOD"/>
+                            <constraint firstItem="Evn-c7-zMz" firstAttribute="top" secondItem="wnq-sJ-6xM" secondAttribute="top" id="FUH-0T-Svm"/>
+                            <constraint firstItem="7d7-nM-dle" firstAttribute="leading" secondItem="wnq-sJ-6xM" secondAttribute="leading" constant="20" id="IrB-9Q-Iju"/>
+                            <constraint firstItem="N89-yp-rdc" firstAttribute="leading" secondItem="KU9-aW-a0n" secondAttribute="leading" id="J2c-8M-nrw"/>
+                            <constraint firstItem="wnq-sJ-6xM" firstAttribute="trailing" secondItem="PqU-En-LEI" secondAttribute="trailing" constant="16" id="MTM-ZU-cAh"/>
+                            <constraint firstItem="2iS-S3-xvh" firstAttribute="leading" secondItem="wnq-sJ-6xM" secondAttribute="leading" constant="40" id="PIZ-je-e4d"/>
+                            <constraint firstItem="N89-yp-rdc" firstAttribute="top" secondItem="E84-W5-kvv" secondAttribute="bottom" id="bKf-7J-CuK"/>
+                            <constraint firstItem="E84-W5-kvv" firstAttribute="leading" secondItem="wnq-sJ-6xM" secondAttribute="leading" id="f5p-qd-MrT"/>
+                            <constraint firstItem="wnq-sJ-6xM" firstAttribute="trailing" secondItem="7d7-nM-dle" secondAttribute="trailing" constant="20" id="fgN-4b-2g4"/>
+                            <constraint firstItem="E84-W5-kvv" firstAttribute="top" secondItem="7d7-nM-dle" secondAttribute="bottom" id="hRF-3J-us1"/>
+                            <constraint firstItem="2iS-S3-xvh" firstAttribute="top" secondItem="PqU-En-LEI" secondAttribute="bottom" constant="16" id="jST-Tg-tDa"/>
+                            <constraint firstItem="wnq-sJ-6xM" firstAttribute="trailing" secondItem="vVM-62-YoO" secondAttribute="trailing" id="joR-xA-nIT"/>
+                            <constraint firstItem="PqU-En-LEI" firstAttribute="top" secondItem="Evn-c7-zMz" secondAttribute="bottom" id="kRy-Jq-AQD"/>
+                            <constraint firstItem="bAm-MI-Ewr" firstAttribute="top" secondItem="2iS-S3-xvh" secondAttribute="bottom" id="lCb-cf-WOA"/>
+                            <constraint firstItem="vVM-62-YoO" firstAttribute="leading" secondItem="wnq-sJ-6xM" secondAttribute="leading" id="oze-i2-cr2"/>
+                            <constraint firstItem="PqU-En-LEI" firstAttribute="leading" secondItem="wnq-sJ-6xM" secondAttribute="leading" constant="16" id="q9U-eo-xuL"/>
+                            <constraint firstItem="E84-W5-kvv" firstAttribute="trailing" secondItem="wnq-sJ-6xM" secondAttribute="trailing" id="qij-gH-h6c"/>
+                            <constraint firstItem="vVM-62-YoO" firstAttribute="bottom" secondItem="2iS-S3-xvh" secondAttribute="bottom" id="rtV-TI-lV0"/>
+                            <constraint firstItem="wnq-sJ-6xM" firstAttribute="trailing" secondItem="2iS-S3-xvh" secondAttribute="trailing" constant="40" id="vzR-Cf-rdY"/>
+                            <constraint firstItem="wnq-sJ-6xM" firstAttribute="trailing" secondItem="Evn-c7-zMz" secondAttribute="trailing" constant="16" id="xhn-SE-1Xk"/>
+                            <constraint firstItem="wnq-sJ-6xM" firstAttribute="bottom" secondItem="N89-yp-rdc" secondAttribute="bottom" constant="8" id="zFg-9g-xeR"/>
+                        </constraints>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="환율" id="mIQ-gq-vjH">
+                        <imageReference key="image" image="chart.line.uptrend.xyaxis" catalog="system" symbolScale="large" variableValue="0.0"/>
+                        <imageReference key="selectedImage" image="chart.line.uptrend.xyaxis" catalog="system" symbolScale="large"/>
+                    </tabBarItem>
+                    <connections>
+                        <outlet property="currencyButton" destination="NoN-yy-oiy" id="mY1-qJ-Ubr"/>
+                        <outlet property="currencyIndexButton" destination="XZv-fZ-rxT" id="egE-Ne-s4M"/>
+                        <outlet property="currencyIndexLine" destination="1qL-Gk-Qve" id="iSZ-OL-rfz"/>
+                        <outlet property="currencyLine" destination="ZLj-Jx-EeO" id="4kj-T2-P17"/>
+                        <outlet property="dayButton" destination="MTA-d7-bVj" id="wwh-2w-f6c"/>
+                        <outlet property="dollarIndexButton" destination="Bo6-mt-bHg" id="Y1U-Ra-JtQ"/>
+                        <outlet property="dollarIndexLabel" destination="kTT-Oc-Hwt" id="nrg-MS-rLX"/>
+                        <outlet property="dollarIndexLine" destination="Nyl-7B-X4j" id="8D9-t9-gbP"/>
+                        <outlet property="fiveYearButton" destination="hsT-8W-fqm" id="gBO-3a-qND"/>
+                        <outlet property="graphView" destination="bAm-MI-Ewr" id="Wvv-on-Of4"/>
+                        <outlet property="hanaBankButton" destination="sCV-1h-wFh" id="izq-0D-O9p"/>
+                        <outlet property="hanaBankLine" destination="Qfe-Uu-k8Z" id="1sR-Gl-63t"/>
+                        <outlet property="hanaBankView" destination="E84-W5-kvv" id="eWC-Qt-8rh"/>
+                        <outlet property="hanaBuyCurrency" destination="7NE-L3-25n" id="XDH-41-JGu"/>
+                        <outlet property="hanaCurrencyLabel" destination="JMn-NE-Ri2" id="JmW-Df-V4X"/>
+                        <outlet property="hanaRateDiff" destination="Z7h-pG-Dew" id="PEl-8T-K8e"/>
+                        <outlet property="hanaRateDiffPercentage" destination="bfC-dv-3u7" id="S67-0X-yUD"/>
+                        <outlet property="hanaReferenceTimeLabel" destination="kl8-9S-6TO" id="slC-i4-xjm"/>
+                        <outlet property="hanaSellCurrency" destination="ofV-MO-8ix" id="ReP-co-CNN"/>
+                        <outlet property="hanaUpDownImage" destination="5rl-s3-ayR" id="WuA-ht-zSa"/>
+                        <outlet property="indexRateDiff" destination="R5X-BV-V6q" id="eQh-AU-cNp"/>
+                        <outlet property="indexRateDiffPercentage" destination="R56-Hi-BIS" id="MTx-kt-Unu"/>
+                        <outlet property="indexUpDownImage" destination="jPY-gW-s31" id="08b-em-UQ8"/>
+                        <outlet property="monthButton" destination="KQE-LT-2Vt" id="9kr-4B-AuJ"/>
+                        <outlet property="rateDiff" destination="s0F-lX-KsD" id="wYs-tP-NO9"/>
+                        <outlet property="rateDiffPercentage" destination="YVx-TB-4Bi" id="1ge-2q-Iij"/>
+                        <outlet property="referenceTimeLabel" destination="dgf-JJ-1pY" id="mTT-ta-cxd"/>
+                        <outlet property="refreshButton" destination="t3D-WB-MzB" id="MYx-wG-ui2"/>
+                        <outlet property="threeMonthButton" destination="dkW-BO-oZy" id="7f2-zd-EBh"/>
+                        <outlet property="usdCurrencyLabel" destination="0tR-OO-VEp" id="gif-gY-XbZ"/>
+                        <outlet property="usdFlag" destination="QCo-aO-m8v" id="6sC-mU-h6a"/>
+                        <outlet property="usdUpDownImage" destination="4gc-hE-W3w" id="HDR-QU-kJd"/>
+                        <outlet property="weekButton" destination="fbR-b0-wQh" id="OkQ-eU-Cxe"/>
+                        <outlet property="yearButton" destination="6jq-sW-wef" id="ER9-2W-ZkW"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="fJY-sr-73B" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="53.600000000000001" y="705.66502463054189"/>
+        </scene>
+        <!--투자내역-->
+        <scene sceneID="fff-Kl-Tk1">
+            <objects>
+                <viewController id="CKf-Hh-7qW" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="JXw-Pz-Aud">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <viewLayoutGuide key="safeArea" id="A34-zI-zE8"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <gestureRecognizers/>
+                        <connections>
+                            <outletCollection property="gestureRecognizers" destination="QLh-bL-ekD" appends="YES" id="6nd-OP-XOJ"/>
+                        </connections>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="투자내역" image="doc.text.image" catalog="system" id="pFe-Ao-n48"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="C0a-jd-uq0" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <pongPressGestureRecognizer allowableMovement="10" minimumPressDuration="0.5" id="QLh-bL-ekD"/>
+            </objects>
+            <point key="canvasLocation" x="738" y="704"/>
+        </scene>
+        <!--Tab Bar Controller-->
+        <scene sceneID="Fsr-cI-gav">
+            <objects>
+                <tabBarController automaticallyAdjustsScrollViewInsets="NO" id="lo3-tc-eeD" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="dYa-XF-5zJ">
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </tabBar>
+                    <connections>
+                        <segue destination="kkF-xT-fmA" kind="relationship" relationship="viewControllers" id="iNB-AK-iBd"/>
+                        <segue destination="CKf-Hh-7qW" kind="relationship" relationship="viewControllers" id="Pw1-XE-sWu"/>
+                    </connections>
+                </tabBarController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="izT-lu-auH" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3.8167938931297707" y="-27.464788732394368"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="US - United States" width="54.5" height="41"/>
+        <image name="arrow.clockwise.circle" catalog="system" width="128" height="123"/>
+        <image name="arrowtriangle.down.fill" catalog="system" width="128" height="120"/>
+        <image name="chart.line.uptrend.xyaxis" catalog="system" width="128" height="102"/>
+        <image name="doc.text.image" catalog="system" width="115" height="128"/>
+        <image name="하나은행" width="116" height="110"/>
+        <namedColor name="Dollar Green">
+            <color red="0.5220000147819519" green="0.73299998044967651" blue="0.39599999785423279" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <systemColor name="labelColor">
+            <color red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="placeholderTextColor">
+            <color red="0.23529411764705882" green="0.23529411764705882" blue="0.2627450980392157" alpha="0.29803921568627451" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="secondaryLabelColor">
+            <color red="0.23529411764705882" green="0.23529411764705882" blue="0.2627450980392157" alpha="0.59999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="secondarySystemFillColor">
+            <color red="0.47058823529411764" green="0.47058823529411764" blue="0.50196078431372548" alpha="0.16" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemBlueColor">
+            <color red="0.0" green="0.47843137254901963" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="systemOrangeColor">
+            <color red="1" green="0.58431372549019611" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="systemRedColor">
+            <color red="1" green="0.23137254901960785" blue="0.18823529411764706" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+    </resources>
+</document>
