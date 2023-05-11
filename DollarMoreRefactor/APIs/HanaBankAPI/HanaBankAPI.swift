@@ -97,7 +97,7 @@ struct HanaBankAPI {
                 indicators.append(.init(timestamp: timestamp, close: close))
             }
             let meta = ChartMeta(regularMarketPrice: tableReg, previousClose: tablePre)
-            return ChartData(meta: meta, indicators: indicators)
+            return ChartData(meta: meta, indicators: indicators.reversed())
         } catch {
             throw error
         }

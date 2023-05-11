@@ -10,7 +10,7 @@ import Foundation
 struct StocksDataManager {
     
     /// 주식 이름
-    enum StocksName: String {
+    enum StocksSymbol: String {
         case dollar_Won = "KRW=X"
         case dollar_Index = "DX-Y.NYB"
         case hanaBank = "hahabank"
@@ -24,10 +24,10 @@ struct StocksDataManager {
     ///   - stockName: 주식 이름
     ///   - range: 범위
     /// - Returns: 차트 데이터
-    public func fetchChartData(stockName: StocksName, range: ChartRange) async -> ChartData? {
+    public func fetchChartData(stockSymbol: StocksSymbol, range: ChartRange) async -> ChartData? {
         do {
             let apiChartData = try await api
-                .fetchChartData(tickerSymbol: stockName.rawValue, range: range)
+                .fetchChartData(tickerSymbol: stockSymbol.rawValue, range: range)
             return apiChartData
             
         } catch {
@@ -39,10 +39,10 @@ struct StocksDataManager {
     /// 한국기준 하루데이터 가져오기
     /// - Parameter stockName: 주식 이름
     /// - Returns: 차트 데이터
-    public func oneDayFetchChartData(stockName: StocksName) async -> ChartData? {
+    public func oneDayFetchChartData(stockSymbol: StocksSymbol) async -> ChartData? {
         do {
             let apiChartData = try await api
-                .oneDayFetchChartData(tickerSymbol: stockName.rawValue)
+                .oneDayFetchChartData(tickerSymbol: stockSymbol.rawValue)
             return apiChartData
             
         } catch {

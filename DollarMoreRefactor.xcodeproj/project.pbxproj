@@ -26,6 +26,7 @@
 		55C339F22A0D0CF200D6057E /* HapticsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55C339F12A0D0CF200D6057E /* HapticsManager.swift */; };
 		55C339F42A0D0D0600D6057E /* StocksDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55C339F32A0D0D0600D6057E /* StocksDataManager.swift */; };
 		55C339F82A0D17CF00D6057E /* MainViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55C339F72A0D17CF00D6057E /* MainViewModel.swift */; };
+		55C339FC2A0D308D00D6057E /* SingleChartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55C339FB2A0D308D00D6057E /* SingleChartView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -46,6 +47,8 @@
 		55C339F12A0D0CF200D6057E /* HapticsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HapticsManager.swift; sourceTree = "<group>"; };
 		55C339F32A0D0D0600D6057E /* StocksDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StocksDataManager.swift; sourceTree = "<group>"; };
 		55C339F72A0D17CF00D6057E /* MainViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewModel.swift; sourceTree = "<group>"; };
+		55C339F92A0D1DE400D6057E /* SpoqaHanSansNeo-Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SpoqaHanSansNeo-Bold.otf"; sourceTree = "<group>"; };
+		55C339FB2A0D308D00D6057E /* SingleChartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SingleChartView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -114,6 +117,7 @@
 		55C339E92A0D0C7C00D6057E /* Other */ = {
 			isa = PBXGroup;
 			children = (
+				55C339FA2A0D1E0700D6057E /* Resources */,
 				55A295DD2A0CC199004905F1 /* SceneDelegate.swift */,
 				55A295DB2A0CC199004905F1 /* AppDelegate.swift */,
 				55A295E42A0CC19B004905F1 /* Assets.xcassets */,
@@ -128,6 +132,7 @@
 				55A295EF2A0CC25C004905F1 /* MainViewController.swift */,
 				55A295E12A0CC199004905F1 /* Main.storyboard */,
 				55A295E62A0CC19B004905F1 /* LaunchScreen.storyboard */,
+				55C339FB2A0D308D00D6057E /* SingleChartView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -156,6 +161,14 @@
 				55C339F72A0D17CF00D6057E /* MainViewModel.swift */,
 			);
 			path = ViewModels;
+			sourceTree = "<group>";
+		};
+		55C339FA2A0D1E0700D6057E /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				55C339F92A0D1DE400D6057E /* SpoqaHanSansNeo-Bold.otf */,
+			);
+			path = Resources;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -251,6 +264,7 @@
 				55C339E12A0CFBB700D6057E /* URLSession+AsyncLinux.swift in Sources */,
 				55A295DE2A0CC199004905F1 /* SceneDelegate.swift in Sources */,
 				55C339E52A0CFBDF00D6057E /* Chart.swift in Sources */,
+				55C339FC2A0D308D00D6057E /* SingleChartView.swift in Sources */,
 				55A295F02A0CC25C004905F1 /* MainViewController.swift in Sources */,
 				55C339F82A0D17CF00D6057E /* MainViewModel.swift in Sources */,
 			);
