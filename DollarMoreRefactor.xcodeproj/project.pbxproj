@@ -27,6 +27,10 @@
 		55C339F42A0D0D0600D6057E /* StocksDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55C339F32A0D0D0600D6057E /* StocksDataManager.swift */; };
 		55C339F82A0D17CF00D6057E /* MainViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55C339F72A0D17CF00D6057E /* MainViewModel.swift */; };
 		55C339FC2A0D308D00D6057E /* SingleChartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55C339FB2A0D308D00D6057E /* SingleChartView.swift */; };
+		55C339FE2A0D5DE100D6057E /* CustomMarkerView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 55C339FD2A0D5DE100D6057E /* CustomMarkerView.xib */; };
+		55C33A012A0D5E4900D6057E /* CustomMarkerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55C33A002A0D5E4900D6057E /* CustomMarkerView.swift */; };
+		55C33A032A0D696000D6057E /* DateValueFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55C33A022A0D696000D6057E /* DateValueFormatter.swift */; };
+		55C33A052A0D6B7500D6057E /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55C33A042A0D6B7500D6057E /* Extensions.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -49,6 +53,10 @@
 		55C339F72A0D17CF00D6057E /* MainViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewModel.swift; sourceTree = "<group>"; };
 		55C339F92A0D1DE400D6057E /* SpoqaHanSansNeo-Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SpoqaHanSansNeo-Bold.otf"; sourceTree = "<group>"; };
 		55C339FB2A0D308D00D6057E /* SingleChartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SingleChartView.swift; sourceTree = "<group>"; };
+		55C339FD2A0D5DE100D6057E /* CustomMarkerView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CustomMarkerView.xib; sourceTree = "<group>"; };
+		55C33A002A0D5E4900D6057E /* CustomMarkerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomMarkerView.swift; sourceTree = "<group>"; };
+		55C33A022A0D696000D6057E /* DateValueFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateValueFormatter.swift; sourceTree = "<group>"; };
+		55C33A042A0D6B7500D6057E /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -117,11 +125,12 @@
 		55C339E92A0D0C7C00D6057E /* Other */ = {
 			isa = PBXGroup;
 			children = (
-				55C339FA2A0D1E0700D6057E /* Resources */,
+				55C33A042A0D6B7500D6057E /* Extensions.swift */,
 				55A295DD2A0CC199004905F1 /* SceneDelegate.swift */,
 				55A295DB2A0CC199004905F1 /* AppDelegate.swift */,
 				55A295E42A0CC19B004905F1 /* Assets.xcassets */,
 				55A295E92A0CC19B004905F1 /* Info.plist */,
+				55C339FA2A0D1E0700D6057E /* Resources */,
 			);
 			path = Other;
 			sourceTree = "<group>";
@@ -132,7 +141,9 @@
 				55A295EF2A0CC25C004905F1 /* MainViewController.swift */,
 				55A295E12A0CC199004905F1 /* Main.storyboard */,
 				55A295E62A0CC19B004905F1 /* LaunchScreen.storyboard */,
+				55C339FD2A0D5DE100D6057E /* CustomMarkerView.xib */,
 				55C339FB2A0D308D00D6057E /* SingleChartView.swift */,
+				55C33A002A0D5E4900D6057E /* CustomMarkerView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -159,6 +170,7 @@
 			isa = PBXGroup;
 			children = (
 				55C339F72A0D17CF00D6057E /* MainViewModel.swift */,
+				55C33A022A0D696000D6057E /* DateValueFormatter.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -242,6 +254,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				55A295E82A0CC19B004905F1 /* LaunchScreen.storyboard in Resources */,
+				55C339FE2A0D5DE100D6057E /* CustomMarkerView.xib in Resources */,
 				55A295E52A0CC19B004905F1 /* Assets.xcassets in Resources */,
 				55A295E32A0CC199004905F1 /* Main.storyboard in Resources */,
 			);
@@ -254,15 +267,18 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				55C33A032A0D696000D6057E /* DateValueFormatter.swift in Sources */,
 				55C339DC2A0CF67D00D6057E /* HanaBankAPI.swift in Sources */,
 				55C339E32A0CFBCE00D6057E /* ChartRange.swift in Sources */,
 				55C339E72A0CFBFA00D6057E /* APIError.swift in Sources */,
+				55C33A012A0D5E4900D6057E /* CustomMarkerView.swift in Sources */,
 				55C339F22A0D0CF200D6057E /* HapticsManager.swift in Sources */,
 				55C339DF2A0CFB9C00D6057E /* YahooFinanceAPI.swift in Sources */,
 				55C339F42A0D0D0600D6057E /* StocksDataManager.swift in Sources */,
 				55A295DC2A0CC199004905F1 /* AppDelegate.swift in Sources */,
 				55C339E12A0CFBB700D6057E /* URLSession+AsyncLinux.swift in Sources */,
 				55A295DE2A0CC199004905F1 /* SceneDelegate.swift in Sources */,
+				55C33A052A0D6B7500D6057E /* Extensions.swift in Sources */,
 				55C339E52A0CFBDF00D6057E /* Chart.swift in Sources */,
 				55C339FC2A0D308D00D6057E /* SingleChartView.swift in Sources */,
 				55A295F02A0CC25C004905F1 /* MainViewController.swift in Sources */,
