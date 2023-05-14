@@ -2,17 +2,16 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="21701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_12" orientation="portrait" appearance="light"/>
     <dependencies>
-        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21678"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
-        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="CustomMarkerView" customModule="DollarMore" customModuleProvider="target">
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="CustomMarkerView" customModule="DollarMoreRefactor" customModuleProvider="target">
             <connections>
-                <outlet property="contentView" destination="iN0-l3-epB" id="YZe-s5-7O2"/>
-                <outlet property="dateLabel" destination="hpF-L9-rai" id="7We-zb-1je"/>
-                <outlet property="valueLabel" destination="ADp-dr-DOE" id="b8C-pR-OUk"/>
+                <outlet property="contentView" destination="iN0-l3-epB" id="vux-TV-dju"/>
+                <outlet property="dateLabel" destination="hpF-L9-rai" id="In9-eU-Qb8"/>
+                <outlet property="valueLabel" destination="ADp-dr-DOE" id="4kJ-eM-GCw"/>
             </connections>
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>

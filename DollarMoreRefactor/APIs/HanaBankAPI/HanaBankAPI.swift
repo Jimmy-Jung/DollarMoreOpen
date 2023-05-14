@@ -65,7 +65,7 @@ struct HanaBankAPI {
             guard let html = String(data: data, encoding: .utf8) else {
                 throw NSError(domain: "Invalid Data", code: -1, userInfo: nil)
             }
-            return try await parseWeekHTML(html: html)
+            return await parseWeekHTML(html: html)
         } catch {
             throw error
         }
@@ -106,14 +106,14 @@ struct HanaBankAPI {
     /// 하나은행 한주치 HTML 파싱
     /// - Parameter html: HTML데이터
     /// - Returns: 테이블 구조체
-    private func parseWeekHTML(html: String) async throws -> Table {
+    private func parseWeekHTML(html: String) async -> Table {
         do {
             let doc: Document = try SwiftSoup.parse(html)
             let table = try doc.select("tbody")
             let trElements = try table.select("tr")
             let td0Elements = try trElements[0].select("td")
             let td1Elements = try trElements[1].select("td")
-            let timestamp = try td0Elements.text()
+            let timestamp = try td0Elements[0].text()
             let regularMarketPriceString = try td0Elements[7].text()
             let previousCloseString = try td1Elements[7].text()
             let formatter = NumberFormatter()
@@ -131,7 +131,9 @@ struct HanaBankAPI {
                 previousClose: previousClose
             )
         } catch {
-            throw error
+            print(error.localizedDescription)
+            return .init(timestamp: "0", regularMarketPrice: 0, previousClose: 0)
+            
         }
     }
     

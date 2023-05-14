@@ -8,14 +8,14 @@
 import Charts
 import UIKit
 
-class CustomMarkerView: MarkerView {
+final class CustomMarkerView: MarkerView {
+    
     @IBOutlet weak var dateLabel: UILabel!
-    
     @IBOutlet weak var valueLabel: UILabel!
-    
     @IBOutlet var contentView: UIView!
-    override init(frame: CGRect) {
-            super.init(frame: frame)
+    
+override init(frame: CGRect) {
+    super.init(frame: frame)
             initUI()
         }
 

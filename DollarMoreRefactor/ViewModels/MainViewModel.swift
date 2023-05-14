@@ -28,6 +28,7 @@ final class MainViewModel {
     private var indexData: ChartData? {
         didSet {
             indexLabelSet = updateLabelSet(chartData: indexData)
+//            dump(indexData)
         }
     }
     private var hanaData: ChartData? {
@@ -35,6 +36,7 @@ final class MainViewModel {
             hanaLabelSet = updateLabelSet(chartData: hanaData)
             hanaReferenceTimeLabel = updateReferenceTimeLabel(chartData: hanaData)
             hanaSellBuyLabel = updateSellBuyLabel(chartData: hanaData)
+//            dump(hanaData)
             
         }
     }
@@ -158,10 +160,10 @@ final class MainViewModel {
         formatter.numberStyle = .decimal
         formatter.maximumFractionDigits = 2
         let sellPrice = formatter
-            .string(from: NSNumber(value: currentPrice + margin)) ?? ""
+            .string(from: NSNumber(value: currentPrice + margin)) ?? "0,000.00"
         
         let buyPrice = formatter
-            .string(from: NSNumber(value: currentPrice - margin)) ?? ""
+            .string(from: NSNumber(value: currentPrice - margin)) ?? "0,000.00"
         return (sellPrice, buyPrice)
     }
 }

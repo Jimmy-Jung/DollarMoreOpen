@@ -50,6 +50,8 @@ final class SingleChartView: UIView, ChartViewDelegate {
     
     // MARK: - Public Methods
     public func configure(with chartDataSet: ChartDataSet) {
+        entries1 = [ChartDataEntry]()
+        entries2 = [ChartDataEntry]()
         fetchEntries(with: chartDataSet)
         fetchPreviousEntries(with: chartDataSet)
         let dataset1 = fetchDataSet(with: chartDataSet)
@@ -78,8 +80,12 @@ final class SingleChartView: UIView, ChartViewDelegate {
         let indicators = chartDataSet.data.indicators
         let firstXAxis = indicators.first!.timestamp.timeIntervalSince1970 * 1000
         let lastXAxis = indicators.last!.timestamp.timeIntervalSince1970 * 1000
-        entries2.append(contentsOf: [ChartDataEntry(x: firstXAxis, y: previousClose),
-                                     ChartDataEntry(x: lastXAxis, y: previousClose)])
+        entries2.append(
+            contentsOf: [
+                ChartDataEntry(x: firstXAxis, y: previousClose),
+                ChartDataEntry(x: lastXAxis, y: previousClose)
+            ]
+        )
     }
     
     /// 데이터셋
@@ -139,6 +145,7 @@ final class SingleChartView: UIView, ChartViewDelegate {
         super.init(frame: frame)
         addSubview(chartView)
         setupMarker()
+        chartView.delegate = self
     }
     
     required init?(coder: NSCoder) {
@@ -153,6 +160,7 @@ final class SingleChartView: UIView, ChartViewDelegate {
     
     // MARK: - ChartViewDelegate
     /// 차트 선택시 해당 값을 띄워주는 UI 구현
+//    func
     func chartValueSelected(
         _ chartView: ChartViewBase,
         entry: ChartDataEntry,
@@ -162,7 +170,7 @@ final class SingleChartView: UIView, ChartViewDelegate {
         let date = Date(timeIntervalSince1970: entry.x/1000)
         let xAxis = dateFormatter.string(from: date)
         let yAxis = String(format: "%.2f", entry.y)
-        customMarkerView.dateLabel.text = "\(xAxis)"
-        customMarkerView.valueLabel.text = "\(yAxis)"
+        customMarkerView.dateLabel.text = xAxis
+        customMarkerView.valueLabel.text = yAxis
     }
 }

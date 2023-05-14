@@ -78,6 +78,8 @@ final class DualChartView: UIView {
     
     // MARK: - Public Methods
     public func configure(with chartDataSet: ChartDataSet) {
+        entries1 = [ChartDataEntry]()
+        entries2 = [ChartDataEntry]()
         fetchEntries(with: chartDataSet)
         configureDataSet()
         chartView.xAxis.valueFormatter = DateValueFormatter(
@@ -109,29 +111,45 @@ final class DualChartView: UIView {
     /// - Parameter entries: 좌표값모음
     /// - Returns: 라인차트 데이터 셋
     private func fetchDataSet(with entries: [ChartDataEntry]) -> LineChartDataSet {
-        let dataSet2 = LineChartDataSet(
+        let toggle = entries == entries1
+        let dataSet = LineChartDataSet(
             entries: entries,
-            label: entries == entries1 ? "환율" : "달러인덱스"
+            label: toggle ? "환율" : "달러인덱스"
         )
-        dataSet2.axisDependency = .right
-        dataSet2.fillColor = .clear
-        dataSet2.colors =
+        dataSet.axisDependency = toggle ? .right : .left
+        dataSet.fillColor = .clear
+        dataSet.colors =
         entries == entries1 ? [.systemOrange] : [.systemBlue]
-        dataSet2.drawFilledEnabled = true
-        dataSet2.drawIconsEnabled = false
-        dataSet2.drawValuesEnabled = false
-        dataSet2.drawCirclesEnabled = false
-        dataSet2.lineWidth = 2
-        return dataSet2
+        dataSet.drawFilledEnabled = true
+        dataSet.drawIconsEnabled = false
+        dataSet.drawValuesEnabled = toggle ? true : false
+        dataSet.drawCirclesEnabled = false
+        dataSet.lineWidth = 2
+        return dataSet
     }
     
     /// 데이터셋 구성하기
     private func configureDataSet() {
         let dataset1 = fetchDataSet(with: entries1)
         let dataset2 = fetchDataSet(with: entries2)
-        chartView.data = LineChartData(dataSets: [dataset1, dataset2])
+        chartView.data = LineChartData(dataSets: [dataset2, dataset1])
     }
     
+    private func createChartDataEntries(
+        from data: [Indicator]
+    ) -> [ChartDataEntry] {
+        var entries = [ChartDataEntry]()
+        for data in data {
+            let timestamp = data.timestamp
+                .timeIntervalSince1970 * 1000
+            let entry = ChartDataEntry(
+                x: timestamp,
+                y: data.close
+            )
+            entries.append(entry)
+        }
+        return entries
+    }
     
     /// ResetChartView
     func reset() {

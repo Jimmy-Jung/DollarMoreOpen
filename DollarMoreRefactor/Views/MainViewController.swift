@@ -65,7 +65,7 @@ final class MainViewController: UIViewController {
     @IBOutlet weak var hanaSellCurrency: UILabel!
     
     // MARK: - View Properties Sets
-
+    
     /// 범위 버튼들
     private lazy var rangeButton: [UIButton] = [
         dayButton,
@@ -118,8 +118,8 @@ final class MainViewController: UIViewController {
     private let mainViewModel = MainViewModel()
     // cancellable을 저장하기 위한 Set 선언
     private var cancellables = Set<AnyCancellable>()
-    let dualChartView = DualChartView()
-    let singleChartView = SingleChartView()
+    private var dualChartView = DualChartView()
+    private var singleChartView = SingleChartView()
     /// 타이머
     private var timer: Timer?
     /// 버튼 눌렀을 때 그래프 바꾸기
@@ -134,9 +134,12 @@ final class MainViewController: UIViewController {
                 rangeButton.forEach { $0.isEnabled = true }
             }
             showLoader(true)
+            if currentButtonState.0 == 0 {
+                self.dualChartView = DualChartView()
+            } else {
+                self.singleChartView = SingleChartView()
+            }
             Task{ await makeChart(with: currentButtonState) }
-            currentButtonState.0 == 0
-            ? updateDualChartSubview() : updateSingleChartSubview()
             showLoader(false)
         }
     }
@@ -144,8 +147,8 @@ final class MainViewController: UIViewController {
     // MARK: - LifeCycle
     override func viewDidLoad() {
         super.viewDidLoad()
+        Task { await updateChartData() }
         makeTimer()
-        
         setUpGraphButton()
         initCurrentButton()
         setupRangeButton()
@@ -157,9 +160,16 @@ final class MainViewController: UIViewController {
     }
     
     override func viewWillDisappear(_ animated: Bool) {
-            super.viewWillDisappear(animated)
-        }
-
+        super.viewWillDisappear(animated)
+        // 뷰컨트롤러가 화면에서 사라지기 전에 타이머를 해제합니다
+        timer?.invalidate()
+        timer = nil
+    }
+    
+    deinit {
+        cancellables.forEach { $0.cancel() }
+    }
+    
     // MARK: - Action
     /// 1. 새로고침 버튼
     /// - Parameter sender: 버튼
@@ -205,26 +215,44 @@ final class MainViewController: UIViewController {
             self.refreshButton.backgroundColor = .clear
             self.refreshButton.tintColor = .secondaryLabel
         }
+        showLoader(true)
         Task {
             await updateChartData()
-            }
         }
+        showLoader(false)
+    }
     
     /// 차트데이터, 레이블 데이터 업데이트
     private func updateChartData() async {
         await makeChart(with: currentButtonState)
         switch currentButtonState.0 {
         case 0:
-            _ = await mainViewModel.updateSingleChartData(symbol: .hanaBank, range: .oneDay)
-            
+            _ = await mainViewModel.updateSingleChartData(
+                symbol: .hanaBank,
+                range: .oneDay
+            )
         case 1:
-            _ = await mainViewModel.updateSingleChartData(symbol: .dollar_Index, range: .oneDay)
-            _ = await mainViewModel.updateSingleChartData(symbol: .hanaBank, range: .oneDay)
+            _ = await mainViewModel.updateSingleChartData(
+                symbol: .dollar_Index,
+                range: .oneDay
+            )
+            _ = await mainViewModel.updateSingleChartData(
+                symbol: .hanaBank,
+                range: .oneDay
+            )
         case 2:
-            _ = await mainViewModel.updateSingleChartData(symbol: .dollar_Won, range: .oneDay)
-            _ = await mainViewModel.updateSingleChartData(symbol: .hanaBank, range: .oneDay)
+            _ = await mainViewModel.updateSingleChartData(
+                symbol: .dollar_Won,
+                range: .oneDay
+            )
+            _ = await mainViewModel.updateSingleChartData(
+                symbol: .hanaBank,
+                range: .oneDay
+            )
         default:
-            _ = await mainViewModel.updateDualChartData(range: .oneDay)
+            _ = await mainViewModel.updateDualChartData(
+                range: .oneDay
+            )
         }
     }
     // 2. USD 실시간
@@ -285,13 +313,11 @@ final class MainViewController: UIViewController {
                 chartRange: range
             )
         )
-    }
-    /// 듀얼차트 서브뷰 재생성
-    private func updateDualChartSubview() {
         graphView.subviews.first?.removeFromSuperview()
         graphView.addSubview(dualChartView)
         dualChartView.frame = graphView.bounds
     }
+    
     /// 싱글차트 만들기
     /// - Parameters:
     ///   - stockName: 종목 이름
@@ -306,10 +332,6 @@ final class MainViewController: UIViewController {
             range: range
         )
         singleChartView.configure(with: chartData)
-        
-    }
-    /// 싱글차트 서브뷰 재생성
-    private func updateSingleChartSubview() {
         graphView.subviews.first?.removeFromSuperview()
         graphView.addSubview(singleChartView)
         singleChartView.frame = graphView.bounds
@@ -346,19 +368,19 @@ final class MainViewController: UIViewController {
     /// 레이블셋 구독
     private func subscribeLabelSet() {
         let labelSets = [
-           (labelSet: dollarWonLabelSet,
-            $set: mainViewModel.$usdLabelSet),
-           (labelSet: indexLabelSet,
-            $set: mainViewModel.$indexLabelSet),
-           (labelSet: hanaLabelSet,
-            $set: mainViewModel.$hanaLabelSet)
+            (labelSet: dollarWonLabelSet,
+             $set: mainViewModel.$usdLabelSet),
+            (labelSet: indexLabelSet,
+             $set: mainViewModel.$indexLabelSet),
+            (labelSet: hanaLabelSet,
+             $set: mainViewModel.$hanaLabelSet)
         ]
-
+        
         for set in labelSets {
-           set.$set.sink { [weak self] value in
-               guard let self = self, let value = value else { return }
-               self.updateCurrentRate(currentData: value, labelSet: set.labelSet)
-           }.store(in: &cancellables)
+            set.$set.sink { [weak self] value in
+                guard let self = self, let value = value else { return }
+                self.updateCurrentRate(currentData: value, labelSet: set.labelSet)
+            }.store(in: &cancellables)
         }
     }
     /// 현재시간 레이블 구독
@@ -370,7 +392,7 @@ final class MainViewController: UIViewController {
         
         mainViewModel.$hanaReferenceTimeLabel.receive(on: DispatchQueue.main).sink { [weak self] value in
             guard let self = self else {return}
-            self.referenceTimeLabel.text = value
+            self.hanaReferenceTimeLabel.text = value
         }.store(in: &cancellables)
     }
     
@@ -408,7 +430,5 @@ final class MainViewController: UIViewController {
             upDownImageColor.tintColor = currentData.upDownImageColor
         }
     }
-    
-    
 }
 
