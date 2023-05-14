@@ -42,12 +42,27 @@ struct StocksDataManager {
             return nil
         }
     }
+    public func fetchWithHanaData(
+        stockSymbol: StocksSymbol,
+        startOfDay: TimeInterval) async -> ChartData? {
+            do {
+                let apiChartData = try await api
+                    .hanaFetchChartData(tickerSymbol: stockSymbol.rawValue, startOfDay: startOfDay)
+                return apiChartData
+                
+            } catch {
+                print(error.localizedDescription)
+                return nil
+            }
+        }
  
     /// 하나은행 하루 데이터 가져오기
     /// - Returns: 차트 데이터
     public func fetchHanaChartData() async -> ChartData? {
         do {
-            return try await hanaAPI.fetchHanaChartData()
+            let hana = try await hanaAPI.fetchHanaChartData()
+            return hana
+            
         } catch {
             print(error.localizedDescription)
             return nil

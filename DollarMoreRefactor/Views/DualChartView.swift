@@ -53,7 +53,7 @@ final class DualChartView: UIView, ChartViewDelegate {
         // 차트 이름
         chartView.legend.enabled = true
         chartView.legend.verticalAlignment = .top
-        chartView.legend.horizontalAlignment = .left
+        chartView.legend.horizontalAlignment = .right
         chartView.legend.form = .line
         // 차트 관련
         chartView.highlightPerTapEnabled = false
@@ -137,16 +137,22 @@ final class DualChartView: UIView, ChartViewDelegate {
     private func configureDataSet(with chartDataSet: ChartDataSet) {
         var label1: String
         var label2: String
+        var toggle: YAxis.AxisDependency
         switch (chartDataSet.lineColor1, chartDataSet.lineColor2) {
         case ([.systemOrange], [.systemBlue]):
             label1 = "국제환율"
             label2 = "달러인덱스"
+            toggle = .left
         default:
             label1 = "국제환율"
             label2 = "하나은행"
+            toggle = .right
         }
+        
+        chartView.leftAxis.enabled = toggle == .right ? false : true
         let dataset1 = fetchDataSet(with: entries1, label: label1)
         dataset1.colors = chartDataSet.lineColor1
+        dataset1.axisDependency = toggle
         let dataset2 = fetchDataSet(with: entries2, label: label2)
         dataset2.colors = chartDataSet.lineColor2
         chartView.data = LineChartData(dataSets: [dataset1, dataset2])

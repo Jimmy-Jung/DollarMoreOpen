@@ -90,8 +90,16 @@ final class MainViewModel {
             meta: ChartMeta(regularMarketPrice: 0, previousClose: 0),
             indicators: [Indicator]()
             )
-        let data1 = await fetchSymbolData(symbol: symbol1, range: range)
+        var data1: ChartData?
         let data2 = await fetchSymbolData(symbol: symbol2, range: range)
+        if symbol2 == .hanaBank {
+            let startOfDay = hanaData?.indicators.first?.timestamp.timeIntervalSince1970 ?? Calendar.current.startOfDay(for: Date()).timeIntervalSince1970
+            usdData = await stocksManager.fetchWithHanaData(stockSymbol: .dollar_Won, startOfDay: startOfDay)
+            data1 = usdData
+        } else {
+            data1 = await fetchSymbolData(symbol: symbol1, range: range)
+        }
+        
         return .init(
             data1: data1 ?? emptyData,
             data2: data2 ?? emptyData,

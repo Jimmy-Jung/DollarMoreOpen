@@ -32,7 +32,7 @@ public struct YahooFinanceAPI {
         var count = 0
         var response: ChartData?
         // 휴일일경우 하루 전 데이터 불러오기
-        for _ in 0...3 {
+        for _ in 0...5 {
             let yesterday = Calendar.current.date(byAdding: .day, value: count - 1, to: Date())!
             let beginningOfPreviousDay = Calendar.current.startOfDay(for: yesterday).timeIntervalSince1970
             guard let url = urlForOneDayData(symbol: tickerSymbol, startOfDay: beginningOfPreviousDay) else { throw APIServiceError.invalidURL }
@@ -53,6 +53,16 @@ public struct YahooFinanceAPI {
         }
         guard let yesterday = Calendar.current.date(byAdding: .hour, value: -12, to: timestamp)?.timeIntervalSince1970 else {return response}
         guard let url = urlForOneDayData(symbol: tickerSymbol, startOfDay: yesterday) else { throw APIServiceError.invalidURL }
+
+        let (resp, statusCode): (ChartResponse, Int) = try await fetch(url: url)
+        if let error = resp.error {
+            throw APIServiceError.httpStatusCodeFailed(statusCode: statusCode, error: error)
+        }
+        return resp.data?.first
+    }
+    
+    public func hanaFetchChartData(tickerSymbol: String, startOfDay: TimeInterval) async throws -> ChartData? {
+        guard let url = urlForOneDayData(symbol: tickerSymbol, startOfDay: startOfDay) else { throw APIServiceError.invalidURL }
 
         let (resp, statusCode): (ChartResponse, Int) = try await fetch(url: url)
         if let error = resp.error {

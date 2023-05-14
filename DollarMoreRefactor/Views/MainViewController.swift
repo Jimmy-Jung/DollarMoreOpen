@@ -313,7 +313,7 @@ final class MainViewController: UIViewController {
                 range: range)
         case 2, 3:
             await makeSingleChart(
-                stockSymbol: symbol == 1 ? .dollar_Won : .dollar_Index,
+                stockSymbol: symbol == 2 ? .dollar_Won : .dollar_Index,
                 range: range
             )
         default:

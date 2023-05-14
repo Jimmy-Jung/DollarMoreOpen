@@ -80,8 +80,8 @@ final class SingleChartView: UIView, ChartViewDelegate {
     private func fetchPreviousEntries(with chartDataSet: ChartDataSet) {
         let previousClose = chartDataSet.preClose
         let indicators = chartDataSet.data.indicators
-        let firstXAxis = indicators.first!.timestamp.timeIntervalSince1970 * 1000
-        let lastXAxis = indicators.last!.timestamp.timeIntervalSince1970 * 1000
+        let firstXAxis = (indicators.first?.timestamp.timeIntervalSince1970 ?? Date().timeIntervalSince1970) * 1000
+        let lastXAxis = (indicators.last?.timestamp.timeIntervalSince1970 ?? Date().timeIntervalSince1970) * 1000
         entries2.append(
             contentsOf: [
                 ChartDataEntry(x: firstXAxis, y: previousClose),
