@@ -19,26 +19,32 @@ final class SingleChartView: UIView, ChartViewDelegate {
     // MARK: - Properties
     private let customMarkerView = CustomMarkerView()
     private let dateFormatter = DateFormatter()
-    private var entries = [ChartDataEntry]()
+    private var entries1 = [ChartDataEntry]()
     private var entries2 = [ChartDataEntry]()
     private let chartView: LineChartView = {
         let chartView = LineChartView()
+        // 스케일
         chartView.scaleXEnabled = true
         chartView.scaleYEnabled = false
         chartView.autoScaleMinMaxEnabled = true
+        // X축
         chartView.xAxis.enabled = true
         chartView.xAxis.granularityEnabled = true
         chartView.xAxis.labelPosition = .bottom
-        chartView.xAxis.labelFont = .systemFont(ofSize: 11, weight: .medium)
+        chartView.xAxis.labelFont =
+            .systemFont(ofSize: 11, weight: .medium)
         chartView.xAxis.drawGridLinesEnabled = false
+        // Y축
         chartView.rightAxis.drawGridLinesEnabled = false
-        chartView.rightAxis.labelFont = .systemFont(ofSize: 12,weight: .medium)
+        chartView.rightAxis.labelFont =
+            .systemFont(ofSize: 12,weight: .medium)
         chartView.rightAxis.axisLineWidth = 0
         chartView.rightAxis.enabled = true
         chartView.leftAxis.enabled = false
-        chartView.legend.enabled = false
+        // 차트 관련
+        chartView.legend.enabled = false // 차트 이름
         chartView.notifyDataSetChanged()
-        chartView.highlightPerTapEnabled = false
+        chartView.highlightPerTapEnabled = false // 선택시 하이라이트
         return chartView
     }()
     
@@ -46,9 +52,9 @@ final class SingleChartView: UIView, ChartViewDelegate {
     public func configure(with chartDataSet: ChartDataSet) {
         fetchEntries(with: chartDataSet)
         fetchPreviousEntries(with: chartDataSet)
-        let data1 = fetchDataSet(with: chartDataSet)
-        let data2 = fetchPreviousDataSet()
-        chartView.data = LineChartData(dataSets: [data1, data2])
+        let dataset1 = fetchDataSet(with: chartDataSet)
+        let dataset2 = fetchPreviousDataSet()
+        chartView.data = LineChartData(dataSets: [dataset1, dataset2])
         dateFormat(with: chartDataSet)
         chartView.xAxis.valueFormatter = DateValueFormatter(
             data: chartDataSet.data.indicators,
@@ -61,10 +67,12 @@ final class SingleChartView: UIView, ChartViewDelegate {
         chartDataSet.data.indicators.forEach { indicator in
             let timestamp = indicator.timestamp.timeIntervalSince1970 * 1000
             let entry = ChartDataEntry(x: timestamp, y: indicator.close)
-            entries.append(entry)
+            entries1.append(entry)
         }
     }
     
+    /// 이전 데이터 패치
+    /// - Parameter chartDataSet: 차트 데이터 셋
     private func fetchPreviousEntries(with chartDataSet: ChartDataSet) {
         let previousClose = chartDataSet.data.meta.previousClose
         let indicators = chartDataSet.data.indicators
@@ -77,7 +85,7 @@ final class SingleChartView: UIView, ChartViewDelegate {
     /// 데이터셋
     /// - Parameter chartDataSet: 뷰모델 데이터
     private func fetchDataSet(with chartDataSet: ChartDataSet) -> LineChartDataSet {
-        let dataSet = LineChartDataSet(entries: entries)
+        let dataSet = LineChartDataSet(entries: entries1)
         dataSet.fillColor = .clear
         dataSet.colors = chartDataSet.lineColor
         dataSet.drawFilledEnabled = true

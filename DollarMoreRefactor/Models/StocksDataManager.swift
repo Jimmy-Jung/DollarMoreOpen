@@ -24,33 +24,25 @@ struct StocksDataManager {
     ///   - stockName: 주식 이름
     ///   - range: 범위
     /// - Returns: 차트 데이터
-    public func fetchChartData(stockSymbol: StocksSymbol, range: ChartRange) async -> ChartData? {
+    public func fetchChartData(
+        stockSymbol: StocksSymbol,
+        range: ChartRange) async -> ChartData? {
         do {
-            let apiChartData = try await api
-                .fetchChartData(tickerSymbol: stockSymbol.rawValue, range: range)
-            return apiChartData
-            
+            if range == .oneDay {
+                let apiChartData = try await api
+                    .oneDayFetchChartData(tickerSymbol: stockSymbol.rawValue)
+                return apiChartData
+            } else {
+                let apiChartData = try await api
+                    .fetchChartData(tickerSymbol: stockSymbol.rawValue, range: range)
+                return apiChartData
+            }
         } catch {
             print(error.localizedDescription)
             return nil
         }
     }
-    
-    /// 한국기준 하루데이터 가져오기
-    /// - Parameter stockName: 주식 이름
-    /// - Returns: 차트 데이터
-    public func oneDayFetchChartData(stockSymbol: StocksSymbol) async -> ChartData? {
-        do {
-            let apiChartData = try await api
-                .oneDayFetchChartData(tickerSymbol: stockSymbol.rawValue)
-            return apiChartData
-            
-        } catch {
-            print(error.localizedDescription)
-            return nil
-        }
-    }
-    
+ 
     /// 하나은행 하루 데이터 가져오기
     /// - Returns: 차트 데이터
     public func fetchHanaChartData() async -> ChartData? {

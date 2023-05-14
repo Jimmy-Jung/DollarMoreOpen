@@ -18,19 +18,19 @@ final class MainViewModel {
         let upDownImage: UIImage?
         let upDownImageColor: UIColor
     }
-    
-    @Published var usdData: ChartData? {
+    // MARK: - Properies
+    private var usdData: ChartData? {
         didSet {
             usdLabelSet = updateLabelSet(chartData: usdData)
             usdReferenceTimeLabel = updateReferenceTimeLabel(chartData: usdData)
         }
     }
-    @Published var indexData: ChartData? {
+    private var indexData: ChartData? {
         didSet {
             indexLabelSet = updateLabelSet(chartData: indexData)
         }
     }
-    @Published var hanaData: ChartData? {
+    private var hanaData: ChartData? {
         didSet {
             hanaLabelSet = updateLabelSet(chartData: hanaData)
             hanaReferenceTimeLabel = updateReferenceTimeLabel(chartData: hanaData)
@@ -38,11 +38,10 @@ final class MainViewModel {
             
         }
     }
-    
+    // MARK: - Published
     @Published var usdLabelSet: CurrencyLabelData?
     @Published var indexLabelSet: CurrencyLabelData?
     @Published var hanaLabelSet: CurrencyLabelData?
-    
     @Published var usdReferenceTimeLabel: String = ""
     @Published var hanaReferenceTimeLabel: String = ""
     @Published var hanaSellBuyLabel: (sell: String, buy: String) = ("", "")
@@ -50,19 +49,62 @@ final class MainViewModel {
     let stocksManager = StocksDataManager()
     let hanaBankSpread = 0.000973
     
-    public func updateOneDayCharData(
-        symbol: StocksDataManager.StocksSymbol
-    ) async {
+    public func updateSingleChartData(
+        symbol: StocksDataManager.StocksSymbol,
+        range: ChartRange
+    ) async -> SingleChartView.ChartDataSet {
+        let emptyData = ChartData(
+            meta: ChartMeta(regularMarketPrice: 0, previousClose: 0),
+            indicators: [Indicator]()
+            )
         switch symbol {
         case .dollar_Won:
             usdData = await stocksManager
-                .oneDayFetchChartData(stockSymbol: symbol)
+                .fetchChartData(stockSymbol: symbol, range: range)
+            return .init(
+                data: usdData ?? emptyData,
+                lineColor: [.systemOrange],
+                chartRange: range
+            )
         case .dollar_Index:
             indexData = await stocksManager
-                .oneDayFetchChartData(stockSymbol: symbol)
+                .fetchChartData(stockSymbol: symbol, range: range)
+            return .init(
+                data: indexData ?? emptyData,
+                lineColor: [.systemBlue],
+                chartRange: range
+            )
         case .hanaBank:
             hanaData = await stocksManager.fetchHanaChartData()
+            return .init(
+                data: hanaData ?? emptyData,
+                lineColor: [.systemGreen],
+                chartRange: range
+            )
         }
+    }
+    
+    public func updateDualChartData(
+        range: ChartRange
+    ) async -> DualChartView.ChartDataSet {
+        let emptyData = ChartData(
+            meta: ChartMeta(regularMarketPrice: 0, previousClose: 0),
+            indicators: [Indicator]()
+            )
+        usdData = await stocksManager.fetchChartData(
+            stockSymbol: .dollar_Won,
+            range: range
+        )
+        indexData = await stocksManager.fetchChartData(
+            stockSymbol: .dollar_Index,
+            range: range
+        )
+        return .init(
+            data1: usdData ?? emptyData,
+            data2: indexData ?? emptyData,
+            chartRange: range
+        )
+        
     }
     
     ///  레이블 모음 업데이트

@@ -113,7 +113,7 @@ struct HanaBankAPI {
             let trElements = try table.select("tr")
             let td0Elements = try trElements[0].select("td")
             let td1Elements = try trElements[1].select("td")
-            let timestamp = try td0Elements[0].text()
+            let timestamp = try td0Elements.text()
             let regularMarketPriceString = try td0Elements[7].text()
             let previousCloseString = try td1Elements[7].text()
             let formatter = NumberFormatter()
@@ -153,12 +153,12 @@ struct HanaBankAPI {
             let dateFormatter = DateFormatter()
             dateFormatter.dateFormat = "yyyyMMdd"
             let todayString = dateFormatter.string(from: Date())
-            let lastWeek = NSCalendar.current.date(byAdding: .weekday, value: -1, to: Date())!
+            let lastWeek = NSCalendar.current.date(byAdding: .day, value: -7, to: Date())!
             let lastWeekString = dateFormatter.string(from: lastWeek)
             urlComp.queryItems = [
                 URLQueryItem(name: "curCd", value: "USD"),
-                URLQueryItem(name: "inqStrDt", value: "\(lastWeekString)"),
-                URLQueryItem(name: "inqEndDt", value: "\(todayString)")
+                URLQueryItem(name: "inqStrDt", value: lastWeekString),
+                URLQueryItem(name: "inqEndDt", value: todayString)
             ]
         }
         return urlComp.url
