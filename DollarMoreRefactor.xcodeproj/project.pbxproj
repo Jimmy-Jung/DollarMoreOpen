@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		554B17CB2A11708A001566CD /* SVProgressHUD in Frameworks */ = {isa = PBXBuildFile; productRef = 554B17CA2A11708A001566CD /* SVProgressHUD */; };
 		558CB2042A0CE933000BF91D /* Charts in Frameworks */ = {isa = PBXBuildFile; productRef = 558CB2032A0CE933000BF91D /* Charts */; };
 		55A295DC2A0CC199004905F1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55A295DB2A0CC199004905F1 /* AppDelegate.swift */; };
 		55A295DE2A0CC199004905F1 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55A295DD2A0CC199004905F1 /* SceneDelegate.swift */; };
@@ -16,7 +17,6 @@
 		55A295F02A0CC25C004905F1 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55A295EF2A0CC25C004905F1 /* MainViewController.swift */; };
 		55AC16B42A0CDB6A00967DB2 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 55AC16B32A0CDB6A00967DB2 /* Alamofire */; };
 		55AC16BA2A0CDB8F00967DB2 /* SwiftSoup in Frameworks */ = {isa = PBXBuildFile; productRef = 55AC16B92A0CDB8F00967DB2 /* SwiftSoup */; };
-		55AC16C32A0CE56200967DB2 /* JGProgressHUD in Frameworks */ = {isa = PBXBuildFile; productRef = 55AC16C22A0CE56200967DB2 /* JGProgressHUD */; };
 		55C339DC2A0CF67D00D6057E /* HanaBankAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55C339DB2A0CF67D00D6057E /* HanaBankAPI.swift */; };
 		55C339DF2A0CFB9C00D6057E /* YahooFinanceAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55C339DE2A0CFB9C00D6057E /* YahooFinanceAPI.swift */; };
 		55C339E12A0CFBB700D6057E /* URLSession+AsyncLinux.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55C339E02A0CFBB700D6057E /* URLSession+AsyncLinux.swift */; };
@@ -66,7 +66,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				55AC16C32A0CE56200967DB2 /* JGProgressHUD in Frameworks */,
+				554B17CB2A11708A001566CD /* SVProgressHUD in Frameworks */,
 				55AC16B42A0CDB6A00967DB2 /* Alamofire in Frameworks */,
 				55AC16BA2A0CDB8F00967DB2 /* SwiftSoup in Frameworks */,
 				558CB2042A0CE933000BF91D /* Charts in Frameworks */,
@@ -205,8 +205,8 @@
 			packageProductDependencies = (
 				55AC16B32A0CDB6A00967DB2 /* Alamofire */,
 				55AC16B92A0CDB8F00967DB2 /* SwiftSoup */,
-				55AC16C22A0CE56200967DB2 /* JGProgressHUD */,
 				558CB2032A0CE933000BF91D /* Charts */,
+				554B17CA2A11708A001566CD /* SVProgressHUD */,
 			);
 			productName = DollarMoreRefactor;
 			productReference = 55A295D82A0CC199004905F1 /* DollarMoreRefactor.app */;
@@ -239,8 +239,8 @@
 			packageReferences = (
 				55AC16B22A0CDB6A00967DB2 /* XCRemoteSwiftPackageReference "Alamofire" */,
 				55AC16B82A0CDB8F00967DB2 /* XCRemoteSwiftPackageReference "SwiftSoup" */,
-				55AC16C12A0CE56200967DB2 /* XCRemoteSwiftPackageReference "JGProgressHUD" */,
 				558CB2022A0CE933000BF91D /* XCRemoteSwiftPackageReference "Charts" */,
+				554B17C92A11708A001566CD /* XCRemoteSwiftPackageReference "SVProgressHUD" */,
 			);
 			productRefGroup = 55A295D92A0CC199004905F1 /* Products */;
 			projectDirPath = "";
@@ -508,6 +508,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		554B17C92A11708A001566CD /* XCRemoteSwiftPackageReference "SVProgressHUD" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/wowpotato/SVProgressHUD.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.0.0;
+			};
+		};
 		558CB2022A0CE933000BF91D /* XCRemoteSwiftPackageReference "Charts" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/danielgindi/Charts.git";
@@ -532,17 +540,14 @@
 				minimumVersion = 2.0.0;
 			};
 		};
-		55AC16C12A0CE56200967DB2 /* XCRemoteSwiftPackageReference "JGProgressHUD" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/JonasGessner/JGProgressHUD.git";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 2.0.0;
-			};
-		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		554B17CA2A11708A001566CD /* SVProgressHUD */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 554B17C92A11708A001566CD /* XCRemoteSwiftPackageReference "SVProgressHUD" */;
+			productName = SVProgressHUD;
+		};
 		558CB2032A0CE933000BF91D /* Charts */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 558CB2022A0CE933000BF91D /* XCRemoteSwiftPackageReference "Charts" */;
@@ -557,11 +562,6 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 55AC16B82A0CDB8F00967DB2 /* XCRemoteSwiftPackageReference "SwiftSoup" */;
 			productName = SwiftSoup;
-		};
-		55AC16C22A0CE56200967DB2 /* JGProgressHUD */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 55AC16C12A0CE56200967DB2 /* XCRemoteSwiftPackageReference "JGProgressHUD" */;
-			productName = JGProgressHUD;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

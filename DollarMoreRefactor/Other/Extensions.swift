@@ -6,17 +6,18 @@
 //
 
 import Foundation
-import JGProgressHUD
+import SVProgressHUD
+
 
 extension UIViewController {
-    static let hud = JGProgressHUD()
-    func showLoader(_ show: Bool) {
-        view.endEditing(true)
-        if show {
-            UIViewController.hud.tintColor = .secondaryLabel
-            UIViewController.hud.show(in: view)
-        } else {
-            UIViewController.hud.dismiss()
-        }
+    func showLoader() {
+        SVProgressHUD.show()
+        SVProgressHUD.setForegroundColor(UIColor.secondaryLabel)
+        SVProgressHUD.setRingThickness(3.0)
+        SVProgressHUD.setBackgroundColor(UIColor.clear)
+    }
+
+    func hideLoader() {
+        SVProgressHUD.dismiss()
     }
 }

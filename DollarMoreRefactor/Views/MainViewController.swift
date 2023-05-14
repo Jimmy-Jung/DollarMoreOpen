@@ -148,9 +148,9 @@ final class MainViewController: UIViewController {
                 self.singleChartView = SingleChartView()
             }
             Task{
-                showLoader(true)
+                showLoader()
                 await makeChart(with: currentButtonState)
-                showLoader(false)
+                hideLoader()
             }
             
         }
@@ -228,9 +228,9 @@ final class MainViewController: UIViewController {
             self.refreshButton.tintColor = .secondaryLabel
         }
         Task {
-            showLoader(true)
+            showLoader()
             await updateChartData()
-            showLoader(false)
+            hideLoader()
         }
     }
     
