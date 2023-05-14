@@ -53,13 +53,14 @@ final class DualChartView: UIView, ChartViewDelegate {
         // 차트 이름
         chartView.legend.enabled = true
         chartView.legend.verticalAlignment = .top
-        chartView.legend.horizontalAlignment = .right
+        chartView.legend.horizontalAlignment = .left
         chartView.legend.form = .line
         // 차트 관련
         chartView.highlightPerTapEnabled = false
         chartView.highlightPerDragEnabled = true
         chartView.drawGridBackgroundEnabled = false
         chartView.notifyDataSetChanged()
+        chartView.extraTopOffset = 20.0
         return chartView
     }()
     
@@ -180,6 +181,7 @@ final class DualChartView: UIView, ChartViewDelegate {
     // MARK: - Setup Custom Marker
     private func setupMarker() {
         customMarkerView.chartView = chartView
+        customMarkerView.adjustTOP()
         chartView.marker = customMarkerView
     }
     

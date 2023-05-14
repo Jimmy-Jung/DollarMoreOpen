@@ -46,6 +46,7 @@ final class SingleChartView: UIView, ChartViewDelegate {
         chartView.legend.enabled = false // 차트 이름
         chartView.notifyDataSetChanged()
         chartView.highlightPerTapEnabled = false // 선택시 하이라이트
+        chartView.extraTopOffset = 30.0
         return chartView
     }()
     
