@@ -167,13 +167,13 @@
                                 </constraints>
                             </stackView>
                             <stackView opaque="NO" contentMode="scaleToFill" distribution="equalSpacing" spacingType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="2iS-S3-xvh" userLabel="3.그래프 버튼 스택뷰">
-                                <rect key="frame" x="40" y="225" width="313" height="30"/>
+                                <rect key="frame" x="30" y="225" width="333" height="30"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="FfW-Eb-j0t" userLabel="환율+인덱스">
-                                        <rect key="frame" x="0.0" y="0.0" width="92" height="30"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="90" height="30"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XZv-fZ-rxT">
-                                                <rect key="frame" x="0.0" y="0.0" width="92" height="27"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="90" height="27"/>
                                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="12"/>
                                                 <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                                 <state key="normal" title="환율 + 인덱스">
@@ -184,7 +184,7 @@
                                                 </connections>
                                             </button>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1qL-Gk-Qve" userLabel="선택 라인">
-                                                <rect key="frame" x="0.0" y="27" width="92" height="3"/>
+                                                <rect key="frame" x="0.0" y="27" width="90" height="3"/>
                                                 <color key="backgroundColor" systemColor="systemOrangeColor"/>
                                                 <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <constraints>
@@ -197,14 +197,42 @@
                                             <constraint firstItem="1qL-Gk-Qve" firstAttribute="leading" secondItem="XZv-fZ-rxT" secondAttribute="leading" id="dF6-vX-qyI"/>
                                         </constraints>
                                     </stackView>
-                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="kG2-T0-n6c" userLabel="환율">
-                                        <rect key="frame" x="115" y="0.0" width="50" height="30"/>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="bOW-GS-ynd" userLabel="환율+인덱스">
+                                        <rect key="frame" x="98" y="0.0" width="67" height="30"/>
                                         <subviews>
-                                            <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NoN-yy-oiy">
+                                            <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gZW-ZM-7w2">
+                                                <rect key="frame" x="0.0" y="0.0" width="67" height="27"/>
+                                                <fontDescription key="fontDescription" type="boldSystem" pointSize="12"/>
+                                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                                <state key="normal" title="환율 + 하나">
+                                                    <color key="titleColor" systemColor="labelColor"/>
+                                                </state>
+                                                <connections>
+                                                    <action selector="graphButtonTapped:" destination="kkF-xT-fmA" eventType="touchUpInside" id="cLK-LF-mcW"/>
+                                                </connections>
+                                            </button>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="XQA-MS-HBq" userLabel="선택 라인">
+                                                <rect key="frame" x="0.0" y="27" width="67" height="3"/>
+                                                <color key="backgroundColor" systemColor="systemOrangeColor"/>
+                                                <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="3" id="OCi-im-RuH"/>
+                                                </constraints>
+                                            </view>
+                                        </subviews>
+                                        <constraints>
+                                            <constraint firstItem="XQA-MS-HBq" firstAttribute="leading" secondItem="gZW-ZM-7w2" secondAttribute="leading" id="7Kv-h1-paO"/>
+                                            <constraint firstItem="gZW-ZM-7w2" firstAttribute="trailing" secondItem="XQA-MS-HBq" secondAttribute="trailing" id="89U-w1-EvS"/>
+                                        </constraints>
+                                    </stackView>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="kG2-T0-n6c" userLabel="환율">
+                                        <rect key="frame" x="173" y="0.0" width="50" height="30"/>
+                                        <subviews>
+                                            <button opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NoN-yy-oiy">
                                                 <rect key="frame" x="0.0" y="0.0" width="50" height="27"/>
                                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="12"/>
                                                 <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
-                                                <state key="normal" title="환율">
+                                                <state key="normal" title="국제환율">
                                                     <color key="titleColor" systemColor="labelColor"/>
                                                 </state>
                                                 <connections>
@@ -226,9 +254,9 @@
                                         </constraints>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="RcL-KF-QaX" userLabel="달러인덱스">
-                                        <rect key="frame" x="188" y="0.0" width="52" height="30"/>
+                                        <rect key="frame" x="231" y="0.0" width="52" height="30"/>
                                         <subviews>
-                                            <button opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Bo6-mt-bHg">
+                                            <button opaque="NO" tag="3" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Bo6-mt-bHg">
                                                 <rect key="frame" x="0.0" y="0.0" width="52" height="27"/>
                                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="12"/>
                                                 <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
@@ -254,10 +282,10 @@
                                         </constraints>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="WFA-qW-Kzs" userLabel="하나은행">
-                                        <rect key="frame" x="263" y="0.0" width="50" height="30"/>
+                                        <rect key="frame" x="291" y="0.0" width="42" height="30"/>
                                         <subviews>
-                                            <button opaque="NO" tag="3" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sCV-1h-wFh">
-                                                <rect key="frame" x="0.0" y="0.0" width="50" height="27"/>
+                                            <button opaque="NO" tag="4" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sCV-1h-wFh">
+                                                <rect key="frame" x="0.0" y="0.0" width="42" height="27"/>
                                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="12"/>
                                                 <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                                 <state key="normal" title="하나은행">
@@ -268,7 +296,7 @@
                                                 </connections>
                                             </button>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Qfe-Uu-k8Z" userLabel="선택 라인">
-                                                <rect key="frame" x="0.0" y="27" width="50" height="3"/>
+                                                <rect key="frame" x="0.0" y="27" width="42" height="3"/>
                                                 <color key="backgroundColor" systemColor="systemOrangeColor"/>
                                                 <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <constraints>
@@ -530,7 +558,7 @@
                             <constraint firstItem="7d7-nM-dle" firstAttribute="leading" secondItem="wnq-sJ-6xM" secondAttribute="leading" constant="20" id="IrB-9Q-Iju"/>
                             <constraint firstItem="N89-yp-rdc" firstAttribute="leading" secondItem="KU9-aW-a0n" secondAttribute="leading" id="J2c-8M-nrw"/>
                             <constraint firstItem="wnq-sJ-6xM" firstAttribute="trailing" secondItem="PqU-En-LEI" secondAttribute="trailing" constant="16" id="MTM-ZU-cAh"/>
-                            <constraint firstItem="2iS-S3-xvh" firstAttribute="leading" secondItem="wnq-sJ-6xM" secondAttribute="leading" constant="40" id="PIZ-je-e4d"/>
+                            <constraint firstItem="2iS-S3-xvh" firstAttribute="leading" secondItem="wnq-sJ-6xM" secondAttribute="leading" constant="30" id="PIZ-je-e4d"/>
                             <constraint firstItem="N89-yp-rdc" firstAttribute="top" secondItem="E84-W5-kvv" secondAttribute="bottom" id="bKf-7J-CuK"/>
                             <constraint firstItem="E84-W5-kvv" firstAttribute="leading" secondItem="wnq-sJ-6xM" secondAttribute="leading" id="f5p-qd-MrT"/>
                             <constraint firstItem="wnq-sJ-6xM" firstAttribute="trailing" secondItem="7d7-nM-dle" secondAttribute="trailing" constant="20" id="fgN-4b-2g4"/>
@@ -543,7 +571,7 @@
                             <constraint firstItem="PqU-En-LEI" firstAttribute="leading" secondItem="wnq-sJ-6xM" secondAttribute="leading" constant="16" id="q9U-eo-xuL"/>
                             <constraint firstItem="E84-W5-kvv" firstAttribute="trailing" secondItem="wnq-sJ-6xM" secondAttribute="trailing" id="qij-gH-h6c"/>
                             <constraint firstItem="vVM-62-YoO" firstAttribute="bottom" secondItem="2iS-S3-xvh" secondAttribute="bottom" id="rtV-TI-lV0"/>
-                            <constraint firstItem="wnq-sJ-6xM" firstAttribute="trailing" secondItem="2iS-S3-xvh" secondAttribute="trailing" constant="40" id="vzR-Cf-rdY"/>
+                            <constraint firstItem="wnq-sJ-6xM" firstAttribute="trailing" secondItem="2iS-S3-xvh" secondAttribute="trailing" constant="30" id="vzR-Cf-rdY"/>
                             <constraint firstItem="wnq-sJ-6xM" firstAttribute="trailing" secondItem="Evn-c7-zMz" secondAttribute="trailing" constant="16" id="xhn-SE-1Xk"/>
                             <constraint firstItem="wnq-sJ-6xM" firstAttribute="bottom" secondItem="N89-yp-rdc" secondAttribute="bottom" constant="8" id="zFg-9g-xeR"/>
                         </constraints>
@@ -553,7 +581,9 @@
                         <imageReference key="selectedImage" image="chart.line.uptrend.xyaxis" catalog="system" symbolScale="large"/>
                     </tabBarItem>
                     <connections>
+                        <outlet property="currancyHanaButton" destination="gZW-ZM-7w2" id="KH4-dv-3a1"/>
                         <outlet property="currencyButton" destination="NoN-yy-oiy" id="mY1-qJ-Ubr"/>
+                        <outlet property="currencyHanaLine" destination="XQA-MS-HBq" id="PZ7-zj-PVl"/>
                         <outlet property="currencyIndexButton" destination="XZv-fZ-rxT" id="egE-Ne-s4M"/>
                         <outlet property="currencyIndexLine" destination="1qL-Gk-Qve" id="iSZ-OL-rfz"/>
                         <outlet property="currencyLine" destination="ZLj-Jx-EeO" id="4kj-T2-P17"/>

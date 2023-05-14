@@ -95,13 +95,13 @@
 		55A295DA2A0CC199004905F1 /* DollarMoreRefactor */ = {
 			isa = PBXGroup;
 			children = (
-				55A295E92A0CC19B004905F1 /* Info.plist */,
-				55A295E42A0CC19B004905F1 /* Assets.xcassets */,
 				55C339F52A0D0D3900D6057E /* APIs */,
 				55C339EC2A0D0CC600D6057E /* Models */,
 				55C339EA2A0D0C9400D6057E /* Views */,
 				55C339F62A0D0D5800D6057E /* ViewModels */,
 				55C339E92A0D0C7C00D6057E /* Other */,
+				55A295E42A0CC19B004905F1 /* Assets.xcassets */,
+				55A295E92A0CC19B004905F1 /* Info.plist */,
 			);
 			path = DollarMoreRefactor;
 			sourceTree = "<group>";
@@ -436,6 +436,7 @@
 				DEVELOPMENT_TEAM = VJ2VF4KUF7;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = DollarMoreRefactor/Info.plist;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.finance";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
@@ -464,6 +465,7 @@
 				DEVELOPMENT_TEAM = VJ2VF4KUF7;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = DollarMoreRefactor/Info.plist;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.finance";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;

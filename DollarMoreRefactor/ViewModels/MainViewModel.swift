@@ -51,6 +51,17 @@ final class MainViewModel {
     let stocksManager = StocksDataManager()
     let hanaBankSpread = 0.000973
     
+    private func getPreviousClose(symbol: StocksDataManager.StocksSymbol) -> Double {
+        switch symbol {
+        case .dollar_Index:
+            return indexData?.meta.previousClose ?? 100.00
+        case .dollar_Won:
+            return usdData?.meta.previousClose ?? 1300.00
+        case .hanaBank:
+            return hanaData?.meta.previousClose ?? 1300.00
+        }
+    }
+    
     public func updateSingleChartData(
         symbol: StocksDataManager.StocksSymbol,
         range: ChartRange
@@ -59,54 +70,83 @@ final class MainViewModel {
             meta: ChartMeta(regularMarketPrice: 0, previousClose: 0),
             indicators: [Indicator]()
             )
-        switch symbol {
-        case .dollar_Won:
-            usdData = await stocksManager
-                .fetchChartData(stockSymbol: symbol, range: range)
-            return .init(
-                data: usdData ?? emptyData,
-                lineColor: [.systemOrange],
-                chartRange: range
-            )
-        case .dollar_Index:
-            indexData = await stocksManager
-                .fetchChartData(stockSymbol: symbol, range: range)
-            return .init(
-                data: indexData ?? emptyData,
-                lineColor: [.systemBlue],
-                chartRange: range
-            )
-        case .hanaBank:
-            hanaData = await stocksManager.fetchHanaChartData()
-            return .init(
-                data: hanaData ?? emptyData,
-                lineColor: [.systemGreen],
-                chartRange: range
-            )
-        }
+        
+        let data = await fetchSymbolData(symbol: symbol, range: range)
+        return .init(
+            data: data ?? emptyData,
+            preClose: getPreviousClose(symbol: symbol),
+            lineColor: getColor(symbol: symbol),
+            chartRange: range
+        )
+       
     }
     
     public func updateDualChartData(
+        symbol1: StocksDataManager.StocksSymbol,
+        symbol2: StocksDataManager.StocksSymbol,
         range: ChartRange
     ) async -> DualChartView.ChartDataSet {
         let emptyData = ChartData(
             meta: ChartMeta(regularMarketPrice: 0, previousClose: 0),
             indicators: [Indicator]()
             )
-        usdData = await stocksManager.fetchChartData(
-            stockSymbol: .dollar_Won,
-            range: range
-        )
-        indexData = await stocksManager.fetchChartData(
-            stockSymbol: .dollar_Index,
-            range: range
-        )
+        let data1 = await fetchSymbolData(symbol: symbol1, range: range)
+        let data2 = await fetchSymbolData(symbol: symbol2, range: range)
         return .init(
-            data1: usdData ?? emptyData,
-            data2: indexData ?? emptyData,
+            data1: data1 ?? emptyData,
+            data2: data2 ?? emptyData,
+            lineColor1: getColor(symbol: symbol1),
+            lineColor2: getColor(symbol: symbol2),
             chartRange: range
         )
         
+    }
+    private func fetchSymbolData(symbol: StocksDataManager.StocksSymbol, range: ChartRange) async -> ChartData? {
+        switch range {
+        case .oneDay, .oneWeek, .oneMonth:
+            switch symbol {
+            case .dollar_Won:
+                usdData = await stocksManager.fetchChartData(
+                    stockSymbol: symbol,
+                    range: range)
+                return usdData
+            case .dollar_Index:
+                indexData = await stocksManager.fetchChartData(
+                    stockSymbol: symbol,
+                    range: range)
+                return indexData
+            case .hanaBank:
+                hanaData = await stocksManager.fetchHanaChartData()
+                return hanaData
+            }
+        default:
+            switch symbol {
+            case .dollar_Won:
+                let usdData = await stocksManager.fetchChartData(
+                    stockSymbol: symbol,
+                    range: range)
+                return usdData
+            case .dollar_Index:
+                let indexData = await stocksManager.fetchChartData(
+                    stockSymbol: symbol,
+                    range: range)
+                return indexData
+            case .hanaBank:
+                let hanaData = await stocksManager.fetchHanaChartData()
+                return hanaData
+            }
+        }
+        
+    }
+    private func getColor(symbol: StocksDataManager.StocksSymbol) -> [UIColor] {
+        switch symbol {
+        case .dollar_Won:
+            return [.systemOrange]
+        case .dollar_Index:
+            return [.systemBlue]
+        default:
+            return [.systemGreen]
+        }
     }
     
     ///  레이블 모음 업데이트

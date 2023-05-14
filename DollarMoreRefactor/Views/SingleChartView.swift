@@ -12,6 +12,7 @@ final class SingleChartView: UIView, ChartViewDelegate {
     /// 차트데이터셋
     struct ChartDataSet {
         let data: ChartData
+        let preClose: Double
         let lineColor: [UIColor]
         let chartRange: ChartRange
     }
@@ -76,7 +77,7 @@ final class SingleChartView: UIView, ChartViewDelegate {
     /// 이전 데이터 패치
     /// - Parameter chartDataSet: 차트 데이터 셋
     private func fetchPreviousEntries(with chartDataSet: ChartDataSet) {
-        let previousClose = chartDataSet.data.meta.previousClose
+        let previousClose = chartDataSet.preClose
         let indicators = chartDataSet.data.indicators
         let firstXAxis = indicators.first!.timestamp.timeIntervalSince1970 * 1000
         let lastXAxis = indicators.last!.timestamp.timeIntervalSince1970 * 1000
@@ -127,20 +128,13 @@ final class SingleChartView: UIView, ChartViewDelegate {
         }
     }
     
-    
     // MARK: - Setup Custom Marker
     private func setupMarker() {
         customMarkerView.chartView = chartView
         chartView.marker = customMarkerView
     }
     
-    /// ResetChartView
-    func reset() {
-        chartView.data?.dataSets.removeAll()
-    }
-    
     // MARK: - Init
-    
     override init(frame: CGRect) {
         super.init(frame: frame)
         addSubview(chartView)
@@ -160,7 +154,6 @@ final class SingleChartView: UIView, ChartViewDelegate {
     
     // MARK: - ChartViewDelegate
     /// 차트 선택시 해당 값을 띄워주는 UI 구현
-//    func
     func chartValueSelected(
         _ chartView: ChartViewBase,
         entry: ChartDataEntry,

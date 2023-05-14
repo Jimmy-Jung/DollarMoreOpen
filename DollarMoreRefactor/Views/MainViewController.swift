@@ -32,11 +32,13 @@ final class MainViewController: UIViewController {
     
     // 3. 그래프 버튼
     @IBOutlet weak var currencyIndexButton: UIButton!
+    @IBOutlet weak var currancyHanaButton: UIButton!
     @IBOutlet weak var hanaBankButton: UIButton!
     @IBOutlet weak var currencyButton: UIButton!
     @IBOutlet weak var dollarIndexButton: UIButton!
     // 3-1.버튼 라인
     @IBOutlet weak var currencyIndexLine: UIView!
+    @IBOutlet weak var currencyHanaLine: UIView!
     @IBOutlet weak var hanaBankLine: UIView!
     @IBOutlet weak var currencyLine: UIView!
     @IBOutlet weak var dollarIndexLine: UIView!
@@ -78,6 +80,7 @@ final class MainViewController: UIViewController {
     /// 그래프 버튼 밑 라인들
     private lazy var lines: [UIView] = [
         currencyIndexLine,
+        currencyHanaLine,
         currencyLine,
         dollarIndexLine,
         hanaBankLine
@@ -126,21 +129,30 @@ final class MainViewController: UIViewController {
     /// (symbol, range)
     private var currentButtonState: (Int, Int) = (0, 0) {
         didSet {
-            if currentButtonState.0 == 3 {
-                currentButtonState = (3,0)
+            let symbol = currentButtonState.0
+            if symbol == 1 || symbol == 4 {
+                if currentButtonState.1 != 0 {
+                    currentButtonState = (symbol, 0)
+                    clearButtonBGColor()
+                    dayButton.backgroundColor = .secondarySystemFill
+                }
                 rangeButton.forEach { $0.isEnabled = false }
                 dayButton.isEnabled = true
             } else {
                 rangeButton.forEach { $0.isEnabled = true }
             }
-            showLoader(true)
-            if currentButtonState.0 == 0 {
+            
+            if symbol == 0 || symbol == 1 {
                 self.dualChartView = DualChartView()
             } else {
                 self.singleChartView = SingleChartView()
             }
-            Task{ await makeChart(with: currentButtonState) }
-            showLoader(false)
+            Task{
+                showLoader(true)
+                await makeChart(with: currentButtonState)
+                showLoader(false)
+            }
+            
         }
     }
     
@@ -215,11 +227,11 @@ final class MainViewController: UIViewController {
             self.refreshButton.backgroundColor = .clear
             self.refreshButton.tintColor = .secondaryLabel
         }
-        showLoader(true)
         Task {
+            showLoader(true)
             await updateChartData()
+            showLoader(false)
         }
-        showLoader(false)
     }
     
     /// 차트데이터, 레이블 데이터 업데이트
@@ -229,30 +241,36 @@ final class MainViewController: UIViewController {
         case 0:
             _ = await mainViewModel.updateSingleChartData(
                 symbol: .hanaBank,
-                range: .oneDay
+                range: .oneMonth
             )
         case 1:
             _ = await mainViewModel.updateSingleChartData(
                 symbol: .dollar_Index,
-                range: .oneDay
-            )
-            _ = await mainViewModel.updateSingleChartData(
-                symbol: .hanaBank,
-                range: .oneDay
+                range: .oneMonth
             )
         case 2:
             _ = await mainViewModel.updateSingleChartData(
-                symbol: .dollar_Won,
-                range: .oneDay
+                symbol: .dollar_Index,
+                range: .oneMonth
             )
             _ = await mainViewModel.updateSingleChartData(
                 symbol: .hanaBank,
-                range: .oneDay
+                range: .oneMonth
+            )
+        case 3:
+            _ = await mainViewModel.updateSingleChartData(
+                symbol: .dollar_Won,
+                range: .oneMonth
+            )
+            _ = await mainViewModel.updateSingleChartData(
+                symbol: .hanaBank,
+                range: .oneMonth
             )
         default:
             _ = await mainViewModel.updateDualChartData(
-                range: .oneDay
-            )
+                symbol1: .dollar_Won,
+                symbol2: .dollar_Index,
+                range: .oneMonth)
         }
     }
     // 2. USD 실시간
@@ -288,9 +306,12 @@ final class MainViewController: UIViewController {
         let symbol = buttonState.0
         let range = period[buttonState.1]
         switch symbol {
-        case 0:
-            await makeDualChart(with: range)
-        case 1, 2:
+        case 0, 1:
+            await makeDualChart(
+                symbol1: .dollar_Won,
+                symbol2: symbol == 0 ? .dollar_Index : .hanaBank,
+                range: range)
+        case 2, 3:
             await makeSingleChart(
                 stockSymbol: symbol == 1 ? .dollar_Won : .dollar_Index,
                 range: range
@@ -304,12 +325,22 @@ final class MainViewController: UIViewController {
     }
     /// 듀얼그래프 범위 선택해서 만들기
     /// - Parameter range: 차트 범위
-    private func makeDualChart(with range: ChartRange) async {
-        let chartDatas = await mainViewModel.updateDualChartData(range: range)
+    private func makeDualChart(
+        symbol1: StocksDataManager.StocksSymbol,
+        symbol2: StocksDataManager.StocksSymbol,
+        range: ChartRange
+    ) async {
+        let chartDatas = await mainViewModel.updateDualChartData(
+            symbol1: symbol1,
+            symbol2: symbol2,
+            range: range
+        )
         dualChartView.configure(
             with: .init(
                 data1: chartDatas.data1,
                 data2: chartDatas.data2,
+                lineColor1: chartDatas.lineColor1,
+                lineColor2: chartDatas.lineColor2,
                 chartRange: range
             )
         )
