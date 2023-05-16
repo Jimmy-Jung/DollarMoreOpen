@@ -127,7 +127,7 @@ final class DualChartView: UIView, ChartViewDelegate {
         dataSet.fillColor = .clear
         dataSet.drawFilledEnabled = true
         dataSet.drawIconsEnabled = false
-        dataSet.drawValuesEnabled = toggle ? true : false
+        dataSet.drawValuesEnabled = false
         dataSet.drawCirclesEnabled = false
         dataSet.lineWidth = 2
         return dataSet
