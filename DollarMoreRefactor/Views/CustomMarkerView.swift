@@ -14,6 +14,7 @@ final class CustomMarkerView: MarkerView {
     @IBOutlet weak var valueLabel: UILabel!
     @IBOutlet var contentView: UIView!
     @IBOutlet weak var centerY: NSLayoutConstraint!
+    @IBOutlet weak var centerX: NSLayoutConstraint!
     override init(frame: CGRect) {
     super.init(frame: frame)
             initUI()
@@ -21,7 +22,6 @@ final class CustomMarkerView: MarkerView {
 
         required init?(coder: NSCoder) {
             super.init(coder: coder)
-            initUI()
         }
         
         private func initUI() {
@@ -34,6 +34,7 @@ final class CustomMarkerView: MarkerView {
         }
     public func adjustTOP() {
         centerY.constant = -20
+        centerX.constant = -self.frame.width/2
         self.layoutIfNeeded()
     }
     public func updateOffset() {
@@ -43,4 +44,6 @@ final class CustomMarkerView: MarkerView {
         CGPoint(x: -self.frame.width/2, y: -chartViewHeight - markerViewHeight - markerViewHeight)
         self.offset = offset
     }
+    
+   
 }

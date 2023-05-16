@@ -9,6 +9,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="CustomMarkerView" customModule="DollarMoreRefactor" customModuleProvider="target">
             <connections>
+                <outlet property="centerX" destination="ee7-s0-rZr" id="wSq-Mz-dQc"/>
                 <outlet property="centerY" destination="4Lb-cv-BqA" id="bhh-S4-aaN"/>
                 <outlet property="contentView" destination="iN0-l3-epB" id="KDq-8Q-mQq"/>
                 <outlet property="dateLabel" destination="hpF-L9-rai" id="In9-eU-Qb8"/>
@@ -33,13 +34,11 @@
                                         <constraint firstAttribute="width" constant="90" id="YV8-VI-Pyd"/>
                                     </constraints>
                                     <fontDescription key="fontDescription" type="system" pointSize="13"/>
-                                    <nil key="textColor"/>
                                     <nil key="highlightedColor"/>
                                 </label>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1,325.0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ADp-dr-DOE">
                                     <rect key="frame" x="0.0" y="22" width="90" height="30"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                    <nil key="textColor"/>
                                     <nil key="highlightedColor"/>
                                 </label>
                             </subviews>

@@ -204,6 +204,7 @@ final class DualChartView: UIView, ChartViewDelegate {
         let yAxis = String(format: "%.2f", entry.y)
         customMarkerView.dateLabel.text = xAxis
         customMarkerView.valueLabel.text = yAxis
+        
     }
   
 }

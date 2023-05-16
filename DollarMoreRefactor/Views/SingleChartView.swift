@@ -22,7 +22,7 @@ final class SingleChartView: UIView, ChartViewDelegate {
     private let dateFormatter = DateFormatter()
     private var entries1 = [ChartDataEntry]()
     private var entries2 = [ChartDataEntry]()
-    private let chartView: LineChartView = {
+    let chartView: LineChartView = {
         let chartView = LineChartView()
         // 스케일
         chartView.scaleXEnabled = true
@@ -115,6 +115,7 @@ final class SingleChartView: UIView, ChartViewDelegate {
         dataSet.drawValuesEnabled = false
         dataSet.drawCirclesEnabled = false
         dataSet.lineWidth = 2
+        dataSet.highlightEnabled = false
         return dataSet
     }
     

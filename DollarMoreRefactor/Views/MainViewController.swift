@@ -198,7 +198,7 @@ final class MainViewController: UIViewController {
         lines[sender.tag].isHidden = false
         currentButtonState = (sender.tag, currentButtonState.1)
     }
-    /// 4. 범위 버튼 선택
+    /// 4. 범위 버튼 선택(햅틱 반응)
     /// - Parameter sender: 범위 버튼
     @IBAction func rangeButtonTapped(_ sender: UIButton) {
         HapticsManager.shared.vibrateForSelection()
@@ -461,5 +461,6 @@ final class MainViewController: UIViewController {
             upDownImageColor.tintColor = currentData.upDownImageColor
         }
     }
+   
 }
 
