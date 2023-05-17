@@ -137,8 +137,13 @@ final class MainViewController: UIViewController {
                     dayButton.backgroundColor = .secondarySystemFill
                 }
                 rangeButton.forEach { $0.isEnabled = false }
+                rangeButton.forEach {
+                    $0.setTitleColor(.secondarySystemFill, for: .disabled)
+                }
+                dayButton.setTitleColor(.label, for: .normal)
                 dayButton.isEnabled = true
             } else {
+                rangeButton.forEach { $0.setTitleColor(.label, for: .normal) }
                 rangeButton.forEach { $0.isEnabled = true }
             }
             
