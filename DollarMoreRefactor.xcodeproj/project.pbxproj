@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5549C8802A14B6660076E26F /* DollarMoreRefactorUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5549C87F2A14B6660076E26F /* DollarMoreRefactorUITests.swift */; };
+		5549C8822A14B6660076E26F /* DollarMoreRefactorUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5549C8812A14B6660076E26F /* DollarMoreRefactorUITestsLaunchTests.swift */; };
+		5549C88F2A14B8880076E26F /* DollarMoreRefactorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5549C88E2A14B8880076E26F /* DollarMoreRefactorTests.swift */; };
 		554B17CB2A11708A001566CD /* SVProgressHUD in Frameworks */ = {isa = PBXBuildFile; productRef = 554B17CA2A11708A001566CD /* SVProgressHUD */; };
 		558CB2042A0CE933000BF91D /* Charts in Frameworks */ = {isa = PBXBuildFile; productRef = 558CB2032A0CE933000BF91D /* Charts */; };
 		55A295DC2A0CC199004905F1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55A295DB2A0CC199004905F1 /* AppDelegate.swift */; };
@@ -34,7 +37,29 @@
 		55C33A072A10B91500D6057E /* DualChartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55C33A062A10B91500D6057E /* DualChartView.swift */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXContainerItemProxy section */
+		5549C8832A14B6660076E26F /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 55A295D02A0CC199004905F1 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 55A295D72A0CC199004905F1;
+			remoteInfo = DollarMoreRefactor;
+		};
+		5549C8902A14B8880076E26F /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 55A295D02A0CC199004905F1 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 55A295D72A0CC199004905F1;
+			remoteInfo = DollarMoreRefactor;
+		};
+/* End PBXContainerItemProxy section */
+
 /* Begin PBXFileReference section */
+		5549C87D2A14B6660076E26F /* DollarMoreRefactorUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DollarMoreRefactorUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		5549C87F2A14B6660076E26F /* DollarMoreRefactorUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DollarMoreRefactorUITests.swift; sourceTree = "<group>"; };
+		5549C8812A14B6660076E26F /* DollarMoreRefactorUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DollarMoreRefactorUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		5549C88C2A14B8880076E26F /* DollarMoreRefactorTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DollarMoreRefactorTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		5549C88E2A14B8880076E26F /* DollarMoreRefactorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DollarMoreRefactorTests.swift; sourceTree = "<group>"; };
 		55A295D82A0CC199004905F1 /* DollarMoreRefactor.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DollarMoreRefactor.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		55A295DB2A0CC199004905F1 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		55A295DD2A0CC199004905F1 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -62,6 +87,20 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		5549C87A2A14B6660076E26F /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		5549C8892A14B8880076E26F /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		55A295D52A0CC199004905F1 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -76,10 +115,29 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		5549C87E2A14B6660076E26F /* DollarMoreRefactorUITests */ = {
+			isa = PBXGroup;
+			children = (
+				5549C87F2A14B6660076E26F /* DollarMoreRefactorUITests.swift */,
+				5549C8812A14B6660076E26F /* DollarMoreRefactorUITestsLaunchTests.swift */,
+			);
+			path = DollarMoreRefactorUITests;
+			sourceTree = "<group>";
+		};
+		5549C88D2A14B8880076E26F /* DollarMoreRefactorTests */ = {
+			isa = PBXGroup;
+			children = (
+				5549C88E2A14B8880076E26F /* DollarMoreRefactorTests.swift */,
+			);
+			path = DollarMoreRefactorTests;
+			sourceTree = "<group>";
+		};
 		55A295CF2A0CC199004905F1 = {
 			isa = PBXGroup;
 			children = (
 				55A295DA2A0CC199004905F1 /* DollarMoreRefactor */,
+				5549C87E2A14B6660076E26F /* DollarMoreRefactorUITests */,
+				5549C88D2A14B8880076E26F /* DollarMoreRefactorTests */,
 				55A295D92A0CC199004905F1 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -88,6 +146,8 @@
 			isa = PBXGroup;
 			children = (
 				55A295D82A0CC199004905F1 /* DollarMoreRefactor.app */,
+				5549C87D2A14B6660076E26F /* DollarMoreRefactorUITests.xctest */,
+				5549C88C2A14B8880076E26F /* DollarMoreRefactorTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -189,6 +249,42 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		5549C87C2A14B6660076E26F /* DollarMoreRefactorUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 5549C8872A14B6660076E26F /* Build configuration list for PBXNativeTarget "DollarMoreRefactorUITests" */;
+			buildPhases = (
+				5549C8792A14B6660076E26F /* Sources */,
+				5549C87A2A14B6660076E26F /* Frameworks */,
+				5549C87B2A14B6660076E26F /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				5549C8842A14B6660076E26F /* PBXTargetDependency */,
+			);
+			name = DollarMoreRefactorUITests;
+			productName = DollarMoreRefactorUITests;
+			productReference = 5549C87D2A14B6660076E26F /* DollarMoreRefactorUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+		5549C88B2A14B8880076E26F /* DollarMoreRefactorTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 5549C8922A14B8880076E26F /* Build configuration list for PBXNativeTarget "DollarMoreRefactorTests" */;
+			buildPhases = (
+				5549C8882A14B8880076E26F /* Sources */,
+				5549C8892A14B8880076E26F /* Frameworks */,
+				5549C88A2A14B8880076E26F /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				5549C8912A14B8880076E26F /* PBXTargetDependency */,
+			);
+			name = DollarMoreRefactorTests;
+			productName = DollarMoreRefactorTests;
+			productReference = 5549C88C2A14B8880076E26F /* DollarMoreRefactorTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 		55A295D72A0CC199004905F1 /* DollarMoreRefactor */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 55A295EC2A0CC19B004905F1 /* Build configuration list for PBXNativeTarget "DollarMoreRefactor" */;
@@ -222,6 +318,14 @@
 				LastSwiftUpdateCheck = 1430;
 				LastUpgradeCheck = 1430;
 				TargetAttributes = {
+					5549C87C2A14B6660076E26F = {
+						CreatedOnToolsVersion = 14.3;
+						TestTargetID = 55A295D72A0CC199004905F1;
+					};
+					5549C88B2A14B8880076E26F = {
+						CreatedOnToolsVersion = 14.3;
+						TestTargetID = 55A295D72A0CC199004905F1;
+					};
 					55A295D72A0CC199004905F1 = {
 						CreatedOnToolsVersion = 14.3;
 					};
@@ -247,11 +351,27 @@
 			projectRoot = "";
 			targets = (
 				55A295D72A0CC199004905F1 /* DollarMoreRefactor */,
+				5549C87C2A14B6660076E26F /* DollarMoreRefactorUITests */,
+				5549C88B2A14B8880076E26F /* DollarMoreRefactorTests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		5549C87B2A14B6660076E26F /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		5549C88A2A14B8880076E26F /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		55A295D62A0CC199004905F1 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -266,6 +386,23 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		5549C8792A14B6660076E26F /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5549C8802A14B6660076E26F /* DollarMoreRefactorUITests.swift in Sources */,
+				5549C8822A14B6660076E26F /* DollarMoreRefactorUITestsLaunchTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		5549C8882A14B8880076E26F /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5549C88F2A14B8880076E26F /* DollarMoreRefactorTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		55A295D42A0CC199004905F1 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -292,6 +429,19 @@
 		};
 /* End PBXSourcesBuildPhase section */
 
+/* Begin PBXTargetDependency section */
+		5549C8842A14B6660076E26F /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 55A295D72A0CC199004905F1 /* DollarMoreRefactor */;
+			targetProxy = 5549C8832A14B6660076E26F /* PBXContainerItemProxy */;
+		};
+		5549C8912A14B8880076E26F /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 55A295D72A0CC199004905F1 /* DollarMoreRefactor */;
+			targetProxy = 5549C8902A14B8880076E26F /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
 /* Begin PBXVariantGroup section */
 		55A295E12A0CC199004905F1 /* Main.storyboard */ = {
 			isa = PBXVariantGroup;
@@ -312,6 +462,84 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		5549C8852A14B6660076E26F /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = VJ2VF4KUF7;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = Jimmy.DollarMoreRefactorUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = DollarMoreRefactor;
+			};
+			name = Debug;
+		};
+		5549C8862A14B6660076E26F /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = VJ2VF4KUF7;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = Jimmy.DollarMoreRefactorUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = DollarMoreRefactor;
+			};
+			name = Release;
+		};
+		5549C8932A14B8880076E26F /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = VJ2VF4KUF7;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.4;
+				MACOSX_DEPLOYMENT_TARGET = 13.3;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = Jimmy.DollarMoreRefactorTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = auto;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/DollarMoreRefactor.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/DollarMoreRefactor";
+			};
+			name = Debug;
+		};
+		5549C8942A14B8880076E26F /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = VJ2VF4KUF7;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.4;
+				MACOSX_DEPLOYMENT_TARGET = 13.3;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = Jimmy.DollarMoreRefactorTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = auto;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/DollarMoreRefactor.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/DollarMoreRefactor";
+			};
+			name = Release;
+		};
 		55A295EA2A0CC19B004905F1 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -487,6 +715,24 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		5549C8872A14B6660076E26F /* Build configuration list for PBXNativeTarget "DollarMoreRefactorUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				5549C8852A14B6660076E26F /* Debug */,
+				5549C8862A14B6660076E26F /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		5549C8922A14B8880076E26F /* Build configuration list for PBXNativeTarget "DollarMoreRefactorTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				5549C8932A14B8880076E26F /* Debug */,
+				5549C8942A14B8880076E26F /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		55A295D32A0CC199004905F1 /* Build configuration list for PBXProject "DollarMoreRefactor" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (

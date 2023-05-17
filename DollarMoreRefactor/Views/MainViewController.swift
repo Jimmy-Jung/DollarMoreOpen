@@ -344,9 +344,20 @@ final class MainViewController: UIViewController {
                 chartRange: range
             )
         )
+        addDualChartViewToGraphView()
+    }
+    
+    /// 듀얼차트뷰를 그래프뷰에 추가하기
+    private func addDualChartViewToGraphView() {
         graphView.subviews.first?.removeFromSuperview()
         graphView.addSubview(dualChartView)
-        dualChartView.frame = graphView.bounds
+        dualChartView.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            dualChartView.topAnchor.constraint(equalTo: graphView.topAnchor),
+            dualChartView.bottomAnchor.constraint(equalTo: graphView.bottomAnchor),
+            dualChartView.rightAnchor.constraint(equalTo: graphView.rightAnchor),
+            dualChartView.leftAnchor.constraint(equalTo: graphView.leftAnchor)
+        ])
     }
     
     /// 싱글차트 만들기
@@ -363,11 +374,21 @@ final class MainViewController: UIViewController {
             range: range
         )
         singleChartView.configure(with: chartData)
-        graphView.subviews.first?.removeFromSuperview()
-        graphView.addSubview(singleChartView)
-        singleChartView.frame = graphView.bounds
+        addSingleChartViewToGraphView()
     }
     
+    /// 싱글차트뷰를 그래프뷰에 추가하기
+    private func addSingleChartViewToGraphView() {
+        graphView.subviews.first?.removeFromSuperview()
+        graphView.addSubview(singleChartView)
+        singleChartView.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            singleChartView.topAnchor.constraint(equalTo: graphView.topAnchor),
+            singleChartView.bottomAnchor.constraint(equalTo: graphView.bottomAnchor),
+            singleChartView.rightAnchor.constraint(equalTo: graphView.rightAnchor),
+            singleChartView.leftAnchor.constraint(equalTo: graphView.leftAnchor)
+        ])
+    }
     // 5. 범위 버튼
     /// 범위 버는 셋업
     private func setupRangeButton() {
