@@ -21,7 +21,7 @@ enum HanaAPIServiceError: Error {
         case .invalidData:
             return "데이터를 이용할 수 없습니다."
         case .networkError:
-            return "네크워킹에 문제가 있습니다."
+            return "네트워킹에 문제가 있습니다."
         case .parsingError:
             return "데이터를 불러오는데 실패했습니다."
         }
