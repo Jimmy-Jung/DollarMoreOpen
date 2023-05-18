@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		558CB2042A0CE933000BF91D /* Charts in Frameworks */ = {isa = PBXBuildFile; productRef = 558CB2032A0CE933000BF91D /* Charts */; };
 		55A295DC2A0CC199004905F1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55A295DB2A0CC199004905F1 /* AppDelegate.swift */; };
 		55A295DE2A0CC199004905F1 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55A295DD2A0CC199004905F1 /* SceneDelegate.swift */; };
 		55A295E32A0CC199004905F1 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 55A295E12A0CC199004905F1 /* Main.storyboard */; };
@@ -34,6 +33,7 @@
 		55EC66052A1605C700134554 /* SVProgressHUD in Frameworks */ = {isa = PBXBuildFile; productRef = 55EC66042A1605C700134554 /* SVProgressHUD */; };
 		55EC66092A16837C00134554 /* HanaBankModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55EC66082A16837C00134554 /* HanaBankModel.swift */; };
 		55EC660B2A16839800134554 /* HanaAPIServiceError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55EC660A2A16839800134554 /* HanaAPIServiceError.swift */; };
+		55EC660E2A1699E600134554 /* Charts in Frameworks */ = {isa = PBXBuildFile; productRef = 55EC660D2A1699E600134554 /* Charts */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -73,7 +73,7 @@
 				55EC66052A1605C700134554 /* SVProgressHUD in Frameworks */,
 				55AC16B42A0CDB6A00967DB2 /* Alamofire in Frameworks */,
 				55AC16BA2A0CDB8F00967DB2 /* SwiftSoup in Frameworks */,
-				558CB2042A0CE933000BF91D /* Charts in Frameworks */,
+				55EC660E2A1699E600134554 /* Charts in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -211,8 +211,8 @@
 			packageProductDependencies = (
 				55AC16B32A0CDB6A00967DB2 /* Alamofire */,
 				55AC16B92A0CDB8F00967DB2 /* SwiftSoup */,
-				558CB2032A0CE933000BF91D /* Charts */,
 				55EC66042A1605C700134554 /* SVProgressHUD */,
+				55EC660D2A1699E600134554 /* Charts */,
 			);
 			productName = DollarMoreRefactor;
 			productReference = 55A295D82A0CC199004905F1 /* DollarMoreRefactor.app */;
@@ -245,8 +245,8 @@
 			packageReferences = (
 				55AC16B22A0CDB6A00967DB2 /* XCRemoteSwiftPackageReference "Alamofire" */,
 				55AC16B82A0CDB8F00967DB2 /* XCRemoteSwiftPackageReference "SwiftSoup" */,
-				558CB2022A0CE933000BF91D /* XCRemoteSwiftPackageReference "Charts" */,
 				55EC66032A1605C700134554 /* XCRemoteSwiftPackageReference "SVProgressHUD" */,
+				55EC660C2A1699E600134554 /* XCRemoteSwiftPackageReference "Charts" */,
 			);
 			productRefGroup = 55A295D92A0CC199004905F1 /* Products */;
 			projectDirPath = "";
@@ -524,14 +524,6 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		558CB2022A0CE933000BF91D /* XCRemoteSwiftPackageReference "Charts" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/danielgindi/Charts.git";
-			requirement = {
-				branch = master;
-				kind = branch;
-			};
-		};
 		55AC16B22A0CDB6A00967DB2 /* XCRemoteSwiftPackageReference "Alamofire" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/Alamofire/Alamofire.git";
@@ -556,14 +548,17 @@
 				version = 2.2.7;
 			};
 		};
+		55EC660C2A1699E600134554 /* XCRemoteSwiftPackageReference "Charts" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/danielgindi/Charts.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 4.1.0;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		558CB2032A0CE933000BF91D /* Charts */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 558CB2022A0CE933000BF91D /* XCRemoteSwiftPackageReference "Charts" */;
-			productName = Charts;
-		};
 		55AC16B32A0CDB6A00967DB2 /* Alamofire */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 55AC16B22A0CDB6A00967DB2 /* XCRemoteSwiftPackageReference "Alamofire" */;
@@ -578,6 +573,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 55EC66032A1605C700134554 /* XCRemoteSwiftPackageReference "SVProgressHUD" */;
 			productName = SVProgressHUD;
+		};
+		55EC660D2A1699E600134554 /* Charts */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 55EC660C2A1699E600134554 /* XCRemoteSwiftPackageReference "Charts" */;
+			productName = Charts;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
