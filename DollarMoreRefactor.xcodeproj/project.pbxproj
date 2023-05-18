@@ -33,7 +33,7 @@
 		55EC66052A1605C700134554 /* SVProgressHUD in Frameworks */ = {isa = PBXBuildFile; productRef = 55EC66042A1605C700134554 /* SVProgressHUD */; };
 		55EC66092A16837C00134554 /* HanaBankModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55EC66082A16837C00134554 /* HanaBankModel.swift */; };
 		55EC660B2A16839800134554 /* HanaAPIServiceError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55EC660A2A16839800134554 /* HanaAPIServiceError.swift */; };
-		55EC66112A169E7100134554 /* Charts in Frameworks */ = {isa = PBXBuildFile; productRef = 55EC66102A169E7100134554 /* Charts */; };
+		55F4430A2A16AC1200A4F18E /* Charts in Frameworks */ = {isa = PBXBuildFile; productRef = 55F443092A16AC1200A4F18E /* Charts */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -73,7 +73,7 @@
 				55EC66052A1605C700134554 /* SVProgressHUD in Frameworks */,
 				55AC16B42A0CDB6A00967DB2 /* Alamofire in Frameworks */,
 				55AC16BA2A0CDB8F00967DB2 /* SwiftSoup in Frameworks */,
-				55EC66112A169E7100134554 /* Charts in Frameworks */,
+				55F4430A2A16AC1200A4F18E /* Charts in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -212,7 +212,7 @@
 				55AC16B32A0CDB6A00967DB2 /* Alamofire */,
 				55AC16B92A0CDB8F00967DB2 /* SwiftSoup */,
 				55EC66042A1605C700134554 /* SVProgressHUD */,
-				55EC66102A169E7100134554 /* Charts */,
+				55F443092A16AC1200A4F18E /* Charts */,
 			);
 			productName = DollarMoreRefactor;
 			productReference = 55A295D82A0CC199004905F1 /* DollarMoreRefactor.app */;
@@ -246,7 +246,7 @@
 				55AC16B22A0CDB6A00967DB2 /* XCRemoteSwiftPackageReference "Alamofire" */,
 				55AC16B82A0CDB8F00967DB2 /* XCRemoteSwiftPackageReference "SwiftSoup" */,
 				55EC66032A1605C700134554 /* XCRemoteSwiftPackageReference "SVProgressHUD" */,
-				55EC660F2A169E7100134554 /* XCRemoteSwiftPackageReference "Charts" */,
+				55F443082A16AC1200A4F18E /* XCRemoteSwiftPackageReference "Charts" */,
 			);
 			productRefGroup = 55A295D92A0CC199004905F1 /* Products */;
 			projectDirPath = "";
@@ -548,9 +548,9 @@
 				version = 2.2.7;
 			};
 		};
-		55EC660F2A169E7100134554 /* XCRemoteSwiftPackageReference "Charts" */ = {
+		55F443082A16AC1200A4F18E /* XCRemoteSwiftPackageReference "Charts" */ = {
 			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/danielgindi/Charts.git";
+			repositoryURL = "https://github.com/Jimmy-Jung/Charts.git";
 			requirement = {
 				branch = master;
 				kind = branch;
@@ -574,9 +574,9 @@
 			package = 55EC66032A1605C700134554 /* XCRemoteSwiftPackageReference "SVProgressHUD" */;
 			productName = SVProgressHUD;
 		};
-		55EC66102A169E7100134554 /* Charts */ = {
+		55F443092A16AC1200A4F18E /* Charts */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 55EC660F2A169E7100134554 /* XCRemoteSwiftPackageReference "Charts" */;
+			package = 55F443082A16AC1200A4F18E /* XCRemoteSwiftPackageReference "Charts" */;
 			productName = Charts;
 		};
 /* End XCSwiftPackageProductDependency section */
