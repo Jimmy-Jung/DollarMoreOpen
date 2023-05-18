@@ -207,11 +207,12 @@ final class MainViewModel {
         let formatter = NumberFormatter()
         formatter.numberStyle = .decimal
         formatter.maximumFractionDigits = 2
+        formatter.minimumFractionDigits = 2
         let sellPrice = formatter
-            .string(from: NSNumber(value: currentPrice + margin)) ?? "0,000.00"
+            .string(from: NSNumber(value: currentPrice - margin)) ?? "0,000.00"
         
         let buyPrice = formatter
-            .string(from: NSNumber(value: currentPrice - margin)) ?? "0,000.00"
+            .string(from: NSNumber(value: currentPrice + margin)) ?? "0,000.00"
         return (sellPrice, buyPrice)
     }
 }

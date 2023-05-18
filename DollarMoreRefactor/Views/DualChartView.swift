@@ -56,7 +56,7 @@ final class DualChartView: UIView, ChartViewDelegate {
         chartView.legend.horizontalAlignment = .right
         chartView.legend.form = .line
         // 차트 관련
-        chartView.highlightPerTapEnabled = false
+        chartView.highlightPerTapEnabled = true
         chartView.highlightPerDragEnabled = true
         chartView.drawGridBackgroundEnabled = false
         chartView.notifyDataSetChanged()

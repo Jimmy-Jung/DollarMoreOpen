@@ -39,7 +39,7 @@ struct HanaBankAPI {
 
     /// 하나은행 어제 오늘 데이터 불러오기
     /// - Returns: 차트데이터
-    public func fetchHanaChartData() async throws -> ChartData {
+    public func fetchHanaChartData() async -> ChartData {
         do {
             guard let url = urlForData(range: .today) else {
                 throw APIServiceError.invalidURL
@@ -48,9 +48,14 @@ struct HanaBankAPI {
             guard let html = String(data: data, encoding: .utf8) else {
                 throw NSError(domain: "Invalid Data", code: -1, userInfo: nil)
             }
-            return try await parseHTML(html: html)
+            let chartData = await parseHTML(html: html)
+            return chartData
         } catch {
-            throw error
+            print(error.localizedDescription)
+            return .init(
+                meta: .init(regularMarketPrice: 0, previousClose: 0),
+                indicators: [Indicator]()
+            )
         }
     }
     
@@ -74,7 +79,7 @@ struct HanaBankAPI {
     /// 하나은행 오늘 HTML파싱
     /// - Parameter html: HTML데이터
     /// - Returns: 차트데이터
-    private func parseHTML(html: String) async throws -> ChartData {
+    private func parseHTML(html: String) async -> ChartData {
         do {
             let table = try await makeTableData()
             let tableTimestamp = table.timestamp
@@ -90,7 +95,9 @@ struct HanaBankAPI {
             formatter.numberStyle = .decimal
             for row in trElements {
                 let time = try row.select("td")[1].text()
+                print("time", time)
                 let closeString = try row.select("td")[8].text()
+                print("closeString", closeString)
                 let close = formatter.number(from: closeString)?.doubleValue ?? 0
                 let timestamp = dateFormatter
                     .date(from: tableTimestamp + " " + time) ?? Date()
@@ -99,7 +106,11 @@ struct HanaBankAPI {
             let meta = ChartMeta(regularMarketPrice: tableReg, previousClose: tablePre)
             return ChartData(meta: meta, indicators: indicators.reversed())
         } catch {
-            throw error
+            print(error.localizedDescription)
+            return .init(
+                meta: .init(regularMarketPrice: 0, previousClose: 0),
+                indicators: [Indicator]()
+            )
         }
     }
     
@@ -110,7 +121,11 @@ struct HanaBankAPI {
         do {
             let doc: Document = try SwiftSoup.parse(html)
             let table = try doc.select("tbody")
+            if table == Elements() {
+                return .init(timestamp: "0000-00-00", regularMarketPrice: 0, previousClose: 0)
+            }
             let trElements = try table.select("tr")
+            
             let td0Elements = try trElements[0].select("td")
             let td1Elements = try trElements[1].select("td")
             let timestamp = try td0Elements[0].text()
@@ -132,7 +147,7 @@ struct HanaBankAPI {
             )
         } catch {
             print(error.localizedDescription)
-            return .init(timestamp: "0", regularMarketPrice: 0, previousClose: 0)
+            return .init(timestamp: "0000-00-00", regularMarketPrice: 0, previousClose: 0)
             
         }
     }

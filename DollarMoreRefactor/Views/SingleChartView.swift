@@ -45,7 +45,7 @@ final class SingleChartView: UIView, ChartViewDelegate {
         // 차트 관련
         chartView.legend.enabled = false // 차트 이름
         chartView.notifyDataSetChanged()
-        chartView.highlightPerTapEnabled = false // 선택시 하이라이트
+        chartView.highlightPerTapEnabled = true // 선택시 하이라이트
         chartView.extraTopOffset = 30.0
         return chartView
     }()
@@ -168,4 +168,5 @@ final class SingleChartView: UIView, ChartViewDelegate {
         customMarkerView.dateLabel.text = xAxis
         customMarkerView.valueLabel.text = yAxis
     }
+
 }

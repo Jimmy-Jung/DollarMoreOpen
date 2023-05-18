@@ -23,7 +23,7 @@ public enum APIServiceError: CustomNSError {
     case invalidResponseType
     case httpStatusCodeFailed(statusCode: Int, error: ErrorResponse?)
     
-    public static var errorDomain: String { "XCAStocksAPI" }
+    public static var errorDomain: String { "YahooFinanceAPI" }
     public var errorCode: Int {
         switch self {
         case .invalidURL: return 1
