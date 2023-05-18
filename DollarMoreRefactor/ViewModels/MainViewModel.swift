@@ -8,7 +8,6 @@
 import UIKit
 
 final class MainViewModel {
-    
     struct CurrencyLabelData {
         let currencyLabel: String
         let rateDiff: String
@@ -22,22 +21,35 @@ final class MainViewModel {
     private var usdData: ChartData? {
         didSet {
             usdLabelSet = updateLabelSet(chartData: usdData)
-            usdReferenceTimeLabel = updateReferenceTimeLabel(chartData: usdData)
+            usdReferenceTimeLabel =
+            updateReferenceTimeLabel(chartData: usdData)
         }
     }
     private var indexData: ChartData? {
         didSet {
             indexLabelSet = updateLabelSet(chartData: indexData)
-//            dump(indexData)
         }
     }
-    private var hanaData: ChartData? {
+    private var hanaData: Result<ChartData?, HanaAPIServiceError> =
+        .success(
+            .init(
+                meta: .init(regularMarketPrice: 0, previousClose: 0),
+                indicators: [Indicator]()
+            )
+        ) {
         didSet {
-            hanaLabelSet = updateLabelSet(chartData: hanaData)
-            hanaReferenceTimeLabel = updateReferenceTimeLabel(chartData: hanaData)
-            hanaSellBuyLabel = updateSellBuyLabel(chartData: hanaData)
-//            dump(hanaData)
-            
+            switch hanaData {
+            case .success(let data):
+                hanaLabelSet = updateLabelSet(chartData: data)
+                hanaReferenceTimeLabel =
+                updateReferenceTimeLabel(chartData: data)
+                hanaSellBuyLabel = updateSellBuyLabel(chartData: data)
+            case .failure(let error):
+                hanaLabelSet = invalidLabelSet()
+                hanaReferenceTimeLabel =
+                invalidReferenceTimeLabel(error: error)
+                hanaSellBuyLabel = invalidSellBuyLabel()
+            }
         }
     }
     // MARK: - Published
@@ -51,17 +63,9 @@ final class MainViewModel {
     let stocksManager = StocksDataManager()
     let hanaBankSpread = 0.000973
     
-    private func getPreviousClose(symbol: StocksDataManager.StocksSymbol) -> Double {
-        switch symbol {
-        case .dollar_Index:
-            return indexData?.meta.previousClose ?? 100.00
-        case .dollar_Won:
-            return usdData?.meta.previousClose ?? 1300.00
-        case .hanaBank:
-            return hanaData?.meta.previousClose ?? 1300.00
-        }
-    }
     
+    // MARK: - Public Methods
+
     public func updateSingleChartData(
         symbol: StocksDataManager.StocksSymbol,
         range: ChartRange
@@ -71,14 +75,23 @@ final class MainViewModel {
             indicators: [Indicator]()
             )
         
-        let data = await fetchSymbolData(symbol: symbol, range: range)
-        return .init(
-            data: data ?? emptyData,
-            preClose: getPreviousClose(symbol: symbol),
-            lineColor: getColor(symbol: symbol),
-            chartRange: range
-        )
-       
+        let resultData = await fetchSymbolData(symbol: symbol, range: range)
+        switch resultData {
+        case .success(let data):
+            return .init(
+                data: data ?? emptyData,
+                preClose: getPreviousClose(symbol: symbol),
+                lineColor: getColor(symbol: symbol),
+                chartRange: range
+            )
+        case .failure(_):
+            return .init(
+                data: emptyData,
+                preClose: getPreviousClose(symbol: symbol),
+                lineColor: getColor(symbol: symbol),
+                chartRange: range
+            )
+        }
     }
     
     public func updateDualChartData(
@@ -91,13 +104,47 @@ final class MainViewModel {
             indicators: [Indicator]()
             )
         var data1: ChartData?
-        let data2 = await fetchSymbolData(symbol: symbol2, range: range)
+        var data2: ChartData?
+        let dataResult2 = await fetchSymbolData(symbol: symbol2, range: range)
+        switch dataResult2 {
+        case .success(let data):
+            data2 = data
+        case .failure(_):
+            data2 = emptyData
+        }
         if symbol2 == .hanaBank {
-            let startOfDay = hanaData?.indicators.first?.timestamp.timeIntervalSince1970 ?? Calendar.current.startOfDay(for: Date()).timeIntervalSince1970
-            usdData = await stocksManager.fetchWithHanaData(stockSymbol: .dollar_Won, startOfDay: startOfDay)
-            data1 = usdData
+            switch hanaData {
+            case .success(let data):
+                let startOfDay =
+                data?
+                    .indicators
+                    .first?
+                    .timestamp
+                    .timeIntervalSince1970
+                ?? Calendar
+                    .current
+                    .startOfDay(for: Date())
+                    .timeIntervalSince1970
+                usdData =
+                await stocksManager
+                    .fetchWithHanaData(
+                        stockSymbol: .dollar_Won,
+                        startOfDay: startOfDay - 360
+                    )
+                data1 = usdData
+            case .failure(_):
+                break
+            }
+            
         } else {
-            data1 = await fetchSymbolData(symbol: symbol1, range: range)
+            let dataResult =
+            await fetchSymbolData(symbol: symbol1, range: range)
+            switch dataResult {
+            case .success(let data):
+                data1 = data
+            case .failure(_):
+                data1 = emptyData
+            }
         }
         
         return .init(
@@ -109,7 +156,30 @@ final class MainViewModel {
         )
         
     }
-    private func fetchSymbolData(symbol: StocksDataManager.StocksSymbol, range: ChartRange) async -> ChartData? {
+    // MARK: - Private Methods
+
+    private func getPreviousClose(
+        symbol: StocksDataManager.StocksSymbol
+    ) -> Double {
+        switch symbol {
+        case .dollar_Index:
+            return indexData?.meta.previousClose ?? 100.00
+        case .dollar_Won:
+            return usdData?.meta.previousClose ?? 1300.00
+        case .hanaBank:
+            switch hanaData {
+            case .success(let data):
+                return data?.meta.previousClose ?? 1300.00
+            case .failure(_):
+                return 1300.00
+            }
+            
+        }
+    }
+    private func fetchSymbolData(
+        symbol: StocksDataManager.StocksSymbol,
+        range: ChartRange
+    ) async -> Result<ChartData?, HanaAPIServiceError> {
         switch range {
         case .oneDay, .oneWeek, .oneMonth:
             switch symbol {
@@ -117,15 +187,21 @@ final class MainViewModel {
                 usdData = await stocksManager.fetchChartData(
                     stockSymbol: symbol,
                     range: range)
-                return usdData
+                return .success(usdData)
             case .dollar_Index:
                 indexData = await stocksManager.fetchChartData(
                     stockSymbol: symbol,
                     range: range)
-                return indexData
+                return .success(indexData)
             case .hanaBank:
                 hanaData = await stocksManager.fetchHanaChartData()
-                return hanaData
+                switch hanaData {
+                case .success(let data):
+                    return .success(data)
+                case .failure(let error):
+                    return .failure(error)
+                }
+                
             }
         default:
             switch symbol {
@@ -133,20 +209,27 @@ final class MainViewModel {
                 let usdData = await stocksManager.fetchChartData(
                     stockSymbol: symbol,
                     range: range)
-                return usdData
+                return .success(usdData)
             case .dollar_Index:
                 let indexData = await stocksManager.fetchChartData(
                     stockSymbol: symbol,
                     range: range)
-                return indexData
+                return .success(indexData)
             case .hanaBank:
                 let hanaData = await stocksManager.fetchHanaChartData()
-                return hanaData
+                switch hanaData {
+                case .success(let data):
+                    return .success(data)
+                case .failure(let error):
+                    return .failure(error)
+                }
             }
         }
         
     }
-    private func getColor(symbol: StocksDataManager.StocksSymbol) -> [UIColor] {
+    private func getColor(
+        symbol: StocksDataManager.StocksSymbol
+    ) -> [UIColor] {
         switch symbol {
         case .dollar_Won:
             return [.systemOrange]
@@ -169,18 +252,28 @@ final class MainViewModel {
         let rateDiff = String(format: "%.2f", abs(change))
         let rateDiffColor: UIColor = change > 0 ? .systemRed : .systemBlue
         let rateDiffPercentage = String(format: "%.2f", DiffRate) + "%"
-        let rateDiffPercentageColor: UIColor = change > 0 ? .systemRed : .systemBlue
         let upDownImage = UIImage(systemName: change > 0
             ? "arrowtriangle.up.fill" : "arrowtriangle.down.fill")
-        let upDownImageColor: UIColor = change > 0 ? .systemRed : .systemBlue
         let currentLabelData = CurrencyLabelData(
             currencyLabel: currencyLabel,
             rateDiff: rateDiff,
             rateDiffColor: rateDiffColor,
             rateDiffPercentage: rateDiffPercentage,
-            rateDiffPercentageColor: rateDiffPercentageColor,
+            rateDiffPercentageColor: rateDiffColor,
             upDownImage: upDownImage,
-            upDownImageColor: upDownImageColor
+            upDownImageColor: rateDiffColor
+        )
+        return currentLabelData
+    }
+    private func invalidLabelSet() -> CurrencyLabelData {
+        let currentLabelData = CurrencyLabelData(
+            currencyLabel: "Error!",
+            rateDiff: "E.EE",
+            rateDiffColor: .systemYellow,
+            rateDiffPercentage: "E.EE%",
+            rateDiffPercentageColor: .systemYellow,
+            upDownImage: UIImage(systemName: "exclamationmark.triangle.fill"),
+            upDownImageColor: .systemYellow
         )
         return currentLabelData
     }
@@ -198,6 +291,12 @@ final class MainViewModel {
         return currentTime
     }
     
+    private func invalidReferenceTimeLabel(
+        error: HanaAPIServiceError
+    ) -> String {
+        return error.localizedDescription
+    }
+    
     private func updateSellBuyLabel(chartData: ChartData?) -> (
         sell: String, buy: String
     ) {
@@ -213,6 +312,13 @@ final class MainViewModel {
         
         let buyPrice = formatter
             .string(from: NSNumber(value: currentPrice + margin)) ?? "0,000.00"
+        return (sellPrice, buyPrice)
+    }
+    private func invalidSellBuyLabel() -> (
+        sell: String, buy: String
+    ) {
+        let sellPrice = "Error"
+        let buyPrice = "Error"
         return (sellPrice, buyPrice)
     }
 }

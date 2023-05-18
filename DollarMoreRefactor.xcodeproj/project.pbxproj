@@ -32,6 +32,8 @@
 		55C33A052A0D6B7500D6057E /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55C33A042A0D6B7500D6057E /* Extensions.swift */; };
 		55C33A072A10B91500D6057E /* DualChartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55C33A062A10B91500D6057E /* DualChartView.swift */; };
 		55EC66052A1605C700134554 /* SVProgressHUD in Frameworks */ = {isa = PBXBuildFile; productRef = 55EC66042A1605C700134554 /* SVProgressHUD */; };
+		55EC66092A16837C00134554 /* HanaBankModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55EC66082A16837C00134554 /* HanaBankModel.swift */; };
+		55EC660B2A16839800134554 /* HanaAPIServiceError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55EC660A2A16839800134554 /* HanaAPIServiceError.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -59,6 +61,8 @@
 		55C33A022A0D696000D6057E /* DateValueFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateValueFormatter.swift; sourceTree = "<group>"; };
 		55C33A042A0D6B7500D6057E /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		55C33A062A10B91500D6057E /* DualChartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DualChartView.swift; sourceTree = "<group>"; };
+		55EC66082A16837C00134554 /* HanaBankModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HanaBankModel.swift; sourceTree = "<group>"; };
+		55EC660A2A16839800134554 /* HanaAPIServiceError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HanaAPIServiceError.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -122,6 +126,8 @@
 			isa = PBXGroup;
 			children = (
 				55C339DB2A0CF67D00D6057E /* HanaBankAPI.swift */,
+				55EC66082A16837C00134554 /* HanaBankModel.swift */,
+				55EC660A2A16839800134554 /* HanaAPIServiceError.swift */,
 			);
 			path = HanaBankAPI;
 			sourceTree = "<group>";
@@ -270,11 +276,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				55EC660B2A16839800134554 /* HanaAPIServiceError.swift in Sources */,
 				55C33A032A0D696000D6057E /* DateValueFormatter.swift in Sources */,
 				55C339DC2A0CF67D00D6057E /* HanaBankAPI.swift in Sources */,
 				55C339E32A0CFBCE00D6057E /* ChartRange.swift in Sources */,
 				55C339E72A0CFBFA00D6057E /* APIError.swift in Sources */,
 				55C33A012A0D5E4900D6057E /* CustomMarkerView.swift in Sources */,
+				55EC66092A16837C00134554 /* HanaBankModel.swift in Sources */,
 				55C339F22A0D0CF200D6057E /* HapticsManager.swift in Sources */,
 				55C339DF2A0CFB9C00D6057E /* YahooFinanceAPI.swift in Sources */,
 				55C339F42A0D0D0600D6057E /* StocksDataManager.swift in Sources */,

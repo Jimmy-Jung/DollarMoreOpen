@@ -10,19 +10,7 @@ import SwiftSoup
 
 /// 하나은행 API
 struct HanaBankAPI {
-    // MARK: - Types
 
-    /// URL 호출 날짜 범위
-    enum Range {
-        case today
-        case previous
-    }
-    /// 지난 데이터 구조체
-    struct Table {
-        let timestamp: String
-        let regularMarketPrice: Double
-        let previousClose: Double
-    }
     // MARK: - Properties
 
     // 하나은행 URL
@@ -39,47 +27,41 @@ struct HanaBankAPI {
 
     /// 하나은행 어제 오늘 데이터 불러오기
     /// - Returns: 차트데이터
-    public func fetchHanaChartData() async -> ChartData {
+    public func fetchHanaChartData(
+    ) async -> Result<ChartData?, HanaAPIServiceError> {
         do {
-            guard let url = urlForData(range: .today) else {
-                throw APIServiceError.invalidURL
+            guard let url = try urlForData(range: .today) else {
+                return .failure(.invalidData)
             }
             let (data, _) = try await URLSession.shared.data(from: url)
             guard let html = String(data: data, encoding: .utf8) else {
-                throw NSError(domain: "Invalid Data", code: -1, userInfo: nil)
+                return .failure(.invalidData)
             }
-            let chartData = await parseHTML(html: html)
-            return chartData
+            let chartData = try await parseHTML(html: html)
+            return .success(chartData)
         } catch {
-            print(error.localizedDescription)
-            return .init(
-                meta: .init(regularMarketPrice: 0, previousClose: 0),
-                indicators: [Indicator]()
-            )
-        }
-    }
-    
-    /// 하나은행 지난 데이터 불러오기
-    /// - Returns: 데이터 구조체
-    private func makeTableData() async throws -> Table {
-        do {
-            guard let url = urlForData(range: .previous) else {
-                throw APIServiceError.invalidURL
+            if error is HanaAPIServiceError {
+                switch error as! HanaAPIServiceError {
+                case .invalidData:
+                    return .failure(.invalidData)
+                case .invalidURL:
+                    return .failure(.invalidURL)
+                case .networkError:
+                    return .failure(.networkError)
+                case .parsingError:
+                    return .failure(.parsingError)
+                }
+            } else {
+                return .failure(.invalidURL)
             }
-            let (data, _) = try await URLSession.shared.data(from: url)
-            guard let html = String(data: data, encoding: .utf8) else {
-                throw NSError(domain: "Invalid Data", code: -1, userInfo: nil)
-            }
-            return await parseWeekHTML(html: html)
-        } catch {
-            throw error
+            
         }
     }
     
     /// 하나은행 오늘 HTML파싱
     /// - Parameter html: HTML데이터
     /// - Returns: 차트데이터
-    private func parseHTML(html: String) async -> ChartData {
+    private func parseHTML(html: String) async throws -> ChartData {
         do {
             let table = try await makeTableData()
             let tableTimestamp = table.timestamp
@@ -95,9 +77,7 @@ struct HanaBankAPI {
             formatter.numberStyle = .decimal
             for row in trElements {
                 let time = try row.select("td")[1].text()
-                print("time", time)
                 let closeString = try row.select("td")[8].text()
-                print("closeString", closeString)
                 let close = formatter.number(from: closeString)?.doubleValue ?? 0
                 let timestamp = dateFormatter
                     .date(from: tableTimestamp + " " + time) ?? Date()
@@ -106,26 +86,41 @@ struct HanaBankAPI {
             let meta = ChartMeta(regularMarketPrice: tableReg, previousClose: tablePre)
             return ChartData(meta: meta, indicators: indicators.reversed())
         } catch {
-            print(error.localizedDescription)
-            return .init(
-                meta: .init(regularMarketPrice: 0, previousClose: 0),
-                indicators: [Indicator]()
-            )
+            throw HanaAPIServiceError.parsingError
+        }
+    }
+    /// 하나은행 지난 데이터 불러오기
+    /// - Returns: 데이터 구조체
+    private func makeTableData() async throws -> Table {
+        do {
+            guard let url = try urlForData(range: .previous) else {
+                throw HanaAPIServiceError.invalidURL
+            }
+            let (data, _) = try await URLSession.shared.data(from: url)
+            guard let html = String(data: data, encoding: .utf8) else {
+                throw HanaAPIServiceError.invalidData
+            }
+            return try await parseWeekHTML(html: html)
+        } catch {
+            if error is URLError {
+                throw HanaAPIServiceError.invalidURL
+            } else {
+                throw HanaAPIServiceError.parsingError
+            }
         }
     }
     
     /// 하나은행 한주치 HTML 파싱
     /// - Parameter html: HTML데이터
     /// - Returns: 테이블 구조체
-    private func parseWeekHTML(html: String) async -> Table {
+    private func parseWeekHTML(html: String) async throws -> Table {
         do {
             let doc: Document = try SwiftSoup.parse(html)
             let table = try doc.select("tbody")
             if table == Elements() {
-                return .init(timestamp: "0000-00-00", regularMarketPrice: 0, previousClose: 0)
+                throw HanaAPIServiceError.networkError
             }
             let trElements = try table.select("tr")
-            
             let td0Elements = try trElements[0].select("td")
             let td1Elements = try trElements[1].select("td")
             let timestamp = try td0Elements[0].text()
@@ -146,9 +141,7 @@ struct HanaBankAPI {
                 previousClose: previousClose
             )
         } catch {
-            print(error.localizedDescription)
-            return .init(timestamp: "0000-00-00", regularMarketPrice: 0, previousClose: 0)
-            
+            throw HanaAPIServiceError.parsingError
         }
     }
     
@@ -156,10 +149,10 @@ struct HanaBankAPI {
     /// 하나은행 URL 만들기
     /// - Parameter range: 호출 날짜 범위 선택
     /// - Returns: URL
-    private func urlForData(range: HanaBankAPI.Range) -> URL? {
+    private func urlForData(range: Range) throws -> URL? {
         let baseUrl = range == .today ? baseURL + dayQuery : baseURL + rangeQuery
         guard var urlComp = URLComponents(string: baseUrl) else {
-            return nil
+            throw HanaAPIServiceError.invalidURL
         }
         switch range {
         case .today:
