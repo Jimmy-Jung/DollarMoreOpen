@@ -321,7 +321,7 @@
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bAm-MI-Ewr" userLabel="4.그래프">
-                                <rect key="frame" x="16" y="251.00000000000003" width="361" height="317.66666666666674"/>
+                                <rect key="frame" x="16" y="251.00000000000003" width="361" height="313.66666666666674"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <gestureRecognizers/>
                             </view>
@@ -516,7 +516,7 @@
                                                                         <nil key="highlightedColor"/>
                                                                     </label>
                                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1,000.00" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7NE-L3-25n">
-                                                                        <rect key="frame" x="49.666666666666657" y="0.0" width="103.66666666666669" height="46"/>
+                                                                        <rect key="frame" x="49.666666666666664" y="0.0" width="103.66666666666669" height="46"/>
                                                                         <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="25"/>
                                                                         <nil key="textColor"/>
                                                                         <nil key="highlightedColor"/>
@@ -553,7 +553,7 @@
                         <viewLayoutGuide key="safeArea" id="wnq-sJ-6xM"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="7d7-nM-dle" firstAttribute="top" secondItem="bAm-MI-Ewr" secondAttribute="bottom" constant="8" id="2GH-9b-m3N"/>
+                            <constraint firstItem="7d7-nM-dle" firstAttribute="top" secondItem="bAm-MI-Ewr" secondAttribute="bottom" constant="12" id="2GH-9b-m3N"/>
                             <constraint firstItem="wnq-sJ-6xM" firstAttribute="trailing" secondItem="bAm-MI-Ewr" secondAttribute="trailing" constant="16" id="2j4-1Z-Jsx"/>
                             <constraint firstItem="bAm-MI-Ewr" firstAttribute="leading" secondItem="wnq-sJ-6xM" secondAttribute="leading" constant="16" id="BIx-gm-1Ga"/>
                             <constraint firstAttribute="trailing" secondItem="N89-yp-rdc" secondAttribute="trailing" id="DNv-ku-4V2"/>

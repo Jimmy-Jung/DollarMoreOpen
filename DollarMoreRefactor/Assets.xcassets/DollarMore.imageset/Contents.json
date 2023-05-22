@@ -1,7 +1,7 @@
 {
   "images" : [
     {
-      "filename" : "DimoaLightRound.png",
+      "filename" : "ㄷㄹㅁㅇB 1.png",
       "idiom" : "universal",
       "scale" : "1x"
     },
@@ -12,12 +12,12 @@
           "value" : "dark"
         }
       ],
-      "filename" : "DimoaDarkRound.png",
+      "filename" : "ㄷㄹㅁㅇW 1.png",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
-      "filename" : "DimoaLightRound@2x.png",
+      "filename" : "ㄷㄹㅁㅇB@2x.png",
       "idiom" : "universal",
       "scale" : "2x"
     },
@@ -28,12 +28,12 @@
           "value" : "dark"
         }
       ],
-      "filename" : "DimoaDarkRound@2x.png",
+      "filename" : "ㄷㄹㅁㅇW@2x.png",
       "idiom" : "universal",
       "scale" : "2x"
     },
     {
-      "filename" : "DimoaLightRound@3x.png",
+      "filename" : "ㄷㄹㅁㅇB@3x.png",
       "idiom" : "universal",
       "scale" : "3x"
     },
@@ -44,7 +44,7 @@
           "value" : "dark"
         }
       ],
-      "filename" : "DimoaDarkRound@3x.png",
+      "filename" : "ㄷㄹㅁㅇW@3x.png",
       "idiom" : "universal",
       "scale" : "3x"
     }
