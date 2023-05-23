@@ -123,6 +123,7 @@ final class MainViewController: UIViewController {
     private var cancellables = Set<AnyCancellable>()
     private var dualChartView = DualChartView()
     private var singleChartView = SingleChartView()
+    private let activityIndicatorView = UIActivityIndicatorView(style: .large)
     /// 타이머
     private var timer: Timer?
     /// 버튼 눌렀을 때 그래프 바꾸기
@@ -153,9 +154,9 @@ final class MainViewController: UIViewController {
                 self.singleChartView = SingleChartView()
             }
             Task{
-                showLoader()
+                activityIndicatorView.startAnimating()
                 await makeChart(with: currentButtonState)
-                hideLoader()
+                activityIndicatorView.stopAnimating()
             }
             
         }
@@ -170,6 +171,7 @@ final class MainViewController: UIViewController {
         initCurrentButton()
         setupRangeButton()
         configureSubscribe()
+        makeLoader()
     }
     
     override func viewDidLayoutSubviews() {
@@ -214,9 +216,16 @@ final class MainViewController: UIViewController {
     
     
     // MARK: - Methods
+                
+    private func makeLoader() {
+        view.addSubview(activityIndicatorView)
+        activityIndicatorView.center = view.center
+    }
+    
     private func makeTimer() {
         // 1분 마다 refreshButtonTapped 메서드를 호출하도록 예약합니다
-        timer = Timer.scheduledTimer(withTimeInterval: 60, repeats: true) { [weak self] _ in
+        timer = Timer.scheduledTimer(withTimeInterval: 60, repeats: true) {
+            [weak self] _ in
             guard let self = self else { return }
             self.refresh()
         }
@@ -233,9 +242,12 @@ final class MainViewController: UIViewController {
             self.refreshButton.tintColor = .secondaryLabel
         }
         Task {
-            showLoader()
+            //showLoader()
+            activityIndicatorView.startAnimating()
             await updateChartData()
-            hideLoader()
+            activityIndicatorView.stopAnimating()
+
+           // hideLoader()
         }
     }
     

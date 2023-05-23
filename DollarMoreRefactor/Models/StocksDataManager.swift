@@ -34,7 +34,10 @@ struct StocksDataManager {
                 return apiChartData
             } else {
                 let apiChartData = try await api
-                    .fetchChartData(tickerSymbol: stockSymbol.rawValue, range: range)
+                    .fetchChartData(
+                        tickerSymbol: stockSymbol.rawValue,
+                        range: range
+                    )
                 return apiChartData
             }
         } catch {
@@ -47,7 +50,10 @@ struct StocksDataManager {
         startOfDay: TimeInterval) async -> ChartData? {
             do {
                 let apiChartData = try await api
-                    .hanaFetchChartData(tickerSymbol: stockSymbol.rawValue, startOfDay: startOfDay)
+                    .hanaFetchChartData(
+                        tickerSymbol: stockSymbol.rawValue,
+                        startOfDay: startOfDay
+                    )
                 return apiChartData
                 
             } catch {

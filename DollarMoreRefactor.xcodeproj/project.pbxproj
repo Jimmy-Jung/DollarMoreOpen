@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		55455DBF2A1C953800635F42 /* DollarMoreRefactorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55455DBE2A1C953800635F42 /* DollarMoreRefactorTests.swift */; };
 		55A295DC2A0CC199004905F1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55A295DB2A0CC199004905F1 /* AppDelegate.swift */; };
 		55A295DE2A0CC199004905F1 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55A295DD2A0CC199004905F1 /* SceneDelegate.swift */; };
 		55A295E32A0CC199004905F1 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 55A295E12A0CC199004905F1 /* Main.storyboard */; };
@@ -28,15 +29,25 @@
 		55C339FE2A0D5DE100D6057E /* CustomMarkerView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 55C339FD2A0D5DE100D6057E /* CustomMarkerView.xib */; };
 		55C33A012A0D5E4900D6057E /* CustomMarkerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55C33A002A0D5E4900D6057E /* CustomMarkerView.swift */; };
 		55C33A032A0D696000D6057E /* DateValueFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55C33A022A0D696000D6057E /* DateValueFormatter.swift */; };
-		55C33A052A0D6B7500D6057E /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55C33A042A0D6B7500D6057E /* Extensions.swift */; };
 		55C33A072A10B91500D6057E /* DualChartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55C33A062A10B91500D6057E /* DualChartView.swift */; };
-		55EC66052A1605C700134554 /* SVProgressHUD in Frameworks */ = {isa = PBXBuildFile; productRef = 55EC66042A1605C700134554 /* SVProgressHUD */; };
 		55EC66092A16837C00134554 /* HanaBankModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55EC66082A16837C00134554 /* HanaBankModel.swift */; };
 		55EC660B2A16839800134554 /* HanaAPIServiceError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55EC660A2A16839800134554 /* HanaAPIServiceError.swift */; };
 		55F4430A2A16AC1200A4F18E /* Charts in Frameworks */ = {isa = PBXBuildFile; productRef = 55F443092A16AC1200A4F18E /* Charts */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXContainerItemProxy section */
+		55455DC02A1C953800635F42 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 55A295D02A0CC199004905F1 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 55A295D72A0CC199004905F1;
+			remoteInfo = DollarMoreRefactor;
+		};
+/* End PBXContainerItemProxy section */
+
 /* Begin PBXFileReference section */
+		55455DBC2A1C953800635F42 /* DollarMoreRefactorTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DollarMoreRefactorTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		55455DBE2A1C953800635F42 /* DollarMoreRefactorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DollarMoreRefactorTests.swift; sourceTree = "<group>"; };
 		5562A51D2A1B3D0300A1F8A8 /* ko */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = ko; path = ko.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		5562A51E2A1B3D0300A1F8A8 /* ko */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = ko; path = ko.lproj/Main.storyboard; sourceTree = "<group>"; };
 		55A295D82A0CC199004905F1 /* DollarMoreRefactor.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DollarMoreRefactor.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -59,18 +70,23 @@
 		55C339FD2A0D5DE100D6057E /* CustomMarkerView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CustomMarkerView.xib; sourceTree = "<group>"; };
 		55C33A002A0D5E4900D6057E /* CustomMarkerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomMarkerView.swift; sourceTree = "<group>"; };
 		55C33A022A0D696000D6057E /* DateValueFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateValueFormatter.swift; sourceTree = "<group>"; };
-		55C33A042A0D6B7500D6057E /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		55C33A062A10B91500D6057E /* DualChartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DualChartView.swift; sourceTree = "<group>"; };
 		55EC66082A16837C00134554 /* HanaBankModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HanaBankModel.swift; sourceTree = "<group>"; };
 		55EC660A2A16839800134554 /* HanaAPIServiceError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HanaAPIServiceError.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		55455DB92A1C953800635F42 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		55A295D52A0CC199004905F1 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				55EC66052A1605C700134554 /* SVProgressHUD in Frameworks */,
 				55AC16B42A0CDB6A00967DB2 /* Alamofire in Frameworks */,
 				55AC16BA2A0CDB8F00967DB2 /* SwiftSoup in Frameworks */,
 				55F4430A2A16AC1200A4F18E /* Charts in Frameworks */,
@@ -80,10 +96,19 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		55455DBD2A1C953800635F42 /* DollarMoreRefactorTests */ = {
+			isa = PBXGroup;
+			children = (
+				55455DBE2A1C953800635F42 /* DollarMoreRefactorTests.swift */,
+			);
+			path = DollarMoreRefactorTests;
+			sourceTree = "<group>";
+		};
 		55A295CF2A0CC199004905F1 = {
 			isa = PBXGroup;
 			children = (
 				55A295DA2A0CC199004905F1 /* DollarMoreRefactor */,
+				55455DBD2A1C953800635F42 /* DollarMoreRefactorTests */,
 				55A295D92A0CC199004905F1 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -92,6 +117,7 @@
 			isa = PBXGroup;
 			children = (
 				55A295D82A0CC199004905F1 /* DollarMoreRefactor.app */,
+				55455DBC2A1C953800635F42 /* DollarMoreRefactorTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -135,7 +161,6 @@
 		55C339E92A0D0C7C00D6057E /* Other */ = {
 			isa = PBXGroup;
 			children = (
-				55C33A042A0D6B7500D6057E /* Extensions.swift */,
 				55A295DD2A0CC199004905F1 /* SceneDelegate.swift */,
 				55A295DB2A0CC199004905F1 /* AppDelegate.swift */,
 				55C339FA2A0D1E0700D6057E /* Resources */,
@@ -195,6 +220,24 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		55455DBB2A1C953800635F42 /* DollarMoreRefactorTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 55455DC42A1C953800635F42 /* Build configuration list for PBXNativeTarget "DollarMoreRefactorTests" */;
+			buildPhases = (
+				55455DB82A1C953800635F42 /* Sources */,
+				55455DB92A1C953800635F42 /* Frameworks */,
+				55455DBA2A1C953800635F42 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				55455DC12A1C953800635F42 /* PBXTargetDependency */,
+			);
+			name = DollarMoreRefactorTests;
+			productName = DollarMoreRefactorTests;
+			productReference = 55455DBC2A1C953800635F42 /* DollarMoreRefactorTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 		55A295D72A0CC199004905F1 /* DollarMoreRefactor */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 55A295EC2A0CC19B004905F1 /* Build configuration list for PBXNativeTarget "DollarMoreRefactor" */;
@@ -211,7 +254,6 @@
 			packageProductDependencies = (
 				55AC16B32A0CDB6A00967DB2 /* Alamofire */,
 				55AC16B92A0CDB8F00967DB2 /* SwiftSoup */,
-				55EC66042A1605C700134554 /* SVProgressHUD */,
 				55F443092A16AC1200A4F18E /* Charts */,
 			);
 			productName = DollarMoreRefactor;
@@ -228,6 +270,10 @@
 				LastSwiftUpdateCheck = 1430;
 				LastUpgradeCheck = 1430;
 				TargetAttributes = {
+					55455DBB2A1C953800635F42 = {
+						CreatedOnToolsVersion = 14.3;
+						TestTargetID = 55A295D72A0CC199004905F1;
+					};
 					55A295D72A0CC199004905F1 = {
 						CreatedOnToolsVersion = 14.3;
 					};
@@ -244,7 +290,6 @@
 			packageReferences = (
 				55AC16B22A0CDB6A00967DB2 /* XCRemoteSwiftPackageReference "Alamofire" */,
 				55AC16B82A0CDB8F00967DB2 /* XCRemoteSwiftPackageReference "SwiftSoup" */,
-				55EC66032A1605C700134554 /* XCRemoteSwiftPackageReference "SVProgressHUD" */,
 				55F443082A16AC1200A4F18E /* XCRemoteSwiftPackageReference "Charts" */,
 			);
 			productRefGroup = 55A295D92A0CC199004905F1 /* Products */;
@@ -252,11 +297,19 @@
 			projectRoot = "";
 			targets = (
 				55A295D72A0CC199004905F1 /* DollarMoreRefactor */,
+				55455DBB2A1C953800635F42 /* DollarMoreRefactorTests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		55455DBA2A1C953800635F42 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		55A295D62A0CC199004905F1 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -271,6 +324,14 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		55455DB82A1C953800635F42 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				55455DBF2A1C953800635F42 /* DollarMoreRefactorTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		55A295D42A0CC199004905F1 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -289,7 +350,6 @@
 				55C339E12A0CFBB700D6057E /* URLSession+AsyncLinux.swift in Sources */,
 				55C33A072A10B91500D6057E /* DualChartView.swift in Sources */,
 				55A295DE2A0CC199004905F1 /* SceneDelegate.swift in Sources */,
-				55C33A052A0D6B7500D6057E /* Extensions.swift in Sources */,
 				55C339E52A0CFBDF00D6057E /* Chart.swift in Sources */,
 				55C339FC2A0D308D00D6057E /* SingleChartView.swift in Sources */,
 				55A295F02A0CC25C004905F1 /* MainViewController.swift in Sources */,
@@ -298,6 +358,14 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		55455DC12A1C953800635F42 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 55A295D72A0CC199004905F1 /* DollarMoreRefactor */;
+			targetProxy = 55455DC02A1C953800635F42 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		55A295E12A0CC199004905F1 /* Main.storyboard */ = {
@@ -319,6 +387,44 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		55455DC22A1C953800635F42 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = VJ2VF4KUF7;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.4;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = Jimmy.DollarMoreRefactorTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/DollarMoreRefactor.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/DollarMoreRefactor";
+			};
+			name = Debug;
+		};
+		55455DC32A1C953800635F42 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = VJ2VF4KUF7;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.4;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = Jimmy.DollarMoreRefactorTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/DollarMoreRefactor.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/DollarMoreRefactor";
+			};
+			name = Release;
+		};
 		55A295EA2A0CC19B004905F1 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -506,6 +612,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		55455DC42A1C953800635F42 /* Build configuration list for PBXNativeTarget "DollarMoreRefactorTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				55455DC22A1C953800635F42 /* Debug */,
+				55455DC32A1C953800635F42 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		55A295D32A0CC199004905F1 /* Build configuration list for PBXProject "DollarMoreRefactor" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
@@ -543,14 +658,6 @@
 				minimumVersion = 2.0.0;
 			};
 		};
-		55EC66032A1605C700134554 /* XCRemoteSwiftPackageReference "SVProgressHUD" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/wowpotato/SVProgressHUD.git";
-			requirement = {
-				kind = exactVersion;
-				version = 2.2.7;
-			};
-		};
 		55F443082A16AC1200A4F18E /* XCRemoteSwiftPackageReference "Charts" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/Jimmy-Jung/Charts.git";
@@ -571,11 +678,6 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 55AC16B82A0CDB8F00967DB2 /* XCRemoteSwiftPackageReference "SwiftSoup" */;
 			productName = SwiftSoup;
-		};
-		55EC66042A1605C700134554 /* SVProgressHUD */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 55EC66032A1605C700134554 /* XCRemoteSwiftPackageReference "SVProgressHUD" */;
-			productName = SVProgressHUD;
 		};
 		55F443092A16AC1200A4F18E /* Charts */ = {
 			isa = XCSwiftPackageProductDependency;

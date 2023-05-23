@@ -37,10 +37,10 @@ final class MainViewModel {
                 indicators: [Indicator]()
             )
         ) {
-        didSet {
-            switch hanaData {
-            case .success(let data):
-                hanaLabelSet = updateLabelSet(chartData: data)
+            didSet {
+                switch hanaData {
+                case .success(let data):
+                    hanaLabelSet = updateLabelSet(chartData: data)
                 hanaReferenceTimeLabel =
                 updateReferenceTimeLabel(chartData: data)
                 hanaSellBuyLabel = updateSellBuyLabel(chartData: data)
