@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		55455DBF2A1C953800635F42 /* DollarMoreRefactorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55455DBE2A1C953800635F42 /* DollarMoreRefactorTests.swift */; };
+		55455DCC2A1CB2BB00635F42 /* DollarMoreRefactorUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55455DCB2A1CB2BB00635F42 /* DollarMoreRefactorUITests.swift */; };
+		55455DCE2A1CB2BB00635F42 /* DollarMoreRefactorUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55455DCD2A1CB2BB00635F42 /* DollarMoreRefactorUITestsLaunchTests.swift */; };
 		55A295DC2A0CC199004905F1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55A295DB2A0CC199004905F1 /* AppDelegate.swift */; };
 		55A295DE2A0CC199004905F1 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55A295DD2A0CC199004905F1 /* SceneDelegate.swift */; };
 		55A295E32A0CC199004905F1 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 55A295E12A0CC199004905F1 /* Main.storyboard */; };
@@ -43,11 +45,21 @@
 			remoteGlobalIDString = 55A295D72A0CC199004905F1;
 			remoteInfo = DollarMoreRefactor;
 		};
+		55455DCF2A1CB2BB00635F42 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 55A295D02A0CC199004905F1 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 55A295D72A0CC199004905F1;
+			remoteInfo = DollarMoreRefactor;
+		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		55455DBC2A1C953800635F42 /* DollarMoreRefactorTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DollarMoreRefactorTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		55455DBE2A1C953800635F42 /* DollarMoreRefactorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DollarMoreRefactorTests.swift; sourceTree = "<group>"; };
+		55455DC92A1CB2BB00635F42 /* DollarMoreRefactorUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DollarMoreRefactorUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		55455DCB2A1CB2BB00635F42 /* DollarMoreRefactorUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DollarMoreRefactorUITests.swift; sourceTree = "<group>"; };
+		55455DCD2A1CB2BB00635F42 /* DollarMoreRefactorUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DollarMoreRefactorUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		5562A51D2A1B3D0300A1F8A8 /* ko */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = ko; path = ko.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		5562A51E2A1B3D0300A1F8A8 /* ko */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = ko; path = ko.lproj/Main.storyboard; sourceTree = "<group>"; };
 		55A295D82A0CC199004905F1 /* DollarMoreRefactor.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DollarMoreRefactor.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -83,6 +95,13 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		55455DC62A1CB2BB00635F42 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		55A295D52A0CC199004905F1 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -104,11 +123,21 @@
 			path = DollarMoreRefactorTests;
 			sourceTree = "<group>";
 		};
+		55455DCA2A1CB2BB00635F42 /* DollarMoreRefactorUITests */ = {
+			isa = PBXGroup;
+			children = (
+				55455DCB2A1CB2BB00635F42 /* DollarMoreRefactorUITests.swift */,
+				55455DCD2A1CB2BB00635F42 /* DollarMoreRefactorUITestsLaunchTests.swift */,
+			);
+			path = DollarMoreRefactorUITests;
+			sourceTree = "<group>";
+		};
 		55A295CF2A0CC199004905F1 = {
 			isa = PBXGroup;
 			children = (
 				55A295DA2A0CC199004905F1 /* DollarMoreRefactor */,
 				55455DBD2A1C953800635F42 /* DollarMoreRefactorTests */,
+				55455DCA2A1CB2BB00635F42 /* DollarMoreRefactorUITests */,
 				55A295D92A0CC199004905F1 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -118,6 +147,7 @@
 			children = (
 				55A295D82A0CC199004905F1 /* DollarMoreRefactor.app */,
 				55455DBC2A1C953800635F42 /* DollarMoreRefactorTests.xctest */,
+				55455DC92A1CB2BB00635F42 /* DollarMoreRefactorUITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -238,6 +268,24 @@
 			productReference = 55455DBC2A1C953800635F42 /* DollarMoreRefactorTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
+		55455DC82A1CB2BB00635F42 /* DollarMoreRefactorUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 55455DD12A1CB2BB00635F42 /* Build configuration list for PBXNativeTarget "DollarMoreRefactorUITests" */;
+			buildPhases = (
+				55455DC52A1CB2BB00635F42 /* Sources */,
+				55455DC62A1CB2BB00635F42 /* Frameworks */,
+				55455DC72A1CB2BB00635F42 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				55455DD02A1CB2BB00635F42 /* PBXTargetDependency */,
+			);
+			name = DollarMoreRefactorUITests;
+			productName = DollarMoreRefactorUITests;
+			productReference = 55455DC92A1CB2BB00635F42 /* DollarMoreRefactorUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
 		55A295D72A0CC199004905F1 /* DollarMoreRefactor */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 55A295EC2A0CC19B004905F1 /* Build configuration list for PBXNativeTarget "DollarMoreRefactor" */;
@@ -274,6 +322,10 @@
 						CreatedOnToolsVersion = 14.3;
 						TestTargetID = 55A295D72A0CC199004905F1;
 					};
+					55455DC82A1CB2BB00635F42 = {
+						CreatedOnToolsVersion = 14.3;
+						TestTargetID = 55A295D72A0CC199004905F1;
+					};
 					55A295D72A0CC199004905F1 = {
 						CreatedOnToolsVersion = 14.3;
 					};
@@ -298,12 +350,20 @@
 			targets = (
 				55A295D72A0CC199004905F1 /* DollarMoreRefactor */,
 				55455DBB2A1C953800635F42 /* DollarMoreRefactorTests */,
+				55455DC82A1CB2BB00635F42 /* DollarMoreRefactorUITests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
 		55455DBA2A1C953800635F42 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		55455DC72A1CB2BB00635F42 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -329,6 +389,15 @@
 			buildActionMask = 2147483647;
 			files = (
 				55455DBF2A1C953800635F42 /* DollarMoreRefactorTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		55455DC52A1CB2BB00635F42 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				55455DCC2A1CB2BB00635F42 /* DollarMoreRefactorUITests.swift in Sources */,
+				55455DCE2A1CB2BB00635F42 /* DollarMoreRefactorUITestsLaunchTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -365,6 +434,11 @@
 			target = 55A295D72A0CC199004905F1 /* DollarMoreRefactor */;
 			targetProxy = 55455DC02A1C953800635F42 /* PBXContainerItemProxy */;
 		};
+		55455DD02A1CB2BB00635F42 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 55A295D72A0CC199004905F1 /* DollarMoreRefactor */;
+			targetProxy = 55455DCF2A1CB2BB00635F42 /* PBXContainerItemProxy */;
+		};
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
@@ -395,7 +469,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = VJ2VF4KUF7;
 				GENERATE_INFOPLIST_FILE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 16.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = Jimmy.DollarMoreRefactorTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -414,7 +488,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = VJ2VF4KUF7;
 				GENERATE_INFOPLIST_FILE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 16.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = Jimmy.DollarMoreRefactorTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -422,6 +496,42 @@
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/DollarMoreRefactor.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/DollarMoreRefactor";
+			};
+			name = Release;
+		};
+		55455DD22A1CB2BB00635F42 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = VJ2VF4KUF7;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = Jimmy.DollarMoreRefactorUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = DollarMoreRefactor;
+			};
+			name = Debug;
+		};
+		55455DD32A1CB2BB00635F42 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = VJ2VF4KUF7;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = Jimmy.DollarMoreRefactorUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = DollarMoreRefactor;
 			};
 			name = Release;
 		};
@@ -617,6 +727,15 @@
 			buildConfigurations = (
 				55455DC22A1C953800635F42 /* Debug */,
 				55455DC32A1C953800635F42 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		55455DD12A1CB2BB00635F42 /* Build configuration list for PBXNativeTarget "DollarMoreRefactorUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				55455DD22A1CB2BB00635F42 /* Debug */,
+				55455DD32A1CB2BB00635F42 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
