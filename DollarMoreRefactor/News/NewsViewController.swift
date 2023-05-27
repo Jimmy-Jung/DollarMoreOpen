@@ -12,15 +12,16 @@ import Combine
 final class NewsViewController: UIViewController {
     // MARK: - Outlets
     @IBOutlet weak var newsTableView: UITableView!
+    @IBOutlet weak var refreshButton: UIBarButtonItem!
     
     // MARK: - Properties
     let newsViewModel = NewsViewModel()
     var newsItems: [NewsItem] = []
     var newsCancellable: AnyCancellable?
     let activityIndicator = UIActivityIndicatorView(style: .large)
-
+    
     // MARK: - lifeCycle
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.title = "채권/외환 뉴스"
@@ -56,13 +57,17 @@ final class NewsViewController: UIViewController {
     
     /// 뉴스아이템 가져오기
     private func fetchNews() {
-        newsCancellable = newsViewModel.$newsItems.receive(on: DispatchQueue.main).sink { [weak self] items in
-            self?.newsItems = items ?? []
-            self?.newsTableView.reloadData()
-            DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
-                self?.activityIndicator.stopAnimating()
+        newsCancellable =
+        newsViewModel
+            .$newsItems
+            .receive(on: DispatchQueue.main)
+            .sink { [weak self] items in
+                self?.newsItems = items ?? []
+                self?.newsTableView.reloadData()
+                DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+                    self?.activityIndicator.stopAnimating()
+                }
             }
-        }
     }
     /// 인디케이터 만들기
     private func makeIndicator() {
@@ -70,7 +75,7 @@ final class NewsViewController: UIViewController {
         view.addSubview(activityIndicator)
     }
     // MARK: - Actions
-
+    
     @IBAction func refreshButtonTapped(_ sender: Any) {
         fetchRSS()
     }
@@ -78,12 +83,22 @@ final class NewsViewController: UIViewController {
 }
 
 extension NewsViewController: UITableViewDataSource, UITableViewDelegate {
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    func tableView(
+        _ tableView: UITableView,
+        numberOfRowsInSection section: Int
+    ) -> Int {
         return newsItems.count
     }
     
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = newsTableView.dequeueReusableCell(withIdentifier: "NewsCell", for: indexPath) as! NewsCell
+    func tableView(
+        _ tableView: UITableView,
+        cellForRowAt indexPath: IndexPath
+    ) -> UITableViewCell {
+        let cell =
+        newsTableView
+            .dequeueReusableCell(
+                withIdentifier: "NewsCell", for: indexPath
+            ) as! NewsCell
         cell.accessoryType = .disclosureIndicator
         cell.newsTitleLabel.text = newsItems[indexPath.row].title
         cell.descriptionLabel.text = newsItems[indexPath.row].description
@@ -91,12 +106,15 @@ extension NewsViewController: UITableViewDataSource, UITableViewDelegate {
         return cell
         
     }
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+    func tableView(
+        _ tableView: UITableView,
+        didSelectRowAt indexPath: IndexPath
+    ) {
         let urlString = newsItems[indexPath.row].link
-                if let url = URL(string: urlString) {
-                    let safariViewController = SFSafariViewController(url: url)
-                    present(safariViewController, animated: true, completion: nil)
-                }
+        if let url = URL(string: urlString) {
+            let safariViewController = SFSafariViewController(url: url)
+            present(safariViewController, animated: true, completion: nil)
+        }
         tableView.deselectRow(at: indexPath, animated: true)
     }
 }

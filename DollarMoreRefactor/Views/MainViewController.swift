@@ -216,7 +216,7 @@ final class MainViewController: UIViewController {
     
     
     // MARK: - Methods
-                
+    
     private func makeLoader() {
         view.addSubview(activityIndicatorView)
         activityIndicatorView.center = view.center
@@ -246,8 +246,8 @@ final class MainViewController: UIViewController {
             activityIndicatorView.startAnimating()
             await updateChartData()
             activityIndicatorView.stopAnimating()
-
-           // hideLoader()
+            
+            // hideLoader()
         }
     }
     
@@ -369,12 +369,21 @@ final class MainViewController: UIViewController {
         graphView.subviews.first?.removeFromSuperview()
         graphView.addSubview(dualChartView)
         dualChartView.translatesAutoresizingMaskIntoConstraints = false
-        NSLayoutConstraint.activate([
-            dualChartView.topAnchor.constraint(equalTo: graphView.topAnchor),
-            dualChartView.bottomAnchor.constraint(equalTo: graphView.bottomAnchor),
-            dualChartView.rightAnchor.constraint(equalTo: graphView.rightAnchor),
-            dualChartView.leftAnchor.constraint(equalTo: graphView.leftAnchor)
-        ])
+        NSLayoutConstraint
+            .activate([
+                dualChartView
+                    .topAnchor
+                    .constraint(equalTo: graphView.topAnchor),
+                dualChartView
+                    .bottomAnchor
+                    .constraint(equalTo: graphView.bottomAnchor),
+                dualChartView
+                    .rightAnchor
+                    .constraint(equalTo: graphView.rightAnchor),
+                dualChartView
+                    .leftAnchor
+                    .constraint(equalTo: graphView.leftAnchor)
+            ])
     }
     
     /// 싱글차트 만들기
@@ -400,10 +409,18 @@ final class MainViewController: UIViewController {
         graphView.addSubview(singleChartView)
         singleChartView.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-            singleChartView.topAnchor.constraint(equalTo: graphView.topAnchor),
-            singleChartView.bottomAnchor.constraint(equalTo: graphView.bottomAnchor),
-            singleChartView.rightAnchor.constraint(equalTo: graphView.rightAnchor),
-            singleChartView.leftAnchor.constraint(equalTo: graphView.leftAnchor)
+            singleChartView
+                .topAnchor
+                .constraint(equalTo: graphView.topAnchor),
+            singleChartView
+                .bottomAnchor
+                .constraint(equalTo: graphView.bottomAnchor),
+            singleChartView
+                .rightAnchor
+                .constraint(equalTo: graphView.rightAnchor),
+            singleChartView
+                .leftAnchor
+                .constraint(equalTo: graphView.leftAnchor)
         ])
     }
     // 5. 범위 버튼
@@ -448,18 +465,27 @@ final class MainViewController: UIViewController {
         for set in labelSets {
             set.$set.sink { [weak self] value in
                 guard let self = self, let value = value else { return }
-                self.updateCurrentRate(currentData: value, labelSet: set.labelSet)
+                self.updateCurrentRate(
+                    currentData: value,
+                    labelSet: set.labelSet
+                )
             }.store(in: &cancellables)
         }
     }
     /// 현재시간 레이블 구독
     private func subscribeTimeLabel() {
-        mainViewModel.$usdReferenceTimeLabel.receive(on: DispatchQueue.main).sink { [weak self] value in
+        mainViewModel
+            .$usdReferenceTimeLabel
+            .receive(on: DispatchQueue.main)
+            .sink { [weak self] value in
             guard let self = self else {return}
             self.referenceTimeLabel.text = value
         }.store(in: &cancellables)
         
-        mainViewModel.$hanaReferenceTimeLabel.receive(on: DispatchQueue.main).sink { [weak self] value in
+        mainViewModel
+            .$hanaReferenceTimeLabel
+            .receive(on: DispatchQueue.main)
+            .sink { [weak self] value in
             guard let self = self else {return}
             self.hanaReferenceTimeLabel.text = value
         }.store(in: &cancellables)
@@ -467,7 +493,10 @@ final class MainViewController: UIViewController {
     
     /// 판매 구매 레이블 구독
     private func subscribeSellBuyLabel() {
-        mainViewModel.$hanaSellBuyLabel.receive(on: DispatchQueue.main).sink { [weak self] value in
+        mainViewModel
+            .$hanaSellBuyLabel
+            .receive(on: DispatchQueue.main)
+            .sink { [weak self] value in
             guard let self = self else {return}
             self.hanaSellCurrency.text = value.sell
             self.hanaBuyCurrency.text = value.buy
@@ -499,6 +528,6 @@ final class MainViewController: UIViewController {
             upDownImageColor.tintColor = currentData.upDownImageColor
         }
     }
-   
+    
 }
 

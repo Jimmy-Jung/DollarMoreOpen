@@ -16,7 +16,6 @@ final class NewsViewModel {
         guard let url =
                 URL(string: "https://news.einfomax.co.kr/rss/S1N16.xml")
         else { return }
-        
         cancellable =
         URLSession.shared.dataTaskPublisher(for: url)
             .map(\.data)
