@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="lo3-tc-eeD">
-    <device id="retina6_12" orientation="portrait" appearance="dark"/>
+    <device id="retina6_12" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21678"/>
@@ -639,9 +639,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" estimatedSectionHeaderHeight="-1" sectionFooterHeight="18" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="6lg-IK-eCi">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" estimatedSectionHeaderHeight="-1" sectionFooterHeight="18" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="6lg-IK-eCi">
                                 <rect key="frame" x="0.0" y="103" width="393" height="666"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="NewsCell" id="wwn-NK-OxJ" customClass="NewsCell" customModule="DollarMoreRefactor" customModuleProvider="target">
@@ -696,6 +695,12 @@ description</string>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="7me-kB-isl"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="6lg-IK-eCi" firstAttribute="leading" secondItem="7me-kB-isl" secondAttribute="leading" id="0Y9-AQ-XcN"/>
+                            <constraint firstItem="6lg-IK-eCi" firstAttribute="top" secondItem="7me-kB-isl" secondAttribute="top" id="XnB-xQ-mGP"/>
+                            <constraint firstItem="6lg-IK-eCi" firstAttribute="bottom" secondItem="7me-kB-isl" secondAttribute="bottom" id="Xs8-Xw-mwn"/>
+                            <constraint firstItem="6lg-IK-eCi" firstAttribute="trailing" secondItem="7me-kB-isl" secondAttribute="trailing" id="fKf-aG-Xib"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="YNI-Tp-70V">
                         <barButtonItem key="rightBarButtonItem" id="1Eq-mf-djf">
