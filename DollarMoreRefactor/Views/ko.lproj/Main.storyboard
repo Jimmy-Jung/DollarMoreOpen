@@ -652,9 +652,9 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacingType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="6KF-ns-6lk">
-                                                    <rect key="frame" x="25" y="10" width="343" height="100.33333333333333"/>
+                                                    <rect key="frame" x="25" y="10" width="343" height="100.33333333333334"/>
                                                     <subviews>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="News Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rbw-rG-Pj0">
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="News Title" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rbw-rG-Pj0">
                                                             <rect key="frame" x="0.0" y="0.0" width="343" height="19.666666666666668"/>
                                                             <fontDescription key="fontDescription" type="boldSystem" pointSize="16"/>
                                                             <nil key="textColor"/>
@@ -698,7 +698,15 @@ description</string>
                         <viewLayoutGuide key="safeArea" id="7me-kB-isl"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
-                    <navigationItem key="navigationItem" id="YNI-Tp-70V"/>
+                    <navigationItem key="navigationItem" id="YNI-Tp-70V">
+                        <barButtonItem key="rightBarButtonItem" id="1Eq-mf-djf">
+                            <imageReference key="image" image="arrow.clockwise.circle" catalog="system" symbolScale="large"/>
+                            <color key="tintColor" systemColor="labelColor"/>
+                            <connections>
+                                <action selector="refreshButtonTapped:" destination="9ZT-e5-Sd7" id="1K0-wW-lw5"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="newsTableView" destination="6lg-IK-eCi" id="oRL-xS-02L"/>
                     </connections>

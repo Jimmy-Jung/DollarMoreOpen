@@ -10,31 +10,69 @@ import SafariServices
 import Combine
 
 final class NewsViewController: UIViewController {
-    
+    // MARK: - Outlets
     @IBOutlet weak var newsTableView: UITableView!
+    
+    // MARK: - Properties
     let newsViewModel = NewsViewModel()
     var newsItems: [NewsItem] = []
-    lazy var newsCancellable = newsViewModel.$newsItems.sink {
-        self.newsItems = $0 ?? []
-        self.newsTableView.reloadData()
-    }
+    var newsCancellable: AnyCancellable?
+    let activityIndicator = UIActivityIndicatorView(style: .large)
 
-    
+    // MARK: - lifeCycle
+
     override func viewDidLoad() {
         super.viewDidLoad()
         self.title = "채권/외환 뉴스"
+        makeIndicator()
         setupTableView()
-        Task{ await fetchNews() }
+        fetchRSS()
+        fetchNews()
+        
     }
-       // 테이블뷰 셋팅
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        fetchNews()
+    }
+    
+    deinit {
+        newsCancellable?.cancel()
+    }
+    
+    // 테이블뷰 셋팅
     private func setupTableView() {
         newsTableView.dataSource = self
         newsTableView.delegate = self
+        newsTableView.rowHeight = UITableView.automaticDimension
+        newsTableView.estimatedRowHeight = 140
+    }
+    // MARK: - PrivateMethods
+    
+    /// RSS데이터 가져오기
+    private func fetchRSS() {
+        activityIndicator.startAnimating()
+        newsViewModel.fetchRSS()
     }
     
-    private func fetchNews() async {
-        await newsViewModel.updateNews()
-        print(newsItems)
+    /// 뉴스아이템 가져오기
+    private func fetchNews() {
+        newsCancellable = newsViewModel.$newsItems.receive(on: DispatchQueue.main).sink { [weak self] items in
+            self?.newsItems = items ?? []
+            self?.newsTableView.reloadData()
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+                self?.activityIndicator.stopAnimating()
+            }
+        }
+    }
+    /// 인디케이터 만들기
+    private func makeIndicator() {
+        activityIndicator.center = view.center
+        view.addSubview(activityIndicator)
+    }
+    // MARK: - Actions
+
+    @IBAction func refreshButtonTapped(_ sender: Any) {
+        fetchRSS()
     }
     
 }
@@ -50,18 +88,15 @@ extension NewsViewController: UITableViewDataSource, UITableViewDelegate {
         cell.newsTitleLabel.text = newsItems[indexPath.row].title
         cell.descriptionLabel.text = newsItems[indexPath.row].description
         cell.releaseDateLabel.text = newsItems[indexPath.row].pubDate
-        cell.newsLink = newsItems[indexPath.row].link
         return cell
         
     }
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let urlString = "https://www.apple.com"
+        let urlString = newsItems[indexPath.row].link
                 if let url = URL(string: urlString) {
                     let safariViewController = SFSafariViewController(url: url)
                     present(safariViewController, animated: true, completion: nil)
                 }
-    }
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 120
+        tableView.deselectRow(at: indexPath, animated: true)
     }
 }

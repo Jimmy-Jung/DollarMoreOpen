@@ -7,7 +7,7 @@
 
 import UIKit
 
-final class MainViewModel {
+final class MainViewModel: ObservableObject {
     struct CurrencyLabelData {
         let currencyLabel: String
         let rateDiff: String

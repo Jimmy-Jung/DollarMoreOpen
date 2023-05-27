@@ -12,9 +12,10 @@
 		55455DCE2A1CB2BB00635F42 /* DollarMoreRefactorUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55455DCD2A1CB2BB00635F42 /* DollarMoreRefactorUITestsLaunchTests.swift */; };
 		55455DD82A1DAF6500635F42 /* NewsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55455DD72A1DAF6500635F42 /* NewsCell.swift */; };
 		55455DDA2A1E515500635F42 /* NewsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55455DD92A1E515500635F42 /* NewsViewController.swift */; };
-		55455DDE2A1F57D900635F42 /* NewsAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55455DDD2A1F57D900635F42 /* NewsAPI.swift */; };
 		55455DE02A1F5D3800635F42 /* NewsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55455DDF2A1F5D3800635F42 /* NewsViewModel.swift */; };
 		55455DE22A1F5ECA00635F42 /* NewsHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55455DE12A1F5EC900635F42 /* NewsHelpers.swift */; };
+		55455DE52A2193B600635F42 /* AlamofireRSSParser in Frameworks */ = {isa = PBXBuildFile; productRef = 55455DE42A2193B600635F42 /* AlamofireRSSParser */; };
+		55455DE92A226CE100635F42 /* RssParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55455DE82A226CE100635F42 /* RssParser.swift */; };
 		55A295DC2A0CC199004905F1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55A295DB2A0CC199004905F1 /* AppDelegate.swift */; };
 		55A295DE2A0CC199004905F1 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55A295DD2A0CC199004905F1 /* SceneDelegate.swift */; };
 		55A295E32A0CC199004905F1 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 55A295E12A0CC199004905F1 /* Main.storyboard */; };
@@ -67,9 +68,9 @@
 		55455DCD2A1CB2BB00635F42 /* DollarMoreRefactorUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DollarMoreRefactorUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		55455DD72A1DAF6500635F42 /* NewsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsCell.swift; sourceTree = "<group>"; };
 		55455DD92A1E515500635F42 /* NewsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsViewController.swift; sourceTree = "<group>"; };
-		55455DDD2A1F57D900635F42 /* NewsAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsAPI.swift; sourceTree = "<group>"; };
 		55455DDF2A1F5D3800635F42 /* NewsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsViewModel.swift; sourceTree = "<group>"; };
 		55455DE12A1F5EC900635F42 /* NewsHelpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsHelpers.swift; sourceTree = "<group>"; };
+		55455DE82A226CE100635F42 /* RssParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RssParser.swift; sourceTree = "<group>"; };
 		5562A51D2A1B3D0300A1F8A8 /* ko */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = ko; path = ko.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		5562A51E2A1B3D0300A1F8A8 /* ko */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = ko; path = ko.lproj/Main.storyboard; sourceTree = "<group>"; };
 		55A295D82A0CC199004905F1 /* DollarMoreRefactor.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DollarMoreRefactor.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -119,6 +120,7 @@
 				55AC16B42A0CDB6A00967DB2 /* Alamofire in Frameworks */,
 				55AC16BA2A0CDB8F00967DB2 /* SwiftSoup in Frameworks */,
 				55F4430A2A16AC1200A4F18E /* Charts in Frameworks */,
+				55455DE52A2193B600635F42 /* AlamofireRSSParser in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -147,9 +149,9 @@
 			children = (
 				55455DD72A1DAF6500635F42 /* NewsCell.swift */,
 				55455DD92A1E515500635F42 /* NewsViewController.swift */,
-				55455DDD2A1F57D900635F42 /* NewsAPI.swift */,
 				55455DDF2A1F5D3800635F42 /* NewsViewModel.swift */,
 				55455DE12A1F5EC900635F42 /* NewsHelpers.swift */,
+				55455DE82A226CE100635F42 /* RssParser.swift */,
 			);
 			path = News;
 			sourceTree = "<group>";
@@ -326,6 +328,7 @@
 				55AC16B32A0CDB6A00967DB2 /* Alamofire */,
 				55AC16B92A0CDB8F00967DB2 /* SwiftSoup */,
 				55F443092A16AC1200A4F18E /* Charts */,
+				55455DE42A2193B600635F42 /* AlamofireRSSParser */,
 			);
 			productName = DollarMoreRefactor;
 			productReference = 55A295D82A0CC199004905F1 /* DollarMoreRefactor.app */;
@@ -366,6 +369,7 @@
 				55AC16B22A0CDB6A00967DB2 /* XCRemoteSwiftPackageReference "Alamofire" */,
 				55AC16B82A0CDB8F00967DB2 /* XCRemoteSwiftPackageReference "SwiftSoup" */,
 				55F443082A16AC1200A4F18E /* XCRemoteSwiftPackageReference "Charts" */,
+				55455DE32A2193B600635F42 /* XCRemoteSwiftPackageReference "AlamofireRSSParser" */,
 			);
 			productRefGroup = 55A295D92A0CC199004905F1 /* Products */;
 			projectDirPath = "";
@@ -434,7 +438,6 @@
 				55C339DC2A0CF67D00D6057E /* HanaBankAPI.swift in Sources */,
 				55455DDA2A1E515500635F42 /* NewsViewController.swift in Sources */,
 				55C339E32A0CFBCE00D6057E /* ChartRange.swift in Sources */,
-				55455DDE2A1F57D900635F42 /* NewsAPI.swift in Sources */,
 				55C339E72A0CFBFA00D6057E /* APIError.swift in Sources */,
 				55C33A012A0D5E4900D6057E /* CustomMarkerView.swift in Sources */,
 				55EC66092A16837C00134554 /* HanaBankModel.swift in Sources */,
@@ -451,6 +454,7 @@
 				55C339FC2A0D308D00D6057E /* SingleChartView.swift in Sources */,
 				55A295F02A0CC25C004905F1 /* MainViewController.swift in Sources */,
 				55C339F82A0D17CF00D6057E /* MainViewModel.swift in Sources */,
+				55455DE92A226CE100635F42 /* RssParser.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -789,6 +793,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		55455DE32A2193B600635F42 /* XCRemoteSwiftPackageReference "AlamofireRSSParser" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/AdeptusAstartes/AlamofireRSSParser.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 4.0.0;
+			};
+		};
 		55AC16B22A0CDB6A00967DB2 /* XCRemoteSwiftPackageReference "Alamofire" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/Alamofire/Alamofire.git";
@@ -816,6 +828,11 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		55455DE42A2193B600635F42 /* AlamofireRSSParser */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 55455DE32A2193B600635F42 /* XCRemoteSwiftPackageReference "AlamofireRSSParser" */;
+			productName = AlamofireRSSParser;
+		};
 		55AC16B32A0CDB6A00967DB2 /* Alamofire */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 55AC16B22A0CDB6A00967DB2 /* XCRemoteSwiftPackageReference "Alamofire" */;

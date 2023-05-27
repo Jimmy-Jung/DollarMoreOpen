@@ -6,25 +6,30 @@
 //
 
 import Foundation
+import Combine
 
 final class NewsViewModel {
-    private let newsAPI = NewsAPI()
-    
+    private var cancellable: AnyCancellable?
     @Published var newsItems: [NewsItem]?
     
-    public func updateNews() async {
-        switch await newsAPI.makeNewsItems() {
-        case .success(let items):
-            newsItems = items
-        case .failure(let error):
-            newsItems = [
-                NewsItem(
-                    title: error.localizedDescription,
-                    description: "새로고침을 시도해보세요",
-                    pubDate: "",
-                    link: ""
-                )
-            ]
-        }
+    public func fetchRSS() {
+        guard let url =
+                URL(string: "https://news.einfomax.co.kr/rss/S1N16.xml")
+        else { return }
+        
+        cancellable =
+        URLSession.shared.dataTaskPublisher(for: url)
+            .map(\.data)
+            .receive(on: DispatchQueue.main)
+            .sink(receiveCompletion: { _ in }, receiveValue: { data in
+                let parser = XMLParser(data: data)
+                let rssParser = RssParser()
+                parser.delegate = rssParser
+                
+                if parser.parse() {
+                    self.newsItems = rssParser.getNewsItems()
+                }
+            })
     }
+    deinit { cancellable?.cancel() }
 }
