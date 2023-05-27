@@ -11,24 +11,48 @@ import Combine
 final class NewsViewModel {
     private var cancellable: AnyCancellable?
     @Published var newsItems: [NewsItem]?
+    enum Infomax: String {
+        case bondAndExchange = "https://news.einfomax.co.kr/rss/S1N16.xml"
+        case columnAndIssue = "https://news.einfomax.co.kr/rss/S1N9.xml"
+    }
     
     public func fetchRSS() {
-        guard let url =
-                URL(string: "https://news.einfomax.co.kr/rss/S1N16.xml")
+        guard let url1 = URL(string: Infomax.bondAndExchange.rawValue),
+              let url2 = URL(string: Infomax.columnAndIssue.rawValue)
         else { return }
-        cancellable =
-        URLSession.shared.dataTaskPublisher(for: url)
+
+        let publisher1 = URLSession.shared.dataTaskPublisher(for: url1)
             .map(\.data)
-            .receive(on: DispatchQueue.main)
-            .sink(receiveCompletion: { _ in }, receiveValue: { data in
-                let parser = XMLParser(data: data)
+            .compactMap { XMLParser(data: $0) }
+            .compactMap { parser -> [NewsItem]? in
                 let rssParser = RssParser()
                 parser.delegate = rssParser
-                
                 if parser.parse() {
-                    self.newsItems = rssParser.getNewsItems()
+                    return rssParser.getNewsItems()
                 }
+                return nil
+            }
+
+        let publisher2 = URLSession.shared.dataTaskPublisher(for: url2)
+            .map(\.data)
+            .compactMap { XMLParser(data: $0) }
+            .compactMap { parser -> [NewsItem]? in
+                let rssParser = RssParser()
+                parser.delegate = rssParser
+                if parser.parse() {
+                    return rssParser.getNewsItems()
+                }
+                return nil
+            }
+
+        cancellable = Publishers.Zip(publisher1, publisher2)
+            .map { $0.0 + $0.1 }
+            .map { $0.sorted { item1, item2 in item1.pubDate > item2.pubDate } }
+            .receive(on: DispatchQueue.main)
+            .sink(receiveCompletion: { _ in }, receiveValue: { [weak self] newsItems in
+                self?.newsItems = newsItems
             })
     }
+
     deinit { cancellable?.cancel() }
 }

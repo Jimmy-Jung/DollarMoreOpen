@@ -14,7 +14,6 @@ final class RssParser: NSObject, XMLParserDelegate {
     private var currentLink = ""
     private var currentdescription = ""
     private var currentPubDate = ""
-    var dateFormatter = DateFormatter()
 
     public func getNewsItems() -> [NewsItem] {
         return newsItems
@@ -46,40 +45,7 @@ final class RssParser: NSObject, XMLParserDelegate {
                     .replacingOccurrences(of: "quot;", with: "\"" )
             case "link": currentLink += data
             case "description": currentdescription += data
-            case "pubDate":
-                dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
-                let newsDate = dateFormatter.date(from: data)!
-                let currentDate = Date()
-                let components = Calendar
-                    .current
-                    .dateComponents(
-                        [.hour],
-                        from: newsDate,
-                        to: currentDate
-                    )
-                if components.hour! > 23 {
-                    let components = Calendar
-                        .current
-                        .dateComponents(
-                            [.day],
-                            from: newsDate,
-                            to: currentDate
-                        )
-                    currentPubDate += "\(components.day!)일 전"
-                    
-                } else {
-                    if components.hour! < 1 {
-                        let components = Calendar
-                            .current
-                            .dateComponents(
-                                [.hour],
-                                from: newsDate,
-                                to: currentDate
-                            )
-                        currentPubDate += "\(components.minute!)분 전"
-                    }
-                    currentPubDate += "\(components.hour!)시간 전"
-                }
+            case "pubDate": currentPubDate += data.dropFirst(5).dropLast(3)
             default: break
             }
         }
