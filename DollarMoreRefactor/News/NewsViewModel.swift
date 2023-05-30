@@ -21,31 +21,20 @@ final class NewsViewModel {
               let url2 = URL(string: Infomax.columnAndIssue.rawValue)
         else { return }
 
-        let publisher1 = URLSession.shared.dataTaskPublisher(for: url1)
-            .map(\.data)
-            .compactMap { XMLParser(data: $0) }
-            .compactMap { parser -> [NewsItem]? in
-                let rssParser = RssParser()
-                parser.delegate = rssParser
-                if parser.parse() {
-                    return rssParser.getNewsItems()
+        let publishers = [url1, url2].map { url in
+            return URLSession.shared.dataTaskPublisher(for: url)
+                .map(\.data)
+                .compactMap { XMLParser(data: $0) }
+                .compactMap { parser -> [NewsItem]? in
+                    let rssParser = RssParser()
+                    parser.delegate = rssParser
+                    if parser.parse() {
+                        return rssParser.getNewsItems()
+                    }
+                    return nil
                 }
-                return nil
-            }
-
-        let publisher2 = URLSession.shared.dataTaskPublisher(for: url2)
-            .map(\.data)
-            .compactMap { XMLParser(data: $0) }
-            .compactMap { parser -> [NewsItem]? in
-                let rssParser = RssParser()
-                parser.delegate = rssParser
-                if parser.parse() {
-                    return rssParser.getNewsItems()
-                }
-                return nil
-            }
-
-        cancellable = Publishers.Zip(publisher1, publisher2)
+        }
+        cancellable = Publishers.Zip(publishers[0], publishers[1])
             .map { $0.0 + $0.1 }
             .map { $0.sorted { item1, item2 in item1.pubDate > item2.pubDate } }
             .receive(on: DispatchQueue.main)

@@ -43,9 +43,12 @@ final class RssParser: NSObject, XMLParserDelegate {
                 currentTitle += data
                     .replacingOccurrences(of: "&", with: "")
                     .replacingOccurrences(of: "quot;", with: "\"" )
+                    .replacingOccurrences(of: "lt;", with: "")
+                    .replacingOccurrences(of: "표", with: "")
+                    .replacingOccurrences(of: "gt;", with: "<표>")
             case "link": currentLink += data
             case "description": currentdescription += data
-            case "pubDate": currentPubDate += data.dropFirst(5).dropLast(3)
+            case "pubDate": currentPubDate += data
             default: break
             }
         }

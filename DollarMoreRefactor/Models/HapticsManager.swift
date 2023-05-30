@@ -7,9 +7,9 @@
 
 import UIKit
 
-/// Object to manage haptics
+/// 햅틱 매니저
 final class HapticsManager {
-    /// Singleton
+    /// 싱글톤
     static let shared = HapticsManager()
     
     /// Private constructor
@@ -17,16 +17,18 @@ final class HapticsManager {
     
     // MARK: - Public
     
-    /// Vibrate slightly for selection
+    /// 선택시 얇은 진동 피드백
     public func vibrateForSelection() {
         let generator = UISelectionFeedbackGenerator()
         generator.prepare()
         generator.selectionChanged()
     }
     
-    /// Play haptic for given type interaction
-    /// - Parameter type: Type to vibrate for
-    public func vibrate(for type: UINotificationFeedbackGenerator.FeedbackType) {
+    /// 햅틱 반응 선택
+    /// - Parameter type: 진동 타입
+    public func vibrate(
+        for type: UINotificationFeedbackGenerator.FeedbackType
+    ) {
         let generator = UINotificationFeedbackGenerator()
         generator.prepare()
         generator.notificationOccurred(type)
@@ -35,7 +37,7 @@ final class HapticsManager {
     /// 드래그 햅틱
     public func dragVibrate() {
         let feedbackGenerator = UIImpactFeedbackGenerator(style: .light)
-        //feedbackGenerator.prepare()
+        feedbackGenerator.prepare()
         feedbackGenerator.impactOccurred()
     }
 }

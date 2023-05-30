@@ -104,25 +104,26 @@ extension NewsViewController: UITableViewDataSource, UITableViewDelegate {
         cell.descriptionLabel.text = newsItems[indexPath.row].description
         
         let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "MM-dd HH:mm"
+        dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
         let data = newsItems[indexPath.row].pubDate
         let newsDate = dateFormatter.date(from: data)!
-        let currentDate = Date()
         let components = Calendar
             .current
             .dateComponents(
-                [.hour],
+                [.minute, .hour, .day],
                 from: newsDate,
-                to: currentDate
+                to: Date()
             )
-        if components.hour! < 2 {
-            let components = Calendar
-                .current
-                .dateComponents([.minute], from: newsDate, to: currentDate)
-            cell.releaseDateLabel.text = "\(String(describing: components.minute))분 전"
-
+        switch components {
+        case let components where components.day != 0:
+            cell.releaseDateLabel.text = "\(components.day!)일 전"
+        case let components where components.day == 0 && components.hour != 0:
+            cell.releaseDateLabel.text = "\(components.hour!)시간 전"
+        case let components where components.hour == 0:
+            cell.releaseDateLabel.text = "\(components.minute!)분 전"
+        default:
+            cell.releaseDateLabel.text = newsItems[indexPath.row].pubDate
         }
-        cell.releaseDateLabel.text = newsItems[indexPath.row].pubDate
         return cell
         
     }

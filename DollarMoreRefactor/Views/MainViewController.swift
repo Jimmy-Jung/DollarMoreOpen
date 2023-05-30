@@ -242,12 +242,9 @@ final class MainViewController: UIViewController {
             self.refreshButton.tintColor = .secondaryLabel
         }
         Task {
-            //showLoader()
             activityIndicatorView.startAnimating()
             await updateChartData()
             activityIndicatorView.stopAnimating()
-            
-            // hideLoader()
         }
     }
     
@@ -388,9 +385,8 @@ final class MainViewController: UIViewController {
     
     /// 싱글차트 만들기
     /// - Parameters:
-    ///   - stockName: 종목 이름
-    ///   - range: 차트 범위
-    ///   - lineColor: 차트 라인 색상
+    ///   - stockSymbol: 종목이름
+    ///   - range: 차트범위
     private func makeSingleChart(
         stockSymbol: StocksDataManager.StocksSymbol,
         range: ChartRange
