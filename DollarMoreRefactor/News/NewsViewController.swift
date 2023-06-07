@@ -29,7 +29,7 @@ final class NewsViewController: UIViewController {
         setupTableView()
         fetchRSS()
         fetchNews()
-        
+        setupUIRefreshControl()
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -38,6 +38,17 @@ final class NewsViewController: UIViewController {
     
     deinit {
         newsCancellable?.cancel()
+    }
+    private func setupUIRefreshControl() {
+        // UIRefreshControl 생성
+            let refreshControl = UIRefreshControl()
+            refreshControl.addTarget(self, action: #selector(refreshNews), for: .valueChanged)
+            newsTableView.refreshControl = refreshControl
+    }
+    // 아래로 당겨서 새로고침
+    @objc private func refreshNews() {
+        fetchNews()
+        newsTableView.refreshControl?.endRefreshing()
     }
     
     // 테이블뷰 셋팅

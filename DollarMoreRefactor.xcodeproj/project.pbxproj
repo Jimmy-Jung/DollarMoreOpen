@@ -38,6 +38,7 @@
 		55C33A012A0D5E4900D6057E /* CustomMarkerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55C33A002A0D5E4900D6057E /* CustomMarkerView.swift */; };
 		55C33A032A0D696000D6057E /* DateValueFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55C33A022A0D696000D6057E /* DateValueFormatter.swift */; };
 		55C33A072A10B91500D6057E /* DualChartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55C33A062A10B91500D6057E /* DualChartView.swift */; };
+		55EA483A2A30F5120056428A /* SwiftRater in Frameworks */ = {isa = PBXBuildFile; productRef = 55EA48392A30F5120056428A /* SwiftRater */; };
 		55EC66092A16837C00134554 /* HanaBankModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55EC66082A16837C00134554 /* HanaBankModel.swift */; };
 		55EC660B2A16839800134554 /* HanaAPIServiceError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55EC660A2A16839800134554 /* HanaAPIServiceError.swift */; };
 		55F4430A2A16AC1200A4F18E /* Charts in Frameworks */ = {isa = PBXBuildFile; productRef = 55F443092A16AC1200A4F18E /* Charts */; };
@@ -120,6 +121,7 @@
 				55AC16B42A0CDB6A00967DB2 /* Alamofire in Frameworks */,
 				55AC16BA2A0CDB8F00967DB2 /* SwiftSoup in Frameworks */,
 				55F4430A2A16AC1200A4F18E /* Charts in Frameworks */,
+				55EA483A2A30F5120056428A /* SwiftRater in Frameworks */,
 				55455DE52A2193B600635F42 /* AlamofireRSSParser in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -329,6 +331,7 @@
 				55AC16B92A0CDB8F00967DB2 /* SwiftSoup */,
 				55F443092A16AC1200A4F18E /* Charts */,
 				55455DE42A2193B600635F42 /* AlamofireRSSParser */,
+				55EA48392A30F5120056428A /* SwiftRater */,
 			);
 			productName = DollarMoreRefactor;
 			productReference = 55A295D82A0CC199004905F1 /* DollarMoreRefactor.app */;
@@ -370,6 +373,7 @@
 				55AC16B82A0CDB8F00967DB2 /* XCRemoteSwiftPackageReference "SwiftSoup" */,
 				55F443082A16AC1200A4F18E /* XCRemoteSwiftPackageReference "Charts" */,
 				55455DE32A2193B600635F42 /* XCRemoteSwiftPackageReference "AlamofireRSSParser" */,
+				55EA48382A30F5120056428A /* XCRemoteSwiftPackageReference "SwiftRater" */,
 			);
 			productRefGroup = 55A295D92A0CC199004905F1 /* Products */;
 			projectDirPath = "";
@@ -817,6 +821,14 @@
 				minimumVersion = 2.0.0;
 			};
 		};
+		55EA48382A30F5120056428A /* XCRemoteSwiftPackageReference "SwiftRater" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/takecian/SwiftRater.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.0.0;
+			};
+		};
 		55F443082A16AC1200A4F18E /* XCRemoteSwiftPackageReference "Charts" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/Jimmy-Jung/Charts.git";
@@ -842,6 +854,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 55AC16B82A0CDB8F00967DB2 /* XCRemoteSwiftPackageReference "SwiftSoup" */;
 			productName = SwiftSoup;
+		};
+		55EA48392A30F5120056428A /* SwiftRater */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 55EA48382A30F5120056428A /* XCRemoteSwiftPackageReference "SwiftRater" */;
+			productName = SwiftRater;
 		};
 		55F443092A16AC1200A4F18E /* Charts */ = {
 			isa = XCSwiftPackageProductDependency;

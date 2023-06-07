@@ -8,6 +8,7 @@
 import UIKit
 import Charts
 import Combine
+import SwiftRater
 
 final class MainViewController: UIViewController {
     
@@ -172,6 +173,10 @@ final class MainViewController: UIViewController {
         setupRangeButton()
         configureSubscribe()
         makeLoader()
+    }
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        SwiftRater.check()
     }
     
     override func viewDidLayoutSubviews() {
