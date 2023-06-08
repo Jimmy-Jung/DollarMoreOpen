@@ -42,12 +42,12 @@ final class NewsViewController: UIViewController {
     private func setupUIRefreshControl() {
         // UIRefreshControl 생성
             let refreshControl = UIRefreshControl()
-            refreshControl.addTarget(self, action: #selector(refreshNews), for: .valueChanged)
+            refreshControl.addTarget(self, action: #selector(refreshRSS), for: .valueChanged)
             newsTableView.refreshControl = refreshControl
     }
     // 아래로 당겨서 새로고침
-    @objc private func refreshNews() {
-        fetchNews()
+    @objc private func refreshRSS() {
+        fetchRSS()
         newsTableView.refreshControl?.endRefreshing()
     }
     
