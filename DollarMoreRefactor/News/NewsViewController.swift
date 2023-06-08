@@ -39,6 +39,7 @@ final class NewsViewController: UIViewController {
     deinit {
         newsCancellable?.cancel()
     }
+    
     private func setupUIRefreshControl() {
         // UIRefreshControl 생성
             let refreshControl = UIRefreshControl()
@@ -47,7 +48,7 @@ final class NewsViewController: UIViewController {
     }
     // 아래로 당겨서 새로고침
     @objc private func refreshRSS() {
-        fetchRSS()
+        newsViewModel.fetchRSS()
         newsTableView.refreshControl?.endRefreshing()
     }
     
