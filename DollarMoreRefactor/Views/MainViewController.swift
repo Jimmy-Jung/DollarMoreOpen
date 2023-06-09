@@ -120,7 +120,7 @@ final class MainViewController: UIViewController {
     // MARK: - Properties
     /// 뷰모델
     private let mainViewModel = MainViewModel(
-        dataManager: StocksDataManagerOrigin()
+        dataManager: StocksDataManager()
     )
     // cancellable을 저장하기 위한 Set 선언
     private var cancellables = Set<AnyCancellable>()

@@ -11,13 +11,11 @@ import XCTest
 final class DollarMoreRefactorTests: XCTestCase {
     var yfAPI: YahooFinanceAPI!
     var hanaAPI: HanaBankAPI!
-    var mockViewModel: MainViewModel!
     
     override func setUpWithError() throws {
         try super.setUpWithError()
         hanaAPI = HanaBankAPI()
         yfAPI = YahooFinanceAPI()
-        mockViewModel = MainViewModel(dataManager: MockDataManager())
     }
 
     override func tearDownWithError() throws {
@@ -82,78 +80,86 @@ final class DollarMoreRefactorTests: XCTestCase {
         }
     }
     
-    func testMockViewModel_DollarIndex() async throws {
+    func testMockViewModel_ChartData() async throws {
         // Given
+        let mockDataManager = MockDataManager()
+        let mockViewModel = MainViewModel(dataManager: mockDataManager)
         let ranges: [ChartRange] =
         [.oneDay, .oneWeek, .oneMonth, .oneYear, .fiveYear]
-        let symbol: StocksSymbol = .dollar_Index
+        let symbols: [StocksSymbol] = [.dollar_Won, .dollar_Index]
         // When
-        for range in ranges {
-            let result = await mockViewModel
-                .stocksDataManager
-                .fetchChartData(
-                    stockSymbol: symbol, range: range
+        for symbol in symbols {
+            for range in ranges {
+                let result = await mockViewModel
+                    .stocksDataManager
+                    .fetchChartData(
+                        stockSymbol: symbol, range: range
+                    )
+                //Then
+                XCTAssertNotNil(result)
+                XCTAssertEqual(result?.meta.previousClose, 0)
+                XCTAssertEqual(result?.meta.regularMarketPrice, 0)
+                XCTAssertEqual(
+                    result?.indicators[0].timestamp,
+                    Date(timeIntervalSince1970: 0)
                 )
-            //Then
-            XCTAssertNotNil(result)
-            XCTAssertTrue(result?.meta.previousClose ==  0)
-            XCTAssertTrue(result?.meta.regularMarketPrice == 0)
-            XCTAssertTrue(
-                result?
-                    .indicators[0]
-                    .timestamp == Date(timeIntervalSince1970: 0)
-            )
-            XCTAssertTrue(result?.indicators[0].close == 0)
+                XCTAssertEqual(result?.indicators[0].close, 0)
+            }
         }
+        XCTAssertEqual(mockDataManager.fetchChartDataCallCount, 10)
+        XCTAssertEqual(mockDataManager.fetchWithHanaDataCallCount, 0)
+        XCTAssertEqual(mockDataManager.fetchHanaChartDataCallCount, 0)
     }
-    func testMockViewModel_DollarWon() async throws {
+
+    
+    func testMockViewModel_FetchWithHanaData() async throws {
         // Given
-        let ranges: [ChartRange] =
-        [.oneDay, .oneWeek, .oneMonth, .oneYear, .fiveYear]
-        let symbol: StocksSymbol = .dollar_Won
+        let mockDataManager = MockDataManager()
+        let mockViewModel = MainViewModel(dataManager: mockDataManager)
         // When
-        for range in ranges {
-            let result = await mockViewModel
-                .stocksDataManager
-                .fetchChartData(
-                    stockSymbol: symbol, range: range
-                )
-            //Then
-            XCTAssertNotNil(result)
-            XCTAssertTrue(result?.meta.previousClose ==  0)
-            XCTAssertTrue(result?.meta.regularMarketPrice == 0)
-            XCTAssertTrue(
-                result?
-                    .indicators[0]
-                    .timestamp == Date(timeIntervalSince1970: 0)
-            )
-            XCTAssertTrue(result?.indicators[0].close == 0)
-        }
+        let result = await mockViewModel
+            .stocksDataManager
+            .fetchWithHanaData(stockSymbol: .hanaBank, startOfDay: 0)
+        //Then
+        XCTAssertNotNil(result)
+        XCTAssertEqual(result?.meta.previousClose, 0)
+        XCTAssertEqual(result?.meta.regularMarketPrice, 0)
+        XCTAssertEqual(
+            result?.indicators[0].timestamp,
+            Date(timeIntervalSince1970: 0)
+        )
+        XCTAssertEqual(result?.indicators[0].close, 0)
+        
+        XCTAssertEqual(mockDataManager.fetchChartDataCallCount, 0)
+        XCTAssertEqual(mockDataManager.fetchWithHanaDataCallCount, 1)
+        XCTAssertEqual(mockDataManager.fetchHanaChartDataCallCount, 0)
     }
     
-    func testMockViewModel_HanaBank() async throws {
+    func testMockViewModel_FetchHanaChartData() async throws {
         // Given
-        let ranges: [ChartRange] =
-        [.oneDay, .oneWeek, .oneMonth, .oneYear, .fiveYear]
-        let symbol: StocksSymbol = .hanaBank
+        var mockDataManager = MockDataManager()
+        var mockViewModel = MainViewModel(dataManager: mockDataManager)
         // When
-        for range in ranges {
-            let result = await mockViewModel
-                .stocksDataManager
-                .fetchChartData(
-                    stockSymbol: symbol, range: range
-                )
-            //Then
-            XCTAssertNotNil(result)
-            XCTAssertTrue(result?.meta.previousClose ==  0)
-            XCTAssertTrue(result?.meta.regularMarketPrice == 0)
-            XCTAssertTrue(
-                result?
-                    .indicators[0]
-                    .timestamp == Date(timeIntervalSince1970: 0)
+        let result = await mockViewModel
+            .stocksDataManager
+            .fetchHanaChartData()
+        //Then
+        XCTAssertNotNil(result)
+        switch result {
+        case .success(let chartData):
+            XCTAssertEqual(chartData?.meta.previousClose, 0)
+            XCTAssertEqual(chartData?.meta.regularMarketPrice, 0)
+            XCTAssertEqual(chartData?.indicators[0].close, 0)
+            XCTAssertEqual(
+                chartData?.indicators[0].timestamp,
+                Date(timeIntervalSince1970: 0)
             )
-            XCTAssertTrue(result?.indicators[0].close == 0)
+        case .failure(_): break
         }
+        XCTAssertEqual(mockDataManager.fetchChartDataCallCount, 0)
+        XCTAssertEqual(mockDataManager.fetchWithHanaDataCallCount, 0)
+        XCTAssertEqual(mockDataManager.fetchHanaChartDataCallCount, 1)
+     
     }
     
 }

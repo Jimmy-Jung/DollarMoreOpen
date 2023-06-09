@@ -7,38 +7,7 @@
 
 import Foundation
 
-struct StocksDataManager {
-    
-    public let stockDataManagerMethod: StocksDataManagerProtocol
-    
-    public func fetchChartData(
-        stockSymbol: StocksSymbol,
-        range: ChartRange) async -> ChartData? {
-            return await stockDataManagerMethod
-                .fetchChartData(
-                    stockSymbol: stockSymbol,
-                    range: range
-                )
-        }
-    
-    public func fetchWithHanaData(
-        stockSymbol: StocksSymbol,
-        startOfDay: TimeInterval) async -> ChartData? {
-            return await stockDataManagerMethod
-                .fetchWithHanaData(
-                    stockSymbol: stockSymbol,
-                    startOfDay: startOfDay
-                )
-        }
-    
-    public func fetchHanaChartData(
-    ) async -> Result<ChartData?, HanaAPIServiceError> {
-        return await stockDataManagerMethod.fetchHanaChartData()
-    }
-    
-}
-
-struct StocksDataManagerOrigin: StocksDataManagerProtocol {
+struct StocksDataManager: StocksDataManagerProtocol {
     private let api = YahooFinanceAPI()
     private let hanaAPI = HanaBankAPI()
     
@@ -101,8 +70,10 @@ struct StocksDataManagerOrigin: StocksDataManagerProtocol {
 }
 
 /// Mock데이타 가져오기
-struct MockDataManager: StocksDataManagerProtocol {
-    
+final class MockDataManager: StocksDataManagerProtocol {
+    public var fetchChartDataCallCount = 0
+    public var fetchWithHanaDataCallCount = 0
+    public var fetchHanaChartDataCallCount = 0
     /// 차트데이터 Mock값 가져오기
     /// - Parameters:
     ///   - stockSymbol: 주식 이름
@@ -112,6 +83,7 @@ struct MockDataManager: StocksDataManagerProtocol {
         stockSymbol: StocksSymbol,
         range: ChartRange
     ) async -> ChartData? {
+        fetchChartDataCallCount += 1
         return ChartData(
             meta: ChartMeta(
                 regularMarketPrice: 0,
@@ -134,6 +106,7 @@ struct MockDataManager: StocksDataManagerProtocol {
         stockSymbol: StocksSymbol,
         startOfDay: TimeInterval
     ) async -> ChartData? {
+        self.fetchWithHanaDataCallCount += 1
         return ChartData(
             meta: ChartMeta(
                 regularMarketPrice: 0,
@@ -152,6 +125,7 @@ struct MockDataManager: StocksDataManagerProtocol {
     /// - Returns: 차트 데이타
     public func fetchHanaChartData(
     ) async -> Result<ChartData?, HanaAPIServiceError> {
+        self.fetchHanaChartDataCallCount += 1
         return .success(
             ChartData(
                 meta: ChartMeta(

@@ -21,6 +21,7 @@ final class MainViewModel: ObservableObject {
     init(dataManager: StocksDataManagerProtocol) {
         self.stocksDataManager = dataManager
     }
+    
     // MARK: - Properies
     private var usdData: ChartData? {
         didSet {
@@ -64,7 +65,7 @@ final class MainViewModel: ObservableObject {
     @Published var hanaReferenceTimeLabel: String = ""
     @Published var hanaSellBuyLabel: (sell: String, buy: String) = ("", "")
     
-    let stocksDataManager: StocksDataManagerProtocol
+    var stocksDataManager: StocksDataManagerProtocol
     let hanaBankSpread = 0.000973
     
     
