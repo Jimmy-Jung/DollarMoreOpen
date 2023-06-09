@@ -119,7 +119,9 @@ final class MainViewController: UIViewController {
     
     // MARK: - Properties
     /// 뷰모델
-    private let mainViewModel = MainViewModel()
+    private let mainViewModel = MainViewModel(
+        dataManager: StocksDataManagerOrigin()
+    )
     // cancellable을 저장하기 위한 Set 선언
     private var cancellables = Set<AnyCancellable>()
     private var dualChartView = DualChartView()
@@ -345,8 +347,8 @@ final class MainViewController: UIViewController {
     /// 듀얼그래프 범위 선택해서 만들기
     /// - Parameter range: 차트 범위
     private func makeDualChart(
-        symbol1: StocksDataManager.StocksSymbol,
-        symbol2: StocksDataManager.StocksSymbol,
+        symbol1: StocksSymbol,
+        symbol2: StocksSymbol,
         range: ChartRange
     ) async {
         let chartDatas = await mainViewModel.updateDualChartData(
@@ -393,7 +395,7 @@ final class MainViewController: UIViewController {
     ///   - stockSymbol: 종목이름
     ///   - range: 차트범위
     private func makeSingleChart(
-        stockSymbol: StocksDataManager.StocksSymbol,
+        stockSymbol: StocksSymbol,
         range: ChartRange
     ) async {
         let chartData = await mainViewModel.updateSingleChartData(

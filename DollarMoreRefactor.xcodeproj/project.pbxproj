@@ -24,6 +24,9 @@
 		55A295F02A0CC25C004905F1 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55A295EF2A0CC25C004905F1 /* MainViewController.swift */; };
 		55AC16B42A0CDB6A00967DB2 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 55AC16B32A0CDB6A00967DB2 /* Alamofire */; };
 		55AC16BA2A0CDB8F00967DB2 /* SwiftSoup in Frameworks */ = {isa = PBXBuildFile; productRef = 55AC16B92A0CDB8F00967DB2 /* SwiftSoup */; };
+		55BDE4322A333F33008ED037 /* StocksDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55BDE4312A333F33008ED037 /* StocksDataManager.swift */; };
+		55BDE4342A334AC5008ED037 /* StocksHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55BDE4332A334AC5008ED037 /* StocksHelper.swift */; };
+		55BDE4362A337F88008ED037 /* StocksDataManagerProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55BDE4352A337F88008ED037 /* StocksDataManagerProtocol.swift */; };
 		55C339DC2A0CF67D00D6057E /* HanaBankAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55C339DB2A0CF67D00D6057E /* HanaBankAPI.swift */; };
 		55C339DF2A0CFB9C00D6057E /* YahooFinanceAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55C339DE2A0CFB9C00D6057E /* YahooFinanceAPI.swift */; };
 		55C339E12A0CFBB700D6057E /* URLSession+AsyncLinux.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55C339E02A0CFBB700D6057E /* URLSession+AsyncLinux.swift */; };
@@ -31,7 +34,6 @@
 		55C339E52A0CFBDF00D6057E /* Chart.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55C339E42A0CFBDF00D6057E /* Chart.swift */; };
 		55C339E72A0CFBFA00D6057E /* APIError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55C339E62A0CFBFA00D6057E /* APIError.swift */; };
 		55C339F22A0D0CF200D6057E /* HapticsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55C339F12A0D0CF200D6057E /* HapticsManager.swift */; };
-		55C339F42A0D0D0600D6057E /* StocksDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55C339F32A0D0D0600D6057E /* StocksDataManager.swift */; };
 		55C339F82A0D17CF00D6057E /* MainViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55C339F72A0D17CF00D6057E /* MainViewModel.swift */; };
 		55C339FC2A0D308D00D6057E /* SingleChartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55C339FB2A0D308D00D6057E /* SingleChartView.swift */; };
 		55C339FE2A0D5DE100D6057E /* CustomMarkerView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 55C339FD2A0D5DE100D6057E /* CustomMarkerView.xib */; };
@@ -80,6 +82,9 @@
 		55A295E42A0CC19B004905F1 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		55A295E92A0CC19B004905F1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		55A295EF2A0CC25C004905F1 /* MainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
+		55BDE4312A333F33008ED037 /* StocksDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StocksDataManager.swift; sourceTree = "<group>"; };
+		55BDE4332A334AC5008ED037 /* StocksHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StocksHelper.swift; sourceTree = "<group>"; };
+		55BDE4352A337F88008ED037 /* StocksDataManagerProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StocksDataManagerProtocol.swift; sourceTree = "<group>"; };
 		55C339DB2A0CF67D00D6057E /* HanaBankAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HanaBankAPI.swift; sourceTree = "<group>"; };
 		55C339DE2A0CFB9C00D6057E /* YahooFinanceAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YahooFinanceAPI.swift; sourceTree = "<group>"; };
 		55C339E02A0CFBB700D6057E /* URLSession+AsyncLinux.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "URLSession+AsyncLinux.swift"; sourceTree = "<group>"; };
@@ -87,7 +92,6 @@
 		55C339E42A0CFBDF00D6057E /* Chart.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Chart.swift; sourceTree = "<group>"; };
 		55C339E62A0CFBFA00D6057E /* APIError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIError.swift; sourceTree = "<group>"; };
 		55C339F12A0D0CF200D6057E /* HapticsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HapticsManager.swift; sourceTree = "<group>"; };
-		55C339F32A0D0D0600D6057E /* StocksDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StocksDataManager.swift; sourceTree = "<group>"; };
 		55C339F72A0D17CF00D6057E /* MainViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewModel.swift; sourceTree = "<group>"; };
 		55C339F92A0D1DE400D6057E /* SpoqaHanSansNeo-Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SpoqaHanSansNeo-Bold.otf"; sourceTree = "<group>"; };
 		55C339FB2A0D308D00D6057E /* SingleChartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SingleChartView.swift; sourceTree = "<group>"; };
@@ -243,7 +247,9 @@
 			isa = PBXGroup;
 			children = (
 				55C339F12A0D0CF200D6057E /* HapticsManager.swift */,
-				55C339F32A0D0D0600D6057E /* StocksDataManager.swift */,
+				55BDE4312A333F33008ED037 /* StocksDataManager.swift */,
+				55BDE4352A337F88008ED037 /* StocksDataManagerProtocol.swift */,
+				55BDE4332A334AC5008ED037 /* StocksHelper.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -440,14 +446,15 @@
 				55455DE22A1F5ECA00635F42 /* NewsHelpers.swift in Sources */,
 				55C33A032A0D696000D6057E /* DateValueFormatter.swift in Sources */,
 				55C339DC2A0CF67D00D6057E /* HanaBankAPI.swift in Sources */,
+				55BDE4342A334AC5008ED037 /* StocksHelper.swift in Sources */,
 				55455DDA2A1E515500635F42 /* NewsViewController.swift in Sources */,
 				55C339E32A0CFBCE00D6057E /* ChartRange.swift in Sources */,
 				55C339E72A0CFBFA00D6057E /* APIError.swift in Sources */,
+				55BDE4322A333F33008ED037 /* StocksDataManager.swift in Sources */,
 				55C33A012A0D5E4900D6057E /* CustomMarkerView.swift in Sources */,
 				55EC66092A16837C00134554 /* HanaBankModel.swift in Sources */,
 				55C339F22A0D0CF200D6057E /* HapticsManager.swift in Sources */,
 				55C339DF2A0CFB9C00D6057E /* YahooFinanceAPI.swift in Sources */,
-				55C339F42A0D0D0600D6057E /* StocksDataManager.swift in Sources */,
 				55A295DC2A0CC199004905F1 /* AppDelegate.swift in Sources */,
 				55455DD82A1DAF6500635F42 /* NewsCell.swift in Sources */,
 				55C339E12A0CFBB700D6057E /* URLSession+AsyncLinux.swift in Sources */,
@@ -459,6 +466,7 @@
 				55A295F02A0CC25C004905F1 /* MainViewController.swift in Sources */,
 				55C339F82A0D17CF00D6057E /* MainViewModel.swift in Sources */,
 				55455DE92A226CE100635F42 /* RssParser.swift in Sources */,
+				55BDE4362A337F88008ED037 /* StocksDataManagerProtocol.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -8,6 +8,7 @@
 import UIKit
 
 final class MainViewModel: ObservableObject {
+    
     struct CurrencyLabelData {
         let currencyLabel: String
         let rateDiff: String
@@ -16,6 +17,9 @@ final class MainViewModel: ObservableObject {
         let rateDiffPercentageColor: UIColor
         let upDownImage: UIImage?
         let upDownImageColor: UIColor
+    }
+    init(dataManager: StocksDataManagerProtocol) {
+        self.stocksDataManager = dataManager
     }
     // MARK: - Properies
     private var usdData: ChartData? {
@@ -60,14 +64,14 @@ final class MainViewModel: ObservableObject {
     @Published var hanaReferenceTimeLabel: String = ""
     @Published var hanaSellBuyLabel: (sell: String, buy: String) = ("", "")
     
-    let stocksManager = StocksDataManager()
+    let stocksDataManager: StocksDataManagerProtocol
     let hanaBankSpread = 0.000973
     
     
     // MARK: - Public Methods
 
     public func updateSingleChartData(
-        symbol: StocksDataManager.StocksSymbol,
+        symbol: StocksSymbol,
         range: ChartRange
     ) async -> SingleChartView.ChartDataSet {
         let emptyData = ChartData(
@@ -95,8 +99,8 @@ final class MainViewModel: ObservableObject {
     }
     
     public func updateDualChartData(
-        symbol1: StocksDataManager.StocksSymbol,
-        symbol2: StocksDataManager.StocksSymbol,
+        symbol1: StocksSymbol,
+        symbol2: StocksSymbol,
         range: ChartRange
     ) async -> DualChartView.ChartDataSet {
         let emptyData = ChartData(
@@ -126,7 +130,7 @@ final class MainViewModel: ObservableObject {
                     .startOfDay(for: Date())
                     .timeIntervalSince1970
                 usdData =
-                await stocksManager
+                await stocksDataManager
                     .fetchWithHanaData(
                         stockSymbol: .dollar_Won,
                         startOfDay: startOfDay - 360
@@ -159,7 +163,7 @@ final class MainViewModel: ObservableObject {
     // MARK: - Private Methods
 
     private func getPreviousClose(
-        symbol: StocksDataManager.StocksSymbol
+        symbol: StocksSymbol
     ) -> Double {
         switch symbol {
         case .dollar_Index:
@@ -177,24 +181,24 @@ final class MainViewModel: ObservableObject {
         }
     }
     private func fetchSymbolData(
-        symbol: StocksDataManager.StocksSymbol,
+        symbol: StocksSymbol,
         range: ChartRange
     ) async -> Result<ChartData?, HanaAPIServiceError> {
         switch range {
         case .oneDay, .oneWeek, .oneMonth:
             switch symbol {
             case .dollar_Won:
-                usdData = await stocksManager.fetchChartData(
+                usdData = await stocksDataManager.fetchChartData(
                     stockSymbol: symbol,
                     range: range)
                 return .success(usdData)
             case .dollar_Index:
-                indexData = await stocksManager.fetchChartData(
+                indexData = await stocksDataManager.fetchChartData(
                     stockSymbol: symbol,
                     range: range)
                 return .success(indexData)
             case .hanaBank:
-                hanaData = await stocksManager.fetchHanaChartData()
+                hanaData = await stocksDataManager.fetchHanaChartData()
                 switch hanaData {
                 case .success(let data):
                     return .success(data)
@@ -206,17 +210,17 @@ final class MainViewModel: ObservableObject {
         default:
             switch symbol {
             case .dollar_Won:
-                let usdData = await stocksManager.fetchChartData(
+                let usdData = await stocksDataManager.fetchChartData(
                     stockSymbol: symbol,
                     range: range)
                 return .success(usdData)
             case .dollar_Index:
-                let indexData = await stocksManager.fetchChartData(
+                let indexData = await stocksDataManager.fetchChartData(
                     stockSymbol: symbol,
                     range: range)
                 return .success(indexData)
             case .hanaBank:
-                let hanaData = await stocksManager.fetchHanaChartData()
+                let hanaData = await stocksDataManager.fetchHanaChartData()
                 switch hanaData {
                 case .success(let data):
                     return .success(data)
@@ -228,7 +232,7 @@ final class MainViewModel: ObservableObject {
         
     }
     private func getColor(
-        symbol: StocksDataManager.StocksSymbol
+        symbol: StocksSymbol
     ) -> [UIColor] {
         switch symbol {
         case .dollar_Won:
