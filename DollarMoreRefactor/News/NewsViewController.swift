@@ -8,11 +8,21 @@
 import UIKit
 import SafariServices
 import Combine
+import GoogleMobileAds
 
-final class NewsViewController: UIViewController {
+final class NewsViewController: UIViewController, GADBannerViewDelegate {
     // MARK: - Outlets
     @IBOutlet weak var newsTableView: UITableView!
     @IBOutlet weak var refreshButton: UIBarButtonItem!
+    @IBOutlet weak var googleBannerView: GADBannerView!
+    @IBOutlet weak var googleBannerWidth: NSLayoutConstraint!
+    @IBOutlet weak var googleBannerHeight: NSLayoutConstraint!
+    
+    private let bannerWidth: Double = 320.0
+    private let bannerHeight: Double = 50.0
+    private let bannerTestID = "ca-app-pub-3940256099942544/2934735716"
+    private let bannerAdsID = "ca-app-pub-8259821332117247/3141549253"
+    
     
     // MARK: - Properties
     let newsViewModel = NewsViewModel()
@@ -25,15 +35,22 @@ final class NewsViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.title = "채권/외환 뉴스"
+        fetchGoogleBanner()
         makeIndicator()
         setupTableView()
         fetchRSS()
         fetchNews()
         setupUIRefreshControl()
+        
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         fetchNews()
+        googleBannerHeight.constant = 0
+    }
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        
     }
     
     deinit {
@@ -60,6 +77,20 @@ final class NewsViewController: UIViewController {
         newsTableView.estimatedRowHeight = 140
     }
     // MARK: - PrivateMethods
+    /// 구글 광고 배너 만들기
+    private func fetchGoogleBanner() {
+        googleBannerView.adUnitID = bannerAdsID
+        googleBannerView.rootViewController = self
+        googleBannerView.load(GADRequest())
+        googleBannerWidth.constant = bannerWidth
+        googleBannerView.delegate = self
+    }
+    func bannerViewDidReceiveAd(_ bannerView: GADBannerView) {
+        UIView.animate(withDuration: 0.5, delay: 0.2, options: [.curveEaseInOut], animations: {
+            self.googleBannerHeight.constant = self.bannerHeight
+            self.view.layoutIfNeeded()
+        })
+    }
     
     /// RSS데이터 가져오기
     private func fetchRSS() {

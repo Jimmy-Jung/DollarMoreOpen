@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CLIENT_ID</key>
+	<string>839000470195-v157drppajbslcqa4u6nl3j8n595vprt.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.839000470195-v157drppajbslcqa4u6nl3j8n595vprt</string>
+	<key>API_KEY</key>
+	<string>AIzaSyDWCdD8MUmRe63IQOHid-X4JcktvRRk8Pc</string>
+	<key>GCM_SENDER_ID</key>
+	<string>839000470195</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>Jimmy.DollarMoreRefactor</string>
+	<key>PROJECT_ID</key>
+	<string>dollarmore-c6a36</string>
+	<key>STORAGE_BUCKET</key>
+	<string>dollarmore-c6a36.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:839000470195:ios:331cf4259cb5e265d076c6</string>
+	<key>ADMOB_APP_ID</key>
+	<string>ca-app-pub-8259821332117247~7964584809</string>
+</dict>
+</plist>

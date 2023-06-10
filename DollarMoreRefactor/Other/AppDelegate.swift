@@ -6,19 +6,21 @@
 //
 
 import UIKit
+
 import SwiftRater
+import GoogleMobileAds
+import FirebaseCore
 
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        SwiftRater.daysUntilPrompt = 5
-        SwiftRater.usesUntilPrompt = 7
-        SwiftRater.significantUsesUntilPrompt = 3
-        SwiftRater.daysBeforeReminding = 1
-        SwiftRater.showLaterButton = true
-        SwiftRater.debugMode = false
-        SwiftRater.appLaunched()
+        // GoogleMobileAds
+        GADMobileAds.sharedInstance().start()
+        FirebaseApp.configure()
+        // SwiftRater
+        fetchSwiftRater()
+        
         return true
     }
 
@@ -35,6 +37,20 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // If any sessions were discarded while the application was not running, this will be called shortly after application:didFinishLaunchingWithOptions.
         // Use this method to release any resources that were specific to the discarded scenes, as they will not return.
     }
+    
+    
+    
+    private func fetchSwiftRater() {
+        SwiftRater.daysUntilPrompt = 5
+        SwiftRater.usesUntilPrompt = 7
+        SwiftRater.significantUsesUntilPrompt = 3
+        SwiftRater.daysBeforeReminding = 1
+        SwiftRater.showLaterButton = true
+        SwiftRater.debugMode = false
+        SwiftRater.appLaunched()
+    }
+    
+    
 
 
 }

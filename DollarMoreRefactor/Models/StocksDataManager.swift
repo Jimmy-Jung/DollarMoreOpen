@@ -74,6 +74,7 @@ final class MockDataManager: StocksDataManagerProtocol {
     public var fetchChartDataCallCount = 0
     public var fetchWithHanaDataCallCount = 0
     public var fetchHanaChartDataCallCount = 0
+    
     /// 차트데이터 Mock값 가져오기
     /// - Parameters:
     ///   - stockSymbol: 주식 이름
@@ -97,6 +98,7 @@ final class MockDataManager: StocksDataManagerProtocol {
             ]
         )
     }
+    
     /// 하나은행 차트 데이터 Mock값 가져오기
     /// - Parameters:
     ///   - stockSymbol: 주식 이름
