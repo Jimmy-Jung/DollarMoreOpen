@@ -636,36 +636,36 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" estimatedSectionHeaderHeight="-1" sectionFooterHeight="18" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="6lg-IK-eCi">
-                                <rect key="frame" x="0.0" y="103" width="393" height="616"/>
+                                <rect key="frame" x="0.0" y="103" width="393" height="666"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="NewsCell" id="wwn-NK-OxJ" customClass="NewsCell" customModule="DollarMoreRefactor" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="38" width="393" height="126.33333587646484"/>
+                                        <rect key="frame" x="0.0" y="38" width="393" height="112.33333587646484"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="wwn-NK-OxJ" id="o32-l8-C8k">
-                                            <rect key="frame" x="0.0" y="0.0" width="393" height="126.33333587646484"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="393" height="112.33333587646484"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacingType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="6KF-ns-6lk">
-                                                    <rect key="frame" x="25" y="10" width="343" height="106.33333333333333"/>
+                                                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="6KF-ns-6lk">
+                                                    <rect key="frame" x="25" y="10" width="343" height="92.333333333333329"/>
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="News Title" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rbw-rG-Pj0">
-                                                            <rect key="frame" x="0.0" y="0.0" width="343" height="20.333333333333332"/>
-                                                            <fontDescription key="fontDescription" type="system" weight="heavy" pointSize="17"/>
+                                                            <rect key="frame" x="0.0" y="0.0" width="343" height="19.333333333333332"/>
+                                                            <fontDescription key="fontDescription" type="system" weight="heavy" pointSize="16"/>
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fls-e0-z4r">
-                                                            <rect key="frame" x="0.0" y="28.333333333333332" width="343" height="54.333333333333343"/>
+                                                            <rect key="frame" x="0.0" y="23.333333333333339" width="343" height="50.666666666666657"/>
                                                             <string key="text">description
 description
 description</string>
-                                                            <fontDescription key="fontDescription" type="system" weight="medium" pointSize="15"/>
+                                                            <fontDescription key="fontDescription" type="system" weight="medium" pointSize="14"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" text="release date" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rMi-Ny-VLs">
-                                                            <rect key="frame" x="0.0" y="90.666666666666671" width="343" height="15.666666666666671"/>
-                                                            <fontDescription key="fontDescription" type="system" weight="medium" pointSize="13"/>
+                                                            <rect key="frame" x="0.0" y="78" width="343" height="14.333333333333329"/>
+                                                            <fontDescription key="fontDescription" type="system" weight="medium" pointSize="12"/>
                                                             <color key="textColor" systemColor="secondaryLabelColor"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
@@ -690,7 +690,7 @@ description</string>
                             </tableView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="uXg-KX-wW1" customClass="GADBannerView">
                                 <rect key="frame" x="36.666666666666657" y="719" width="320" height="50"/>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="320" id="1cT-CN-9c4"/>
                                     <constraint firstAttribute="height" constant="50" id="Xfo-zp-uQx"/>
@@ -702,8 +702,8 @@ description</string>
                         <constraints>
                             <constraint firstItem="6lg-IK-eCi" firstAttribute="leading" secondItem="7me-kB-isl" secondAttribute="leading" id="0Y9-AQ-XcN"/>
                             <constraint firstItem="7me-kB-isl" firstAttribute="bottom" secondItem="uXg-KX-wW1" secondAttribute="bottom" id="GGb-nC-SSH"/>
-                            <constraint firstItem="uXg-KX-wW1" firstAttribute="top" secondItem="6lg-IK-eCi" secondAttribute="bottom" id="Hsq-sc-YoK"/>
                             <constraint firstItem="uXg-KX-wW1" firstAttribute="centerX" secondItem="YtP-cq-Sby" secondAttribute="centerX" id="LD9-78-h6D"/>
+                            <constraint firstItem="6lg-IK-eCi" firstAttribute="bottom" secondItem="7me-kB-isl" secondAttribute="bottom" id="LlA-ti-OK1"/>
                             <constraint firstItem="6lg-IK-eCi" firstAttribute="top" secondItem="7me-kB-isl" secondAttribute="top" id="XnB-xQ-mGP"/>
                             <constraint firstItem="6lg-IK-eCi" firstAttribute="trailing" secondItem="7me-kB-isl" secondAttribute="trailing" id="fKf-aG-Xib"/>
                         </constraints>

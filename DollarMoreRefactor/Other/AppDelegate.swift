@@ -41,9 +41,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     
     private func fetchSwiftRater() {
-        SwiftRater.daysUntilPrompt = 5
-        SwiftRater.usesUntilPrompt = 7
-        SwiftRater.significantUsesUntilPrompt = 3
+        SwiftRater.daysUntilPrompt = 1
+        SwiftRater.usesUntilPrompt = 0
+        SwiftRater.significantUsesUntilPrompt = 0
         SwiftRater.daysBeforeReminding = 1
         SwiftRater.showLaterButton = true
         SwiftRater.debugMode = false

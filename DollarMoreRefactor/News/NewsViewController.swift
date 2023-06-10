@@ -46,7 +46,7 @@ final class NewsViewController: UIViewController, GADBannerViewDelegate {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         fetchNews()
-        googleBannerHeight.constant = 0
+        
     }
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
@@ -79,13 +79,14 @@ final class NewsViewController: UIViewController, GADBannerViewDelegate {
     // MARK: - PrivateMethods
     /// 구글 광고 배너 만들기
     private func fetchGoogleBanner() {
-        googleBannerView.adUnitID = bannerAdsID
+        googleBannerView.adUnitID = bannerTestID
         googleBannerView.rootViewController = self
         googleBannerView.load(GADRequest())
         googleBannerWidth.constant = bannerWidth
         googleBannerView.delegate = self
     }
     func bannerViewDidReceiveAd(_ bannerView: GADBannerView) {
+        googleBannerHeight.constant = 0
         UIView.animate(withDuration: 0.5, delay: 0.2, options: [.curveEaseInOut], animations: {
             self.googleBannerHeight.constant = self.bannerHeight
             self.view.layoutIfNeeded()
