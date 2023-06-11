@@ -6,7 +6,6 @@
 //
 
 import UIKit
-
 import SwiftRater
 import GoogleMobileAds
 import FirebaseCore

@@ -10,7 +10,7 @@ import SafariServices
 import Combine
 import GoogleMobileAds
 
-final class NewsViewController: UIViewController, GADBannerViewDelegate {
+final class NewsViewController: UIViewController {
     // MARK: - Outlets
     @IBOutlet weak var newsTableView: UITableView!
     @IBOutlet weak var refreshButton: UIBarButtonItem!
@@ -21,7 +21,8 @@ final class NewsViewController: UIViewController, GADBannerViewDelegate {
     private let bannerWidth: Double = 320.0
     private let bannerHeight: Double = 50.0
     private let bannerTestID = "ca-app-pub-3940256099942544/2934735716"
-    private let bannerAdsID = "ca-app-pub-8259821332117247/3141549253"
+    private let bannerAdsID1 = "ca-app-pub-8259821332117247/3141549253"
+    private let bannerAdsID2 = "ca-app-pub-8259821332117247/3231681615"
     
     
     // MARK: - Properties
@@ -46,24 +47,23 @@ final class NewsViewController: UIViewController, GADBannerViewDelegate {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         fetchNews()
-        
     }
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        
     }
     
     deinit {
         newsCancellable?.cancel()
     }
     
+    /// 당겨서 새로고침 만들기
     private func setupUIRefreshControl() {
         // UIRefreshControl 생성
             let refreshControl = UIRefreshControl()
             refreshControl.addTarget(self, action: #selector(refreshRSS), for: .valueChanged)
             newsTableView.refreshControl = refreshControl
     }
-    // 아래로 당겨서 새로고침
+    // 아래로 당겨서 새로고침 메서드
     @objc private func refreshRSS() {
         newsViewModel.fetchRSS()
         newsTableView.refreshControl?.endRefreshing()
@@ -79,19 +79,13 @@ final class NewsViewController: UIViewController, GADBannerViewDelegate {
     // MARK: - PrivateMethods
     /// 구글 광고 배너 만들기
     private func fetchGoogleBanner() {
-        googleBannerView.adUnitID = bannerTestID
+        googleBannerView.adUnitID = bannerAdsID2
         googleBannerView.rootViewController = self
         googleBannerView.load(GADRequest())
-        googleBannerWidth.constant = bannerWidth
+        googleBannerWidth.constant = view.frame.width
         googleBannerView.delegate = self
     }
-    func bannerViewDidReceiveAd(_ bannerView: GADBannerView) {
-        googleBannerHeight.constant = 0
-        UIView.animate(withDuration: 0.5, delay: 0.2, options: [.curveEaseInOut], animations: {
-            self.googleBannerHeight.constant = self.bannerHeight
-            self.view.layoutIfNeeded()
-        })
-    }
+    
     
     /// RSS데이터 가져오기
     private func fetchRSS() {
@@ -125,7 +119,7 @@ final class NewsViewController: UIViewController, GADBannerViewDelegate {
     }
     
 }
-
+// MARK: - TableViewDelegate
 extension NewsViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(
         _ tableView: UITableView,
@@ -169,8 +163,8 @@ extension NewsViewController: UITableViewDataSource, UITableViewDelegate {
             cell.releaseDateLabel.text = newsItems[indexPath.row].pubDate
         }
         return cell
-        
     }
+    
     func tableView(
         _ tableView: UITableView,
         didSelectRowAt indexPath: IndexPath
@@ -181,5 +175,21 @@ extension NewsViewController: UITableViewDataSource, UITableViewDelegate {
             present(safariViewController, animated: true, completion: nil)
         }
         tableView.deselectRow(at: indexPath, animated: true)
+    }
+}
+
+// MARK: - BannerDelegate
+extension NewsViewController: GADBannerViewDelegate {
+    
+    /// 광고를 받은 다음에 반응
+    func bannerViewDidReceiveAd(_ bannerView: GADBannerView) {
+        googleBannerView.alpha = 0
+        UIView.animate(
+            withDuration: 0.5,
+            delay: 0.2,
+            options: [.curveEaseInOut],
+            animations: { [weak self] in
+            self?.googleBannerView.alpha = 1
+        })
     }
 }
