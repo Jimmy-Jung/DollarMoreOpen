@@ -18,7 +18,7 @@ final class MainViewModel: ObservableObject {
         let upDownImage: UIImage?
         let upDownImageColor: UIColor
     }
-    init(dataManager: StocksDataManagerProtocol) {
+    init(dataManager: StocksDataManagerProtocol = StocksDataManager()) {
         self.stocksDataManager = dataManager
     }
     

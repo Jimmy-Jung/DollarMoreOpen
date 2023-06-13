@@ -6,6 +6,7 @@
 //
 
 import XCTest
+import FirebaseCore
 @testable import DollarMoreRefactor
 
 final class DollarMoreRefactorTests: XCTestCase {

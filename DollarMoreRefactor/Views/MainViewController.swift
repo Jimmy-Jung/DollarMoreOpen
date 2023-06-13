@@ -119,9 +119,7 @@ final class MainViewController: UIViewController {
     
     // MARK: - Properties
     /// 뷰모델
-    private let mainViewModel = MainViewModel(
-        dataManager: StocksDataManager()
-    )
+    private let mainViewModel = MainViewModel()
     // cancellable을 저장하기 위한 Set 선언
     private var cancellables = Set<AnyCancellable>()
     private var dualChartView = DualChartView()
