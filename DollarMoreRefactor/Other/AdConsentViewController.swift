@@ -45,7 +45,7 @@ final class AdConsentViewController: UIViewController {
         button.setTitleColor(.systemBackground, for: .normal)
         return button
     }()
-
+    
     // MARK: - Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -54,39 +54,44 @@ final class AdConsentViewController: UIViewController {
         setupLayout()
         continueButton.addTarget(self, action: #selector(continueButtonTapped), for: .touchUpInside)
     }
-
+    
     // MARK: - Private Methods
     private func setupLayout() {
         imageView.translatesAutoresizingMaskIntoConstraints = false
-            tittleLabel.translatesAutoresizingMaskIntoConstraints = false
-            messageLabel.translatesAutoresizingMaskIntoConstraints = false
-            continueButton.translatesAutoresizingMaskIntoConstraints = false
-
-            view.addSubview(imageView)
-            view.addSubview(tittleLabel)
-            view.addSubview(messageLabel)
-            view.addSubview(continueButton)
-
-            NSLayoutConstraint.activate([
-                imageView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 120),
-                imageView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-                imageView.widthAnchor.constraint(equalToConstant: 150),
-                imageView.heightAnchor.constraint(equalToConstant: 150),
-
-                tittleLabel.topAnchor.constraint(equalTo: imageView.bottomAnchor, constant: 50),
-                tittleLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-
-                messageLabel.topAnchor.constraint(equalTo: tittleLabel.bottomAnchor, constant: 20),
-                messageLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 50),
-                messageLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -50),
-
-                continueButton.topAnchor.constraint(equalTo: messageLabel.bottomAnchor, constant: 50),
-                continueButton.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-                continueButton.widthAnchor.constraint(equalToConstant: 250),
-                continueButton.heightAnchor.constraint(equalToConstant: 50)
-            ])
+        tittleLabel.translatesAutoresizingMaskIntoConstraints = false
+        messageLabel.translatesAutoresizingMaskIntoConstraints = false
+        continueButton.translatesAutoresizingMaskIntoConstraints = false
+        
+        let stackView = UIStackView(arrangedSubviews: [tittleLabel, messageLabel])
+        stackView.axis = .vertical
+        stackView.alignment = .center
+        stackView.spacing = 20
+        stackView.translatesAutoresizingMaskIntoConstraints = false
+        
+        view.addSubview(imageView)
+        view.addSubview(stackView)
+        view.addSubview(continueButton)
+        
+        NSLayoutConstraint.activate([
+            imageView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            imageView.widthAnchor.constraint(equalToConstant: 150),
+            imageView.heightAnchor.constraint(equalToConstant: 150),
+            
+            stackView.topAnchor.constraint(equalTo: imageView.bottomAnchor, constant: 50),
+            stackView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            stackView.centerYAnchor.constraint(equalTo: view.centerYAnchor),
+            stackView.widthAnchor.constraint(equalToConstant: min(view.frame.width - 100,300)),
+//            stackView.leftAnchor.constraint(equalTo: view.leadingAnchor, constant: 50),
+//            stackView.rightAnchor.constraint(equalTo: view.trailingAnchor, constant: -50),
+            
+            
+            continueButton.topAnchor.constraint(equalTo: stackView.bottomAnchor, constant: 50),
+            continueButton.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            continueButton.widthAnchor.constraint(equalToConstant: 250),
+            continueButton.heightAnchor.constraint(equalToConstant: 50)
+        ])
     }
-
+    
     
     @objc private func continueButtonTapped() {
         setNotification()
@@ -124,8 +129,8 @@ final class AdConsentViewController: UIViewController {
             }
         }
     }
-
-
+    
+    
     // MARK: - Overrides
     override var prefersStatusBarHidden: Bool {
         return true

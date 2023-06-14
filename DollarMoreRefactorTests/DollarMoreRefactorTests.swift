@@ -138,8 +138,8 @@ final class DollarMoreRefactorTests: XCTestCase {
     
     func testMockViewModel_FetchHanaChartData() async throws {
         // Given
-        var mockDataManager = MockDataManager()
-        var mockViewModel = MainViewModel(dataManager: mockDataManager)
+        let mockDataManager = MockDataManager()
+        let mockViewModel = MainViewModel(dataManager: mockDataManager)
         // When
         let result = await mockViewModel
             .stocksDataManager
