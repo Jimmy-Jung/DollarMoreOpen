@@ -728,7 +728,7 @@ description</string>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="PVb-df-kr2" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1704.5801526717557" y="-27.464788732394368"/>
+            <point key="canvasLocation" x="262" y="1418"/>
         </scene>
         <!--사용방법-->
         <scene sceneID="fff-Kl-Tk1">
@@ -739,7 +739,7 @@ description</string>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" directionalLockEnabled="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NkI-1s-Hmo">
-                                <rect key="frame" x="0.0" y="59" width="393" height="932"/>
+                                <rect key="frame" x="0.0" y="155" width="393" height="836"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ERh-M8-S99">
                                         <rect key="frame" x="0.0" y="0.0" width="391" height="815"/>
@@ -786,7 +786,7 @@ description</string>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="7" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="100" translatesAutoresizingMaskIntoConstraints="NO" id="cVT-mI-haG">
                                                                 <rect key="frame" x="20" y="0.0" width="351" height="167.66666666666666"/>
                                                                 <string key="text">안녕하세요! 
-경제 관련 뉴스와 인사이트에 도움될 만한 자료를 곧 추가할 예정이에요. 
+투자 인사이트에 도움될 만한 자료를 곧 추가할 예정이에요. 
 조금만 기다려주시면 더욱 풍성한 컨텐츠로 찾아뵐게요! 
 😊</string>
                                                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
@@ -844,11 +844,12 @@ description</string>
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="사용방법" image="ellipsis" catalog="system" id="pFe-Ao-n48"/>
+                    <navigationItem key="navigationItem" id="hTS-2a-e1K"/>
                     <size key="freeformSize" width="393" height="991"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="C0a-jd-uq0" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="251" y="752"/>
+            <point key="canvasLocation" x="1167" y="2163"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="Fsr-cI-gav">
@@ -863,12 +864,31 @@ description</string>
                     <connections>
                         <segue destination="kkF-xT-fmA" kind="relationship" relationship="viewControllers" id="iNB-AK-iBd"/>
                         <segue destination="buz-6M-G18" kind="relationship" relationship="viewControllers" id="bxP-bY-2D4"/>
-                        <segue destination="CKf-Hh-7qW" kind="relationship" relationship="viewControllers" id="Pw1-XE-sWu"/>
+                        <segue destination="s2q-9N-tmB" kind="relationship" relationship="viewControllers" id="Cgb-Z4-6sW"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="izT-lu-auH" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3.8167938931297707" y="-27.464788732394368"/>
+            <point key="canvasLocation" x="262" y="-26"/>
+        </scene>
+        <!--설정-->
+        <scene sceneID="RNh-VJ-JX9">
+            <objects>
+                <viewController title="설정" id="fE3-mp-zIB" customClass="SettingViewController" customModule="DollarMoreRefactor" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="uH5-9k-6fE" customClass="SettingView">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <viewLayoutGuide key="safeArea" id="eAO-6i-d7z"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="S73-r7-Q93"/>
+                    <connections>
+                        <segue destination="CKf-Hh-7qW" kind="show" id="Lvk-Zs-Cfc"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="pbI-yy-nF9" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1166" y="1418"/>
         </scene>
         <!--채권/외환 뉴스-->
         <scene sceneID="nz9-S2-xp2">
@@ -896,7 +916,32 @@ description</string>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ZeA-J1-I33" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="866" y="-27"/>
+            <point key="canvasLocation" x="263" y="704"/>
+        </scene>
+        <!--설정-->
+        <scene sceneID="Wem-Cc-XG3">
+            <objects>
+                <navigationController title="설정" automaticallyAdjustsScrollViewInsets="NO" id="s2q-9N-tmB" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="더보기" image="ellipsis" catalog="system" id="Qsa-L2-JLL"/>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" largeTitles="YES" id="ibH-fX-5Eb">
+                        <rect key="frame" x="0.0" y="59" width="393" height="96"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <navigationBarAppearance key="standardAppearance"/>
+                        <navigationBarAppearance key="compactAppearance"/>
+                        <navigationBarAppearance key="scrollEdgeAppearance"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <toolbar key="toolbar" opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="D0j-Cl-sXU">
+                        <autoresizingMask key="autoresizingMask"/>
+                    </toolbar>
+                    <connections>
+                        <segue destination="fE3-mp-zIB" kind="relationship" relationship="rootViewController" id="8AE-Eq-pyF"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="kBG-uX-61h" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1165.6488549618321" y="703.52112676056345"/>
         </scene>
     </scenes>
     <resources>

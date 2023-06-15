@@ -8,7 +8,7 @@
 import Foundation
 import UserNotifications
 
-final class NotificationHandler{
+struct NotificationHandler{
       //Permission function
       public func askNotificationPermission(completion: @escaping ()->Void){
           //Permission to send notifications

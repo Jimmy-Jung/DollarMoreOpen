@@ -8,6 +8,19 @@
 
 /* Begin PBXBuildFile section */
 		553C445E2A383B7F00E3C1D0 /* FirebaseAnalyticsSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 553C445D2A383B7F00E3C1D0 /* FirebaseAnalyticsSwift */; };
+		553C44632A3AF4B500E3C1D0 /* SettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 553C44622A3AF4B500E3C1D0 /* SettingViewController.swift */; };
+		553C44662A3AF4DE00E3C1D0 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 553C44652A3AF4DE00E3C1D0 /* SnapKit */; };
+		553C44682A3AF53E00E3C1D0 /* SettingModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 553C44672A3AF53E00E3C1D0 /* SettingModels.swift */; };
+		553C446A2A3AF5A200E3C1D0 /* SettingTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 553C44692A3AF5A200E3C1D0 /* SettingTableViewCell.swift */; };
+		553C446C2A3AF5F500E3C1D0 /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 553C446B2A3AF5F500E3C1D0 /* Utils.swift */; };
+		553C44742A3AF7F400E3C1D0 /* SwitchTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 553C44732A3AF7F400E3C1D0 /* SwitchTableViewCell.swift */; };
+		553C44762A3AF8AB00E3C1D0 /* UserDefaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = 553C44752A3AF8AB00E3C1D0 /* UserDefaults.swift */; };
+		553C44782A3B054500E3C1D0 /* NotificationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 553C44772A3B054500E3C1D0 /* NotificationViewController.swift */; };
+		553C447A2A3B057E00E3C1D0 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 553C44792A3B057E00E3C1D0 /* Extensions.swift */; };
+		553C447D2A3B070C00E3C1D0 /* FontTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 553C447C2A3B070C00E3C1D0 /* FontTableViewController.swift */; };
+		553C447F2A3B080900E3C1D0 /* FontTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 553C447E2A3B080900E3C1D0 /* FontTableViewCell.swift */; };
+		553C44812A3B084200E3C1D0 /* FontExampleHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 553C44802A3B084100E3C1D0 /* FontExampleHeaderView.swift */; };
+		553C44832A3B08CA00E3C1D0 /* CustomFont.swift in Sources */ = {isa = PBXBuildFile; fileRef = 553C44822A3B08CA00E3C1D0 /* CustomFont.swift */; };
 		55455DBF2A1C953800635F42 /* DollarMoreRefactorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55455DBE2A1C953800635F42 /* DollarMoreRefactorTests.swift */; };
 		55455DCC2A1CB2BB00635F42 /* DollarMoreRefactorUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55455DCB2A1CB2BB00635F42 /* DollarMoreRefactorUITests.swift */; };
 		55455DCE2A1CB2BB00635F42 /* DollarMoreRefactorUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55455DCD2A1CB2BB00635F42 /* DollarMoreRefactorUITestsLaunchTests.swift */; };
@@ -70,6 +83,18 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		553C44622A3AF4B500E3C1D0 /* SettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingViewController.swift; sourceTree = "<group>"; };
+		553C44672A3AF53E00E3C1D0 /* SettingModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingModels.swift; sourceTree = "<group>"; };
+		553C44692A3AF5A200E3C1D0 /* SettingTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingTableViewCell.swift; sourceTree = "<group>"; };
+		553C446B2A3AF5F500E3C1D0 /* Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
+		553C44732A3AF7F400E3C1D0 /* SwitchTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwitchTableViewCell.swift; sourceTree = "<group>"; };
+		553C44752A3AF8AB00E3C1D0 /* UserDefaults.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaults.swift; sourceTree = "<group>"; };
+		553C44772A3B054500E3C1D0 /* NotificationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationViewController.swift; sourceTree = "<group>"; };
+		553C44792A3B057E00E3C1D0 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
+		553C447C2A3B070C00E3C1D0 /* FontTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FontTableViewController.swift; sourceTree = "<group>"; };
+		553C447E2A3B080900E3C1D0 /* FontTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FontTableViewCell.swift; sourceTree = "<group>"; };
+		553C44802A3B084100E3C1D0 /* FontExampleHeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FontExampleHeaderView.swift; sourceTree = "<group>"; };
+		553C44822A3B08CA00E3C1D0 /* CustomFont.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomFont.swift; sourceTree = "<group>"; };
 		55455DBC2A1C953800635F42 /* DollarMoreRefactorTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DollarMoreRefactorTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		55455DBE2A1C953800635F42 /* DollarMoreRefactorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DollarMoreRefactorTests.swift; sourceTree = "<group>"; };
 		55455DC92A1CB2BB00635F42 /* DollarMoreRefactorUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DollarMoreRefactorUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -133,6 +158,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				5549EFA72A34FF92003EFFC9 /* FirebaseAnalytics in Frameworks */,
+				553C44662A3AF4DE00E3C1D0 /* SnapKit in Frameworks */,
 				55BDE4392A34490A008ED037 /* GoogleMobileAds in Frameworks */,
 				55AC16B42A0CDB6A00967DB2 /* Alamofire in Frameworks */,
 				55AC16BA2A0CDB8F00967DB2 /* SwiftSoup in Frameworks */,
@@ -145,6 +171,77 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		553C445F2A3AE5FD00E3C1D0 /* Chart */ = {
+			isa = PBXGroup;
+			children = (
+				55C339F62A0D0D5800D6057E /* ViewModels */,
+				55C339EA2A0D0C9400D6057E /* Views */,
+				55C339EC2A0D0CC600D6057E /* Models */,
+				55C339F52A0D0D3900D6057E /* APIs */,
+			);
+			path = Chart;
+			sourceTree = "<group>";
+		};
+		553C44602A3AE63500E3C1D0 /* AdConsent */ = {
+			isa = PBXGroup;
+			children = (
+				55BDE43E2A34D60B008ED037 /* AdConsentViewController.swift */,
+				55BDE43A2A34D27A008ED037 /* NotificationHandler.swift */,
+			);
+			path = AdConsent;
+			sourceTree = "<group>";
+		};
+		553C44612A3AE66600E3C1D0 /* Setting */ = {
+			isa = PBXGroup;
+			children = (
+				553C44722A3AF63800E3C1D0 /* Helper */,
+				553C44712A3AF62A00E3C1D0 /* View */,
+				553C446E2A3AF61E00E3C1D0 /* Model */,
+				553C446D2A3AF61600E3C1D0 /* Controller */,
+			);
+			path = Setting;
+			sourceTree = "<group>";
+		};
+		553C446D2A3AF61600E3C1D0 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				553C44622A3AF4B500E3C1D0 /* SettingViewController.swift */,
+				553C44772A3B054500E3C1D0 /* NotificationViewController.swift */,
+				553C447C2A3B070C00E3C1D0 /* FontTableViewController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		553C446E2A3AF61E00E3C1D0 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				553C44672A3AF53E00E3C1D0 /* SettingModels.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		553C44712A3AF62A00E3C1D0 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				553C44732A3AF7F400E3C1D0 /* SwitchTableViewCell.swift */,
+				553C44692A3AF5A200E3C1D0 /* SettingTableViewCell.swift */,
+				553C44802A3B084100E3C1D0 /* FontExampleHeaderView.swift */,
+				553C447E2A3B080900E3C1D0 /* FontTableViewCell.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		553C44722A3AF63800E3C1D0 /* Helper */ = {
+			isa = PBXGroup;
+			children = (
+				553C446B2A3AF5F500E3C1D0 /* Utils.swift */,
+				553C44752A3AF8AB00E3C1D0 /* UserDefaults.swift */,
+				553C44792A3B057E00E3C1D0 /* Extensions.swift */,
+				553C44822A3B08CA00E3C1D0 /* CustomFont.swift */,
+			);
+			path = Helper;
+			sourceTree = "<group>";
+		};
 		55455DBD2A1C953800635F42 /* DollarMoreRefactorTests */ = {
 			isa = PBXGroup;
 			children = (
@@ -205,12 +302,11 @@
 		55A295DA2A0CC199004905F1 /* DollarMoreRefactor */ = {
 			isa = PBXGroup;
 			children = (
+				553C44602A3AE63500E3C1D0 /* AdConsent */,
+				553C445F2A3AE5FD00E3C1D0 /* Chart */,
 				55455DD42A1DAAFA00635F42 /* News */,
-				55C339F52A0D0D3900D6057E /* APIs */,
-				55C339EC2A0D0CC600D6057E /* Models */,
-				55C339EA2A0D0C9400D6057E /* Views */,
-				55C339F62A0D0D5800D6057E /* ViewModels */,
-				55C339E92A0D0C7C00D6057E /* Other */,
+				553C44612A3AE66600E3C1D0 /* Setting */,
+				55C339E92A0D0C7C00D6057E /* Delegate */,
 				55A295E42A0CC19B004905F1 /* Assets.xcassets */,
 				5549EFA82A350227003EFFC9 /* GoogleService-Info.plist */,
 				55A295E92A0CC19B004905F1 /* Info.plist */,
@@ -240,16 +336,14 @@
 			path = HanaBankAPI;
 			sourceTree = "<group>";
 		};
-		55C339E92A0D0C7C00D6057E /* Other */ = {
+		55C339E92A0D0C7C00D6057E /* Delegate */ = {
 			isa = PBXGroup;
 			children = (
-				55BDE43E2A34D60B008ED037 /* AdConsentViewController.swift */,
-				55BDE43A2A34D27A008ED037 /* NotificationHandler.swift */,
 				55A295DD2A0CC199004905F1 /* SceneDelegate.swift */,
 				55A295DB2A0CC199004905F1 /* AppDelegate.swift */,
 				55C339FA2A0D1E0700D6057E /* Resources */,
 			);
-			path = Other;
+			path = Delegate;
 			sourceTree = "<group>";
 		};
 		55C339EA2A0D0C9400D6057E /* Views */ = {
@@ -366,6 +460,7 @@
 				55EA48392A30F5120056428A /* SwiftRater */,
 				55BDE4382A34490A008ED037 /* GoogleMobileAds */,
 				5549EFA62A34FF92003EFFC9 /* FirebaseAnalytics */,
+				553C44652A3AF4DE00E3C1D0 /* SnapKit */,
 			);
 			productName = DollarMoreRefactor;
 			productReference = 55A295D82A0CC199004905F1 /* DollarMoreRefactor.app */;
@@ -410,6 +505,7 @@
 				55EA48382A30F5120056428A /* XCRemoteSwiftPackageReference "SwiftRater" */,
 				55BDE4372A34490A008ED037 /* XCRemoteSwiftPackageReference "swift-package-manager-google-mobile-ads" */,
 				5549EFA22A34FDB6003EFFC9 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
+				553C44642A3AF4DE00E3C1D0 /* XCRemoteSwiftPackageReference "SnapKit" */,
 			);
 			productRefGroup = 55A295D92A0CC199004905F1 /* Products */;
 			projectDirPath = "";
@@ -476,22 +572,34 @@
 				55EC660B2A16839800134554 /* HanaAPIServiceError.swift in Sources */,
 				55455DE22A1F5ECA00635F42 /* NewsHelpers.swift in Sources */,
 				55C33A032A0D696000D6057E /* DateValueFormatter.swift in Sources */,
+				553C44832A3B08CA00E3C1D0 /* CustomFont.swift in Sources */,
 				55C339DC2A0CF67D00D6057E /* HanaBankAPI.swift in Sources */,
 				55BDE4342A334AC5008ED037 /* StocksHelper.swift in Sources */,
 				55455DDA2A1E515500635F42 /* NewsViewController.swift in Sources */,
+				553C447D2A3B070C00E3C1D0 /* FontTableViewController.swift in Sources */,
+				553C446A2A3AF5A200E3C1D0 /* SettingTableViewCell.swift in Sources */,
 				55C339E32A0CFBCE00D6057E /* ChartRange.swift in Sources */,
 				55C339E72A0CFBFA00D6057E /* APIError.swift in Sources */,
+				553C44742A3AF7F400E3C1D0 /* SwitchTableViewCell.swift in Sources */,
 				55BDE4322A333F33008ED037 /* StocksDataManager.swift in Sources */,
 				55BDE43F2A34D60B008ED037 /* AdConsentViewController.swift in Sources */,
+				553C44782A3B054500E3C1D0 /* NotificationViewController.swift in Sources */,
 				55C33A012A0D5E4900D6057E /* CustomMarkerView.swift in Sources */,
 				55EC66092A16837C00134554 /* HanaBankModel.swift in Sources */,
+				553C44762A3AF8AB00E3C1D0 /* UserDefaults.swift in Sources */,
+				553C44812A3B084200E3C1D0 /* FontExampleHeaderView.swift in Sources */,
 				55C339F22A0D0CF200D6057E /* HapticsManager.swift in Sources */,
 				55C339DF2A0CFB9C00D6057E /* YahooFinanceAPI.swift in Sources */,
 				55A295DC2A0CC199004905F1 /* AppDelegate.swift in Sources */,
 				55455DD82A1DAF6500635F42 /* NewsCell.swift in Sources */,
+				553C447A2A3B057E00E3C1D0 /* Extensions.swift in Sources */,
 				55C339E12A0CFBB700D6057E /* URLSession+AsyncLinux.swift in Sources */,
+				553C447F2A3B080900E3C1D0 /* FontTableViewCell.swift in Sources */,
 				55C33A072A10B91500D6057E /* DualChartView.swift in Sources */,
 				55A295DE2A0CC199004905F1 /* SceneDelegate.swift in Sources */,
+				553C44632A3AF4B500E3C1D0 /* SettingViewController.swift in Sources */,
+				553C446C2A3AF5F500E3C1D0 /* Utils.swift in Sources */,
+				553C44682A3AF53E00E3C1D0 /* SettingModels.swift in Sources */,
 				55455DE02A1F5D3800635F42 /* NewsViewModel.swift in Sources */,
 				55C339E52A0CFBDF00D6057E /* Chart.swift in Sources */,
 				55C339FC2A0D308D00D6057E /* SingleChartView.swift in Sources */,
@@ -840,6 +948,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		553C44642A3AF4DE00E3C1D0 /* XCRemoteSwiftPackageReference "SnapKit" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SnapKit/SnapKit.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.0.0;
+			};
+		};
 		55455DE32A2193B600635F42 /* XCRemoteSwiftPackageReference "AlamofireRSSParser" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/AdeptusAstartes/AlamofireRSSParser.git";
@@ -903,6 +1019,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 5549EFA22A34FDB6003EFFC9 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
 			productName = FirebaseAnalyticsSwift;
+		};
+		553C44652A3AF4DE00E3C1D0 /* SnapKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 553C44642A3AF4DE00E3C1D0 /* XCRemoteSwiftPackageReference "SnapKit" */;
+			productName = SnapKit;
 		};
 		55455DE42A2193B600635F42 /* AlamofireRSSParser */ = {
 			isa = XCSwiftPackageProductDependency;
