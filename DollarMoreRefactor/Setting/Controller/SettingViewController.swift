@@ -15,8 +15,14 @@ final class SettingViewController: UIViewController {
     // MARK: - Properties
     private let tableView: UITableView = {
         let table = UITableView(frame: .zero, style: .insetGrouped)
-        table.register(SettingTableViewCell.self, forCellReuseIdentifier: SettingTableViewCell.identifier)
-        table.register(SwitchTableViewCell.self, forCellReuseIdentifier: SwitchTableViewCell.identifier)
+        table.register(
+            SettingTableViewCell.self,
+            forCellReuseIdentifier: SettingTableViewCell.identifier
+        )
+        table.register(
+            SwitchTableViewCell.self,
+            forCellReuseIdentifier: SwitchTableViewCell.identifier
+        )
         
         return table
     }()
@@ -49,20 +55,7 @@ final class SettingViewController: UIViewController {
     }
     
     func configureData() {
-        let bodyString = """
-                 문의 사항 및 의견을 작성해주세요.
-                 
-                 
-                 
-                 
-                 -------------------
-                 
-                 Device Model : \(Utils.getDeviceModelName())
-                 Device OS : \(UIDevice.current.systemVersion)
-                 App Version : \(Utils.getAppVersion())
-                 
-                 -------------------
-                 """
+        
         self.model.append(
             Section(
                 title: "시스템",
@@ -86,7 +79,7 @@ final class SettingViewController: UIViewController {
                     ),
                     .staticCell(
                         model: SettingsOption(
-                            title: "서체 변경",
+                            title: "텍스트 크기",
                             icon: UIImage(systemName: "textformat"),
                             iconBackgroundColor: .black) {
                                 let vc = FontTableViewController()
@@ -109,15 +102,24 @@ final class SettingViewController: UIViewController {
                             icon: UIImage(systemName: "questionmark.circle.fill"),
                             iconBackgroundColor: .systemBlue
                         ) {
+                            let bodyString = """
+                                     문의 사항 및 의견을 작성해주세요.
+                                     
+                                     
+                                     
+                                     
+                                     -------------------
+                                     Device Model : \(Utils.getDeviceModelName())
+                                     Device OS : \(UIDevice.current.systemVersion)
+                                     App Version : \(Utils.getAppVersion())
+                                     -------------------
+                                     """
                             if MFMailComposeViewController.canSendMail() {
                                 let vc = MFMailComposeViewController()
                                 vc.mailComposeDelegate = self
-                                
-                                
                                 vc.setToRecipients(["DollarMoreSP@gmail.com"])
                                 vc.setSubject("[달러모아] 문의")
                                 vc.setMessageBody(bodyString, isHTML: false)
-                                
                                 self.present(vc, animated: true, completion: nil)
                             } else {
                                 let sendMailErrorAlert =
@@ -171,14 +173,25 @@ extension SettingViewController: UITableViewDataSource {
         
         switch data.self {
         case .staticCell(let data):
-            guard let cell = tableView.dequeueReusableCell(withIdentifier: SettingTableViewCell.identifier, for: indexPath) as? SettingTableViewCell else { return UITableViewCell() }
+            guard let cell = tableView
+                .dequeueReusableCell(
+                    withIdentifier: SettingTableViewCell.identifier,
+                    for: indexPath
+                ) as? SettingTableViewCell else {
+                return UITableViewCell()
+            }
             cell.configure(with: data)
             return cell
             
         case .switchCell(let data):
-            guard let cell = tableView.dequeueReusableCell(withIdentifier: SwitchTableViewCell.identifier, for: indexPath) as? SwitchTableViewCell else { return UITableViewCell() }
+            guard let cell = tableView
+                .dequeueReusableCell(
+                    withIdentifier: SwitchTableViewCell.identifier,
+                    for: indexPath
+                ) as? SwitchTableViewCell else {
+                return UITableViewCell()
+            }
             cell.configure(with: data)
-            
             return cell
         }
     }

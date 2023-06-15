@@ -11,19 +11,20 @@ import UIKit
 
 final class FontTableViewController: UITableViewController {
     // MARK: - Properties
-    private lazy var headerView = FontExampleHeaderView(frame: CGRect(x: 0, y: 0, width: 0, height: 120))
+    private lazy var headerView = FontExampleHeaderView()
     
     private var selectedIndex = UserFont.customFont
     
-    private var fontNames = ["시스템",
-                             "작은 글씨",
-                             "중간 글씨",
-                             "큰 글씨"]
+    private var fontNames = ["기본 크기",
+                             "작은 크기",
+                             "중간1 크기",
+                             "중간2 크기",
+                             "큰 크기"]
 
     // MARK: - Life cycle
     override func viewWillAppear(_ animated: Bool) {
         tableView.register(FontTableViewCell.self, forCellReuseIdentifier: FontTableViewCell.identifier)
-        tableView.tableHeaderView = headerView
+        tableView.separatorStyle = .singleLine
         tableView.allowsMultipleSelection = false
         setNavigationBarAppearance()
     }
@@ -34,17 +35,19 @@ final class FontTableViewController: UITableViewController {
     
     // MARK: - Helpers
     func applyFontToExampleText(index: Int) {
-        if index == 0 {
-            headerView.changeTextFont(font: .systemFont(ofSize: 20))
-        } else {
-            headerView.changeTextFont(font: UIFont(name: fontNames[index], size: 20)!)
-        }
+        headerView.changeTextFont(size: CGFloat(index))
     }
     
     func saveFontIndex(index: Int) {
         UserFont.customFont = index // 인덱스 저장
     }
 
+    
+    override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        headerView.changeTextFont(size: CGFloat(UserFont.customFont))
+        return headerView
+    }
+    
     // MARK: - Table view data source
 
     override func numberOfSections(in tableView: UITableView) -> Int {
@@ -59,18 +62,14 @@ final class FontTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: FontTableViewCell.identifier, for: indexPath) as! FontTableViewCell
         cell.fontNameLabel.text = fontNames[indexPath.row]
+        cell.fontNameLabel.font = .systemFont(ofSize: CGFloat(17 + indexPath.row), weight: .medium)
         
-        if indexPath.row == 0 {
-            cell.fontNameLabel.font = .systemFont(ofSize: 17)
-        } else {
-            cell.fontNameLabel.font = UIFont(name: fontNames[indexPath.row], size: 17)
-        }
-
         return cell
     }
 
     // MARK: - Table view Delegate
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
         if selectedIndex != indexPath.row {
             tableView.cellForRow(at: IndexPath(row: selectedIndex, section: 0))?.isSelected = false
             selectedIndex = indexPath.row
@@ -78,6 +77,7 @@ final class FontTableViewController: UITableViewController {
             applyFontToExampleText(index: indexPath.row)
             saveFontIndex(index: indexPath.row)
         }
+        
     }
     
     override func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {

@@ -8,24 +8,51 @@
 import UIKit
 import SnapKit
 
-class FontExampleHeaderView: UIView {
+final class FontExampleHeaderView: UIView {
     // MARK: - Properties
-    private let exampleLabel: UILabel = {
-        let label = UILabel()
-        label.text = "굴비를 든 삐용이\n123456789"
-        label.numberOfLines = 2
-        label.textAlignment = .center
-        label.font = .systemFont(ofSize: 20)
-        return label
-    }()
+    let stackView = UIStackView()
 
+        let newsTitleLabel: UILabel = {
+            let label = UILabel()
+            label.font = UIFont.systemFont(ofSize: 16, weight: .heavy)
+            label.numberOfLines = 2
+            label.text = "[오늘 외환딜러 환율 예상레인지]"
+            return label
+        }()
+
+        let descriptionLabel: UILabel = {
+            let label = UILabel()
+            label.font = UIFont.systemFont(ofSize: 14, weight: .medium)
+            label.numberOfLines = 3
+            label.text = "서울 외환시장의 외환딜러들은 15일 달러-원 환율이 1,270원대를 중심으로 등락할 것으로 전망했다. 미 연방공개시장위원회(FOMC)는 기준금리를 동결했다"
+            return label
+        }()
+
+        let releaseDateLabel: UILabel = {
+            let label = UILabel()
+            label.font = UIFont.systemFont(ofSize: 12, weight: .medium)
+            label.numberOfLines = 1
+            label.textColor = .secondaryLabel
+            label.text = "1시간전"
+            return label
+        }()
+    
     // MARK: - Life cycle
     override init(frame: CGRect) {
         super.init(frame: frame)
-        addSubview(exampleLabel)
-        exampleLabel.snp.makeConstraints { make in
-            make.centerX.centerY.equalToSuperview()
+        stackView.axis = .vertical
+        stackView.spacing = 4
+        self.addSubview(stackView)
+        stackView.snp.makeConstraints { make in
+            make.top.equalToSuperview().offset(20)
+            make.leading.equalToSuperview().offset(20)
+            make.trailing.equalToSuperview().offset(-20)
+            make.bottom.equalToSuperview().offset(-20)
         }
+        
+        stackView.addArrangedSubview(newsTitleLabel)
+        stackView.addArrangedSubview(descriptionLabel)
+        stackView.addArrangedSubview(releaseDateLabel)
     }
     
     required init?(coder: NSCoder) {
@@ -33,8 +60,10 @@ class FontExampleHeaderView: UIView {
     }
     
     // MARK: - Helpers
-    func changeTextFont(font: UIFont) {
-        exampleLabel.font = font
+    func changeTextFont(size: CGFloat) {
+        newsTitleLabel.font = UIFont.systemFont(ofSize: 16 + size, weight: .heavy)
+        descriptionLabel.font = UIFont.systemFont(ofSize: 14 + size, weight: .medium)
+        releaseDateLabel.font = UIFont.systemFont(ofSize: 12 + size, weight: .medium)
     }
     
 }

@@ -68,7 +68,6 @@ class SettingTableViewCell: UITableViewCell {
         titleLabel.snp.makeConstraints { make in
             make.centerY.height.equalToSuperview()
             make.leading.equalTo(iconContainer.snp.trailing).offset(20)
-            //make.trailing.equalToSuperview().offset(10)
         }
         
     }
@@ -79,27 +78,28 @@ class SettingTableViewCell: UITableViewCell {
         iconImageView.image = nil
         titleLabel.text = nil
         iconContainer.backgroundColor = nil
+        self.accessoryView = nil
     }
     
     public func configure(with model: SettingsOption) {
         titleLabel.text = model.title
         iconImageView.image = model.icon
         iconContainer.backgroundColor = model.iconBackgroundColor
-
         if model.title == "버전" {
-            subtextLabel = UILabel(frame: CGRect(x: 0, y: 0, width: 100, height: self.frame.height))
+            subtextLabel = UILabel(
+                frame: CGRect(
+                    x: 0,
+                    y: 0,
+                    width: 100,
+                    height: self.frame.height
+                )
+            )
             subtextLabel.text = Utils.getAppVersion()
-            subtextLabel.textColor = .lightGray
+            subtextLabel.textColor = .systemGray
             subtextLabel.textAlignment = .right
             subtextLabel.sizeToFit()
             self.accessoryView = subtextLabel
         }
     }
-    
-//    func setFonts() {
-//        titleLabel.font = UIFont().customTextFont
-//        guard let subtext = subtextLabel else { return }
-//        subtext.font = UIFont().customTextFont
-//    }
-
+ 
 }

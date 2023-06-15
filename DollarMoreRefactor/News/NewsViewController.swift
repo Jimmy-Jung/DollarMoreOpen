@@ -24,7 +24,6 @@ final class NewsViewController: UIViewController {
     private let bannerAdsID1 = "ca-app-pub-8259821332117247/3141549253"
     private let bannerAdsID2 = "ca-app-pub-8259821332117247/3231681615"
     
-    
     // MARK: - Properties
     let newsViewModel = NewsViewModel()
     var newsItems: [NewsItem] = []
@@ -47,6 +46,7 @@ final class NewsViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         fetchNews()
+        self.newsTableView.reloadData()
     }
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
@@ -132,14 +132,18 @@ extension NewsViewController: UITableViewDataSource, UITableViewDelegate {
         _ tableView: UITableView,
         cellForRowAt indexPath: IndexPath
     ) -> UITableViewCell {
-        let cell =
-        newsTableView
-            .dequeueReusableCell(
-                withIdentifier: "NewsCell", for: indexPath
-            ) as! NewsCell
+        let selectedIndex = UserFont.customFont
+        let cell = newsTableView.dequeueReusableCell(
+            withIdentifier: "NewsCell",
+            for: indexPath) as! NewsCell
+        
         cell.accessoryType = .disclosureIndicator
         cell.newsTitleLabel.text = newsItems[indexPath.row].title
         cell.descriptionLabel.text = newsItems[indexPath.row].description
+        
+        cell.newsTitleLabel.font = .systemFont(ofSize: CGFloat(16 + selectedIndex), weight: .heavy)
+        cell.descriptionLabel.font = .systemFont(ofSize: CGFloat(14 + selectedIndex), weight: .medium)
+        cell.releaseDateLabel.font = .systemFont(ofSize: CGFloat(12 + selectedIndex), weight: .medium)
         
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss"

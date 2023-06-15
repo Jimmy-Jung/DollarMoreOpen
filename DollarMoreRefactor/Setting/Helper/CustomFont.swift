@@ -10,8 +10,9 @@ import UIKit
 enum CustomFont: Int, CaseIterable {
     case system = 0
     case small = 1
-    case midium = 2
-    case large = 3
+    case midium1 = 2
+    case midium2 = 3
+    case large = 4
 }
 
 extension UIFont {
@@ -45,10 +46,12 @@ extension UIFont {
         switch UserFont.customFont {
         case CustomFont.small.rawValue:
             return UIFont.systemFont(ofSize: fontSize + 1)
-        case CustomFont.midium.rawValue:
+        case CustomFont.midium1.rawValue:
             return UIFont.systemFont(ofSize: fontSize + 2)
-        case CustomFont.large.rawValue:
+        case CustomFont.midium2.rawValue:
             return UIFont.systemFont(ofSize: fontSize + 3)
+        case CustomFont.large.rawValue:
+            return UIFont.systemFont(ofSize: fontSize + 4)
         default:
             return UIFont.systemFont(ofSize: fontSize)
         }
