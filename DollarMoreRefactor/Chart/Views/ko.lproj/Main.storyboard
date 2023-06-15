@@ -585,8 +585,8 @@
                         <imageReference key="selectedImage" image="chart.line.uptrend.xyaxis" catalog="system" symbolScale="large"/>
                     </tabBarItem>
                     <connections>
-                        <outlet property="currancyHanaButton" destination="gZW-ZM-7w2" id="KH4-dv-3a1"/>
                         <outlet property="currencyButton" destination="NoN-yy-oiy" id="mY1-qJ-Ubr"/>
+                        <outlet property="currencyHanaButton" destination="gZW-ZM-7w2" id="KH4-dv-3a1"/>
                         <outlet property="currencyHanaLine" destination="XQA-MS-HBq" id="PZ7-zj-PVl"/>
                         <outlet property="currencyIndexButton" destination="XZv-fZ-rxT" id="egE-Ne-s4M"/>
                         <outlet property="currencyIndexLine" destination="1qL-Gk-Qve" id="iSZ-OL-rfz"/>

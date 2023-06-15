@@ -12,6 +12,9 @@ import SwiftRater
 
 final class MainViewController: UIViewController {
     
+    /// 아이패드 폰트 사이즈
+    private let iPadFontSize: CGFloat = 16
+    
     // MARK: - Outlet
     /// 1. 기준시간 레이블
     @IBOutlet weak var referenceTimeLabel: UILabel!
@@ -33,7 +36,7 @@ final class MainViewController: UIViewController {
     
     // 3. 그래프 버튼
     @IBOutlet weak var currencyIndexButton: UIButton!
-    @IBOutlet weak var currancyHanaButton: UIButton!
+    @IBOutlet weak var currencyHanaButton: UIButton!
     @IBOutlet weak var hanaBankButton: UIButton!
     @IBOutlet weak var currencyButton: UIButton!
     @IBOutlet weak var dollarIndexButton: UIButton!
@@ -77,6 +80,14 @@ final class MainViewController: UIViewController {
         threeMonthButton,
         yearButton,
         fiveYearButton
+    ]
+    /// 그래프 버튼들
+    private lazy var graphButton: [UIButton] = [
+        currencyIndexButton,
+        currencyHanaButton,
+        hanaBankButton,
+        currencyButton,
+        dollarIndexButton
     ]
     /// 그래프 버튼 밑 라인들
     private lazy var lines: [UIView] = [
@@ -166,6 +177,7 @@ final class MainViewController: UIViewController {
     // MARK: - LifeCycle
     override func viewDidLoad() {
         super.viewDidLoad()
+        iPadButtonSize()
         Task { await updateChartData() }
         makeTimer()
         setUpGraphButton()
@@ -220,8 +232,24 @@ final class MainViewController: UIViewController {
         currentButtonState = (currentButtonState.0, sender.tag)
     }
     
-    
     // MARK: - Methods
+    private func iPadButtonSize() {
+        let device = UIDevice.current.model
+        if device == "iPad" {
+            graphButton.forEach { button in
+                button.titleLabel?.font = .systemFont(
+                    ofSize: iPadFontSize,
+                    weight: .bold
+                )
+            }
+            rangeButton.forEach { button in
+                button.titleLabel?.font = .systemFont(
+                    ofSize: iPadFontSize,
+                    weight: .bold
+                )
+            }
+        }
+    }
     
     private func makeLoader() {
         view.addSubview(activityIndicatorView)
