@@ -10,6 +10,7 @@ import SnapKit
 import MessageUI
 
 
+/// 세팅 화면
 final class SettingViewController: UIViewController {
     
     // MARK: - Properties
