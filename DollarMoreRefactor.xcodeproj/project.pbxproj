@@ -63,6 +63,7 @@
 		55EC66092A16837C00134554 /* HanaBankModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55EC66082A16837C00134554 /* HanaBankModel.swift */; };
 		55EC660B2A16839800134554 /* HanaAPIServiceError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55EC660A2A16839800134554 /* HanaAPIServiceError.swift */; };
 		55F4430A2A16AC1200A4F18E /* Charts in Frameworks */ = {isa = PBXBuildFile; productRef = 55F443092A16AC1200A4F18E /* Charts */; };
+		55F97A812A3CD1A7008BA844 /* Setting.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 55F97A802A3CD1A7008BA844 /* Setting.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -135,6 +136,7 @@
 		55C33A062A10B91500D6057E /* DualChartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DualChartView.swift; sourceTree = "<group>"; };
 		55EC66082A16837C00134554 /* HanaBankModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HanaBankModel.swift; sourceTree = "<group>"; };
 		55EC660A2A16839800134554 /* HanaAPIServiceError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HanaAPIServiceError.swift; sourceTree = "<group>"; };
+		55F97A802A3CD1A7008BA844 /* Setting.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Setting.storyboard; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -227,6 +229,7 @@
 				553C44692A3AF5A200E3C1D0 /* SettingTableViewCell.swift */,
 				553C44802A3B084100E3C1D0 /* FontExampleHeaderView.swift */,
 				553C447E2A3B080900E3C1D0 /* FontTableViewCell.swift */,
+				55F97A802A3CD1A7008BA844 /* Setting.storyboard */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -542,6 +545,7 @@
 				5549EFA92A350227003EFFC9 /* GoogleService-Info.plist in Resources */,
 				55A295E52A0CC19B004905F1 /* Assets.xcassets in Resources */,
 				55A295E32A0CC199004905F1 /* Main.storyboard in Resources */,
+				55F97A812A3CD1A7008BA844 /* Setting.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

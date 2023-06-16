@@ -730,127 +730,6 @@ description</string>
             </objects>
             <point key="canvasLocation" x="262" y="1418"/>
         </scene>
-        <!--사용방법-->
-        <scene sceneID="fff-Kl-Tk1">
-            <objects>
-                <viewController id="CKf-Hh-7qW" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="JXw-Pz-Aud">
-                        <rect key="frame" x="0.0" y="0.0" width="393" height="991"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" directionalLockEnabled="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NkI-1s-Hmo">
-                                <rect key="frame" x="0.0" y="155" width="393" height="836"/>
-                                <subviews>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ERh-M8-S99">
-                                        <rect key="frame" x="0.0" y="0.0" width="391" height="815"/>
-                                        <subviews>
-                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="1Sd-C5-wWh">
-                                                <rect key="frame" x="0.0" y="10" width="391" height="805"/>
-                                                <subviews>
-                                                    <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qP5-F7-jNp">
-                                                        <rect key="frame" x="0.0" y="0.0" width="391" height="40"/>
-                                                        <subviews>
-                                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dTT-jV-KJQ">
-                                                                <rect key="frame" x="0.0" y="0.0" width="23" height="40"/>
-                                                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                                                            </view>
-                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text=" 달러모아 사용방법                            " lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="i8H-bZ-Ksg">
-                                                                <rect key="frame" x="23" y="0.0" width="345" height="40"/>
-                                                                <fontDescription key="fontDescription" type="boldSystem" pointSize="26"/>
-                                                                <nil key="textColor"/>
-                                                                <nil key="highlightedColor"/>
-                                                            </label>
-                                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="98E-1I-7Ov">
-                                                                <rect key="frame" x="368" y="0.0" width="23" height="40"/>
-                                                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                                                            </view>
-                                                        </subviews>
-                                                        <constraints>
-                                                            <constraint firstItem="i8H-bZ-Ksg" firstAttribute="centerX" secondItem="qP5-F7-jNp" secondAttribute="centerX" id="Xd6-cA-rez"/>
-                                                            <constraint firstAttribute="height" constant="40" id="c88-HV-M9j"/>
-                                                        </constraints>
-                                                    </stackView>
-                                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="explain" translatesAutoresizingMaskIntoConstraints="NO" id="uUQ-zk-6B7">
-                                                        <rect key="frame" x="0.0" y="60" width="391" height="517"/>
-                                                    </imageView>
-                                                    <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="L8S-WZ-CPr">
-                                                        <rect key="frame" x="0.0" y="597" width="391" height="167.66666666666663"/>
-                                                        <subviews>
-                                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="g9T-n9-sBo">
-                                                                <rect key="frame" x="0.0" y="0.0" width="20" height="167.66666666666666"/>
-                                                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                                                                <constraints>
-                                                                    <constraint firstAttribute="width" constant="20" id="6Gy-Wb-Pek"/>
-                                                                </constraints>
-                                                            </view>
-                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="7" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="100" translatesAutoresizingMaskIntoConstraints="NO" id="cVT-mI-haG">
-                                                                <rect key="frame" x="20" y="0.0" width="351" height="167.66666666666666"/>
-                                                                <string key="text">안녕하세요! 
-투자 인사이트에 도움될 만한 자료를 곧 추가할 예정이에요. 
-조금만 기다려주시면 더욱 풍성한 컨텐츠로 찾아뵐게요! 
-😊</string>
-                                                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
-                                                                <nil key="textColor"/>
-                                                                <nil key="highlightedColor"/>
-                                                            </label>
-                                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="RCh-Mx-hVn">
-                                                                <rect key="frame" x="371" y="0.0" width="20" height="167.66666666666666"/>
-                                                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                                                                <constraints>
-                                                                    <constraint firstAttribute="width" constant="20" id="fkK-yN-EnB"/>
-                                                                </constraints>
-                                                            </view>
-                                                        </subviews>
-                                                    </stackView>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text=" " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gd4-x2-ag6">
-                                                        <rect key="frame" x="0.0" y="784.66666666666663" width="391" height="20.333333333333371"/>
-                                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                        <nil key="textColor"/>
-                                                        <nil key="highlightedColor"/>
-                                                    </label>
-                                                </subviews>
-                                            </stackView>
-                                        </subviews>
-                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                                        <constraints>
-                                            <constraint firstItem="1Sd-C5-wWh" firstAttribute="top" secondItem="ERh-M8-S99" secondAttribute="top" constant="10" id="LLm-fD-bYb"/>
-                                            <constraint firstAttribute="trailing" secondItem="1Sd-C5-wWh" secondAttribute="trailing" id="SPb-Ya-rMY"/>
-                                            <constraint firstItem="1Sd-C5-wWh" firstAttribute="leading" secondItem="ERh-M8-S99" secondAttribute="leading" id="mwx-K8-PVQ"/>
-                                            <constraint firstAttribute="bottom" secondItem="1Sd-C5-wWh" secondAttribute="bottom" id="sEA-oA-PiM"/>
-                                        </constraints>
-                                    </view>
-                                </subviews>
-                                <constraints>
-                                    <constraint firstItem="ERh-M8-S99" firstAttribute="width" secondItem="Tct-sA-nKw" secondAttribute="width" multiplier="0.994911" id="EKN-m9-56d"/>
-                                    <constraint firstItem="ERh-M8-S99" firstAttribute="top" secondItem="NkI-1s-Hmo" secondAttribute="top" id="Evv-9k-Ze0"/>
-                                    <constraint firstItem="ERh-M8-S99" firstAttribute="leading" secondItem="NkI-1s-Hmo" secondAttribute="leading" id="Jg1-EB-MIh"/>
-                                    <constraint firstAttribute="trailing" secondItem="ERh-M8-S99" secondAttribute="trailing" id="cGc-dp-5ek"/>
-                                    <constraint firstAttribute="bottom" secondItem="ERh-M8-S99" secondAttribute="bottom" id="oYG-9T-rwc"/>
-                                </constraints>
-                                <viewLayoutGuide key="contentLayoutGuide" id="vn3-OP-gNf"/>
-                                <viewLayoutGuide key="frameLayoutGuide" id="Tct-sA-nKw"/>
-                            </scrollView>
-                        </subviews>
-                        <viewLayoutGuide key="safeArea" id="A34-zI-zE8"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                        <gestureRecognizers/>
-                        <constraints>
-                            <constraint firstItem="ERh-M8-S99" firstAttribute="height" secondItem="JXw-Pz-Aud" secondAttribute="height" multiplier="0.869004" priority="250" id="03g-PV-Dkh"/>
-                            <constraint firstAttribute="bottom" secondItem="NkI-1s-Hmo" secondAttribute="bottom" id="2nj-bi-OqC"/>
-                            <constraint firstItem="NkI-1s-Hmo" firstAttribute="leading" secondItem="JXw-Pz-Aud" secondAttribute="leading" id="FTU-mt-IDv"/>
-                            <constraint firstItem="ERh-M8-S99" firstAttribute="width" secondItem="JXw-Pz-Aud" secondAttribute="width" priority="250" id="PPL-bw-ykn"/>
-                            <constraint firstAttribute="trailing" secondItem="NkI-1s-Hmo" secondAttribute="trailing" id="gLl-Um-LfI"/>
-                            <constraint firstItem="NkI-1s-Hmo" firstAttribute="top" secondItem="A34-zI-zE8" secondAttribute="top" id="qHP-F3-MBe"/>
-                        </constraints>
-                    </view>
-                    <tabBarItem key="tabBarItem" title="사용방법" image="ellipsis" catalog="system" id="pFe-Ao-n48"/>
-                    <navigationItem key="navigationItem" id="hTS-2a-e1K"/>
-                    <size key="freeformSize" width="393" height="991"/>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="C0a-jd-uq0" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1167" y="2163"/>
-        </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="Fsr-cI-gav">
             <objects>
@@ -864,37 +743,18 @@ description</string>
                     <connections>
                         <segue destination="kkF-xT-fmA" kind="relationship" relationship="viewControllers" id="iNB-AK-iBd"/>
                         <segue destination="buz-6M-G18" kind="relationship" relationship="viewControllers" id="bxP-bY-2D4"/>
-                        <segue destination="s2q-9N-tmB" kind="relationship" relationship="viewControllers" id="Cgb-Z4-6sW"/>
+                        <segue destination="J42-xc-8TZ" kind="relationship" relationship="viewControllers" id="RcH-yd-P2Q"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="izT-lu-auH" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="262" y="-26"/>
         </scene>
-        <!--설정-->
-        <scene sceneID="RNh-VJ-JX9">
-            <objects>
-                <viewController title="설정" id="fE3-mp-zIB" customClass="SettingViewController" customModule="DollarMoreRefactor" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="uH5-9k-6fE" customClass="SettingView">
-                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <viewLayoutGuide key="safeArea" id="eAO-6i-d7z"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                    </view>
-                    <navigationItem key="navigationItem" id="S73-r7-Q93"/>
-                    <connections>
-                        <segue destination="CKf-Hh-7qW" kind="show" id="Lvk-Zs-Cfc"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="pbI-yy-nF9" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1166" y="1418"/>
-        </scene>
         <!--채권/외환 뉴스-->
         <scene sceneID="nz9-S2-xp2">
             <objects>
                 <navigationController title="채권/외환 뉴스" automaticallyAdjustsScrollViewInsets="NO" id="buz-6M-G18" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="뉴스" image="doc.text.image" catalog="system" id="FwE-da-7fL"/>
+                    <tabBarItem key="tabBarItem" title="뉴스" image="doc.text.image" catalog="system" selectedImage="doc.text.image.fill" id="FwE-da-7fL"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" largeTitles="YES" id="CoV-8v-afY">
                         <rect key="frame" x="0.0" y="59" width="393" height="96"/>
@@ -918,30 +778,15 @@ description</string>
             </objects>
             <point key="canvasLocation" x="263" y="704"/>
         </scene>
-        <!--설정-->
-        <scene sceneID="Wem-Cc-XG3">
+        <!--SettingViewController-->
+        <scene sceneID="OUg-G2-Pxc">
             <objects>
-                <navigationController title="설정" automaticallyAdjustsScrollViewInsets="NO" id="s2q-9N-tmB" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="더보기" image="ellipsis" catalog="system" id="Qsa-L2-JLL"/>
-                    <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" largeTitles="YES" id="ibH-fX-5Eb">
-                        <rect key="frame" x="0.0" y="59" width="393" height="96"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                        <navigationBarAppearance key="standardAppearance"/>
-                        <navigationBarAppearance key="compactAppearance"/>
-                        <navigationBarAppearance key="scrollEdgeAppearance"/>
-                    </navigationBar>
-                    <nil name="viewControllers"/>
-                    <toolbar key="toolbar" opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="D0j-Cl-sXU">
-                        <autoresizingMask key="autoresizingMask"/>
-                    </toolbar>
-                    <connections>
-                        <segue destination="fE3-mp-zIB" kind="relationship" relationship="rootViewController" id="8AE-Eq-pyF"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="kBG-uX-61h" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <viewControllerPlaceholder storyboardName="Setting" referencedIdentifier="SettingViewController" id="J42-xc-8TZ" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="설정" image="ellipsis" catalog="system" id="ATz-yf-mvE"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="FMm-ac-YaO" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1165.6488549618321" y="703.52112676056345"/>
+            <point key="canvasLocation" x="1227" y="397"/>
         </scene>
     </scenes>
     <resources>
@@ -950,8 +795,8 @@ description</string>
         <image name="arrowtriangle.down.fill" catalog="system" width="128" height="120"/>
         <image name="chart.line.uptrend.xyaxis" catalog="system" width="128" height="102"/>
         <image name="doc.text.image" catalog="system" width="115" height="128"/>
+        <image name="doc.text.image.fill" catalog="system" width="115" height="128"/>
         <image name="ellipsis" catalog="system" width="128" height="37"/>
-        <image name="explain" width="391" height="517"/>
         <image name="하나은행" width="116" height="110"/>
         <namedColor name="Dollar Green">
             <color red="0.5220000147819519" green="0.73299998044967651" blue="0.39599999785423279" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
