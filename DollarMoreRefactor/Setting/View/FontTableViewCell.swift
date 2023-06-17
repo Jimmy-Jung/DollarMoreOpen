@@ -34,6 +34,8 @@ class FontTableViewCell: UITableViewCell {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         contentView.addSubview(fontNameLabel)
         contentView.addSubview(radioButton)
+        backgroundColor = .systemBackground
+        selectionStyle = .none
     }
     
     required init?(coder: NSCoder) {

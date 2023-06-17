@@ -8,10 +8,12 @@
 import UIKit
 import SnapKit
 import MessageUI
+import SwiftUI
 
 
 /// 세팅 화면
 final class SettingViewController: UIViewController {
+    
     
     // MARK: - Properties
     private let tableView: UITableView = {
@@ -83,8 +85,8 @@ final class SettingViewController: UIViewController {
                             title: "텍스트 크기",
                             icon: UIImage(systemName: "textformat"),
                             iconBackgroundColor: .black) {
-                                let vc = FontTableViewController()
-                                vc.navigationItem.title = "서체 변경"
+                                let vc = FontTableViewController(style: .insetGrouped)
+                                vc.navigationItem.title = "텍스트 크기"
                                 self.navigationController?
                                     .pushViewController(vc, animated: true)
                             }
@@ -99,8 +101,16 @@ final class SettingViewController: UIViewController {
                 options: [
                     .staticCell(
                         model: SettingsOption(
-                            title: "문의하기",
+                            title: "사용 방법",
                             icon: UIImage(systemName: "questionmark.circle.fill"),
+                            iconBackgroundColor: .systemBlue) { [weak self] in
+                                self?.performSegue(withIdentifier: "toHowToUse", sender: nil)
+                            }
+                    ),
+                    .staticCell(
+                        model: SettingsOption(
+                            title: "문의하기",
+                            icon: UIImage(systemName: "envelope.fill"),
                             iconBackgroundColor: .systemBlue
                         ) {
                             let bodyString = """
@@ -154,7 +164,11 @@ final class SettingViewController: UIViewController {
             )
         )
     }
-    
+    struct SettingViewController_PreViews: PreviewProvider {
+        static var previews: some View {
+            SettingViewController().toPreview()
+        }
+    }
     
 }
 
