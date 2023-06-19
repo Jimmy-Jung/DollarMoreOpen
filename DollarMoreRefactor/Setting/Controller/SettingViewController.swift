@@ -8,14 +8,18 @@
 import UIKit
 import SnapKit
 import MessageUI
-import SwiftUI
-
+import SafariServices
+import GoogleMobileAds
 
 /// 세팅 화면
 final class SettingViewController: UIViewController {
-    
+    // MARK: - AdMob
+    private let bannerTestID = "ca-app-pub-3940256099942544/2934735716"
+    private let bannerAdsID = "ca-app-pub-8259821332117247/2336987052"
+    let adView = GADBannerView()
     
     // MARK: - Properties
+    let device = UIDevice.current.model
     private let tableView: UITableView = {
         let table = UITableView(frame: .zero, style: .insetGrouped)
         table.register(
@@ -26,16 +30,17 @@ final class SettingViewController: UIViewController {
             SwitchTableViewCell.self,
             forCellReuseIdentifier: SwitchTableViewCell.identifier
         )
-        
         return table
     }()
     
-    var model: [Section] = []
+    
+    private var model: [Section] = []
     
     // MARK: - Life cycle
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        adView.load(GADRequest())
         tableView.reloadData()
     }
     
@@ -43,130 +48,141 @@ final class SettingViewController: UIViewController {
         super.viewDidLoad()
         configureData()
         configureUI()
-        
+        configureAd()
         tableView.delegate = self
         tableView.dataSource = self
+        adView.delegate = self
     }
     
     // MARK: - Helpers
-    func configureUI() {
+    
+    private func configureAd() {
+        adView.frame.size.height = GADAdSizeLargeBanner.size.height
+        adView.adUnitID = bannerAdsID
+        adView.rootViewController = self
+        adView.load(GADRequest())
+    }
+    private func configureUI() {
         navigationItem.title = "설정"
         view.addSubview(tableView)
         tableView.snp.makeConstraints { make in
-            make.top.leading.trailing.bottom.equalToSuperview()
+            make.edges.equalToSuperview()
+        }
+        view.addSubview(adView)
+        adView.snp.makeConstraints { make in
+            make.trailing.leading.equalToSuperview()
+            make.bottom.equalTo(view.safeAreaLayoutGuide)
         }
     }
     
-    func configureData() {
-        
+    
+    private func configureData() {
         self.model.append(
-            Section(
-                title: "시스템",
-                options: [
-                    .switchCell(
-                        model: SettingSwitchOption(
-                            title: "다크모드",
-                            icon: UIImage(systemName: "moon.fill"),
-                            iconBackgroundColor: .darkGray) {}
-                    ),
-                    .staticCell(
-                        model: SettingsOption(
-                            title: "알림",
-                            icon: UIImage(systemName: "bell.fill"),
-                            iconBackgroundColor: .systemRed) {
-                                let vc = NotificationViewController()
-                                vc.navigationItem.title = "알림"
-                                self.navigationController?
-                                    .pushViewController(vc, animated: true)
-                            }
-                    ),
-                    .staticCell(
-                        model: SettingsOption(
-                            title: "텍스트 크기",
-                            icon: UIImage(systemName: "textformat"),
-                            iconBackgroundColor: .black) {
-                                let vc = FontTableViewController(style: .insetGrouped)
-                                vc.navigationItem.title = "텍스트 크기"
-                                self.navigationController?
-                                    .pushViewController(vc, animated: true)
-                            }
-                    )
-                ]
-            )
+            Section(title: "시스템", options: [
+                .switchCell(
+                    model: SettingSwitchOption(
+                        title: "다크모드",
+                        icon: UIImage(systemName: "moon.fill"),
+                        iconBackgroundColor: .darkGray) {}
+                ),
+//                .staticCell(
+//                    model: SettingsOption(
+//                        title: "알림",
+//                        icon: UIImage(systemName: "bell.fill"),
+//                        iconBackgroundColor: .systemRed) {
+//                            let vc = NotificationViewController()
+//                            vc.navigationItem.title = "알림"
+//                            self.navigationController?
+//                                .pushViewController(vc, animated: true)
+//                        }
+//                ),
+                .staticCell(
+                    model: SettingsOption(
+                        title: "텍스트 크기",
+                        icon: UIImage(systemName: "textformat"),
+                        iconBackgroundColor: .black) {
+                            let vc = FontTableViewController()
+                            vc.navigationItem.title = "텍스트 크기"
+                            self.navigationController?
+                                .pushViewController(vc, animated: true)
+                        }
+                )
+            ])
         )
         
         self.model.append(
-            Section(
-                title: "정보",
-                options: [
-                    .staticCell(
-                        model: SettingsOption(
-                            title: "사용 방법",
-                            icon: UIImage(systemName: "questionmark.circle.fill"),
-                            iconBackgroundColor: .systemBlue) { [weak self] in
-                                self?.performSegue(withIdentifier: "toHowToUse", sender: nil)
-                            }
-                    ),
-                    .staticCell(
-                        model: SettingsOption(
-                            title: "문의하기",
-                            icon: UIImage(systemName: "envelope.fill"),
-                            iconBackgroundColor: .systemBlue
-                        ) {
-                            let bodyString = """
-                                     문의 사항 및 의견을 작성해주세요.
-                                     
-                                     
-                                     
-                                     
-                                     -------------------
-                                     Device Model : \(Utils.getDeviceModelName())
-                                     Device OS : \(UIDevice.current.systemVersion)
-                                     App Version : \(Utils.getAppVersion())
-                                     -------------------
-                                     """
-                            if MFMailComposeViewController.canSendMail() {
-                                let vc = MFMailComposeViewController()
-                                vc.mailComposeDelegate = self
-                                vc.setToRecipients(["DollarMoreSP@gmail.com"])
-                                vc.setSubject("[달러모아] 문의")
-                                vc.setMessageBody(bodyString, isHTML: false)
-                                self.present(vc, animated: true, completion: nil)
-                            } else {
-                                let sendMailErrorAlert =
-                                UIAlertController(
-                                    title: "메일 전송 실패",
-                                    message: "'Mail' 앱을 찾을 수 없습니다.",
-                                    preferredStyle: .alert
-                                )
-                                let okAction =
-                                UIAlertAction(
-                                    title: "확인",
-                                    style: .destructive,
-                                    handler: nil
-                                )
-                                sendMailErrorAlert.addAction(okAction)
-                                self.present(
-                                    sendMailErrorAlert,
-                                    animated: true,
-                                    completion: nil
-                                )
-                            }
+            Section(title: "정보", options: [
+                .staticCell(
+                    model: SettingsOption(
+                        title: "사용 방법",
+                        icon: UIImage(systemName: "questionmark.circle.fill"),
+                        iconBackgroundColor: .systemBlue) { [weak self] in
+                            self?.performSegue(
+                                withIdentifier: "toHowToUse",
+                                sender: nil
+                            )
                         }
-                    ),
-                    .staticCell(
-                        model: SettingsOption(
-                            title: "버전",
-                            icon: UIImage(systemName: "wand.and.rays.inverse"),
-                            iconBackgroundColor: .lightGray) {}
-                    )
-                ]
-            )
+                ),
+                .staticCell(
+                    model: SettingsOption(
+                        title: "문의하기",
+                        icon: UIImage(systemName: "envelope.fill"),
+                        iconBackgroundColor: .systemBlue
+                    ) { self.makeAlert() }
+                ),
+                .staticCell(
+                    model: SettingsOption(
+                        title: "버전",
+                        icon: UIImage(systemName: "wand.and.rays.inverse"),
+                        iconBackgroundColor: .lightGray) {}
+                )
+            ])
         )
     }
-    struct SettingViewController_PreViews: PreviewProvider {
-        static var previews: some View {
-            SettingViewController().toPreview()
+    
+    private func makeAlert() {
+        let bodyString = """
+                     문의 사항 및 의견을 작성해주세요.
+                     
+                     
+                     
+                     -------------------
+                     Device Model : \(Utils.getDeviceModelName())
+                     Device OS : \(UIDevice.current.systemVersion)
+                     App Version : \(Utils.getAppVersion())
+                     -------------------
+                     """
+        
+        if MFMailComposeViewController.canSendMail() {
+            let vc = MFMailComposeViewController()
+            vc.mailComposeDelegate = self
+            vc.setToRecipients(["DollarMoreSP@gmail.com"])
+            vc.setSubject("[달러모아] 문의")
+            vc.setMessageBody(bodyString, isHTML: false)
+            self.present(vc, animated: true, completion: nil)
+        } else {
+            let urlString = "https://forms.gle/2xJQ5nZ3wb2skbG5A"
+            if let url = URL(string: urlString) {
+                let safariViewController = SFSafariViewController(url: url)
+                self.present(safariViewController, animated: true) {
+                    let sendMailErrorAlert = UIAlertController(
+                        title: "메일 전송 실패",
+                        message: "'Mail' 앱을 찾을 수 없습니다.",
+                        preferredStyle: .alert
+                    )
+                    let okAction = UIAlertAction(
+                        title: "확인",
+                        style: .destructive,
+                        handler: nil
+                    )
+                    sendMailErrorAlert.addAction(okAction)
+                    self.present(
+                        sendMailErrorAlert,
+                        animated: true,
+                        completion: nil
+                    )
+                }
+            }
         }
     }
     
@@ -245,5 +261,22 @@ extension SettingViewController: MFMailComposeViewControllerDelegate {
         self.dismiss(animated: true, completion: nil)
     }
 }
+
+// MARK: - BannerDelegate
+extension SettingViewController: GADBannerViewDelegate {
+    /// 광고를 받은 다음에 반응
+    func bannerViewDidReceiveAd(_ bannerView: GADBannerView) {
+        adView.alpha = 0
+        UIView.animate(
+            withDuration: 0.5,
+            delay: 0.2,
+            options: [.curveEaseInOut],
+            animations: { [weak self] in
+            self?.adView.alpha = 1
+        })
+    }
+}
+
+
 
 

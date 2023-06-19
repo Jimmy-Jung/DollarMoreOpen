@@ -1,16 +1,17 @@
 //
-//  FontExampleHeaderView.swift
-//  Bbiyong-Biyong
+//  SettingTableViewCell.swift
+//  DollarMoreRefactor
 //
-//  Created by Jade Yoo on 2023/04/06.
+//  Created by 정준영 on 2023/06/15.
 //
+
 
 import UIKit
 import SnapKit
 
 final class FontExampleHeaderView: UIView {
     // MARK: - Properties
-    let backgroundView: UIView = {
+    private let backgroundView: UIView = {
         let view = UIView()
         view.backgroundColor = .systemBackground
         view.clipsToBounds = true
@@ -18,9 +19,9 @@ final class FontExampleHeaderView: UIView {
         return view
     }()
     
-    let stackView = UIStackView()
+    private let stackView = UIStackView()
     
-    let newsTitleLabel: UILabel = {
+    private let newsTitleLabel: UILabel = {
         let label = UILabel()
         label.font = UIFont.systemFont(ofSize: 16, weight: .heavy)
         label.numberOfLines = 2
@@ -28,7 +29,7 @@ final class FontExampleHeaderView: UIView {
         return label
     }()
     
-    let descriptionLabel: UILabel = {
+    private let descriptionLabel: UILabel = {
         let label = UILabel()
         label.font = UIFont.systemFont(ofSize: 14, weight: .medium)
         label.numberOfLines = 3
@@ -36,7 +37,7 @@ final class FontExampleHeaderView: UIView {
         return label
     }()
     
-    let releaseDateLabel: UILabel = {
+    private let releaseDateLabel: UILabel = {
         let label = UILabel()
         label.font = UIFont.systemFont(ofSize: 12, weight: .medium)
         label.numberOfLines = 1
@@ -71,12 +72,15 @@ final class FontExampleHeaderView: UIView {
         fatalError("init(coder:) has not been implemented")
     }
     
+    
     // MARK: - Helpers
-    func changeTextFont(size: CGFloat) {
+    public func changeTextFont(size: CGFloat) {
         newsTitleLabel.font = UIFont.systemFont(ofSize: 16 + size, weight: .heavy)
         descriptionLabel.font = UIFont.systemFont(ofSize: 14 + size, weight: .medium)
         releaseDateLabel.font = UIFont.systemFont(ofSize: 12 + size, weight: .medium)
-        self.layoutIfNeeded()
+        frame.size.height = newsTitleLabel.frame.height
+        + descriptionLabel.frame.height
+        + releaseDateLabel.frame.height + 8 + 60
     }
     
 }

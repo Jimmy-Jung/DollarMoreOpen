@@ -9,18 +9,22 @@ import UIKit
 
 final class FontTableViewController: UITableViewController {
     // MARK: - Properties
-    private lazy var headerView = FontExampleHeaderView(frame: .init(x: 0, y: 0, width: tableView.frame.width, height: 100))
+    private lazy var headerView: FontExampleHeaderView = {
+        let headerView = FontExampleHeaderView()
+        headerView.sizeToFit()
+        return headerView
+    }()
 
     private var selectedIndex = UserFont.customFont
     
     private var fontNames = ["기본 크기",
-                             "작은 크기",
-                             "중간1 크기",
-                             "중간2 크기",
-                             "큰 크기"]
+                             "크기 1",
+                             "크기 2",
+                             "크기 3",
+                             "크기 4"]
 
     // MARK: - Life cycle
-    override init(style: UITableView.Style) {
+    override init(style: UITableView.Style = .insetGrouped) {
         super.init(style: style)
     }
     
@@ -46,16 +50,18 @@ final class FontTableViewController: UITableViewController {
     // MARK: - Helpers
     func applyFontToExampleText(index: Int) {
         headerView.changeTextFont(size: CGFloat(index))
+        tableView.sectionHeaderTopPadding = CGFloat(20 + index)
     }
     
     func saveFontIndex(index: Int) {
         UserFont.customFont = index // 인덱스 저장
     }
 
-    
     // MARK: - Table view data source
+    override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        return "asd"
+    }
     override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        
         return headerView
     }
     
@@ -93,4 +99,5 @@ final class FontTableViewController: UITableViewController {
             applyFontToExampleText(index: indexPath.row)
         }
     }
+    
 }

@@ -21,8 +21,7 @@ final class NewsViewController: UIViewController {
     private let bannerWidth: Double = 320.0
     private let bannerHeight: Double = 50.0
     private let bannerTestID = "ca-app-pub-3940256099942544/2934735716"
-    private let bannerAdsID1 = "ca-app-pub-8259821332117247/3141549253"
-    private let bannerAdsID2 = "ca-app-pub-8259821332117247/3231681615"
+    private let bannerAdsID = "ca-app-pub-8259821332117247/3231681615"
     
     // MARK: - Properties
     let newsViewModel = NewsViewModel()
@@ -46,7 +45,8 @@ final class NewsViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         fetchNews()
-        self.newsTableView.reloadData()
+        googleBannerView.load(GADRequest())
+        newsTableView.reloadData()
     }
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
@@ -79,10 +79,11 @@ final class NewsViewController: UIViewController {
     // MARK: - PrivateMethods
     /// 구글 광고 배너 만들기
     private func fetchGoogleBanner() {
-        googleBannerView.adUnitID = bannerAdsID2
+        googleBannerView.adUnitID = bannerAdsID
         googleBannerView.rootViewController = self
         googleBannerView.load(GADRequest())
         googleBannerWidth.constant = view.frame.width
+        googleBannerHeight.constant = GADAdSizeLargeBanner.size.height
         googleBannerView.delegate = self
     }
     

@@ -7,8 +7,9 @@
 
 import UIKit
 import SnapKit
+//import SwiftUI
 
-class NotificationViewController: UIViewController {
+final class NotificationViewController: UIViewController {
     // MARK: - Properties
     private let titleLabel: UILabel = {
         let label = UILabel()
@@ -255,5 +256,10 @@ class NotificationViewController: UIViewController {
         }
         datePicker.date = baseTime
     }
-    
+//
+//    struct NotificationViewController_PreViews: PreviewProvider {
+//        static var previews: some View {
+//            NotificationViewController().toPreview()
+//        }
+//    }
 }

@@ -81,7 +81,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8eJ-gl-okE" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1165.5999999999999" y="2293.9655172413795"/>
+            <point key="canvasLocation" x="2190" y="1418"/>
         </scene>
         <!--설정-->
         <scene sceneID="4XI-Jg-QIb">
@@ -90,20 +90,8 @@
                     <view key="view" contentMode="scaleToFill" id="X5h-wj-M73" customClass="SettingView">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="Qok-xN-cFa">
-                                <rect key="frame" x="0.0" y="146" width="375" height="583"/>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                            </tableView>
-                        </subviews>
                         <viewLayoutGuide key="safeArea" id="0du-fo-sli"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                        <constraints>
-                            <constraint firstItem="0du-fo-sli" firstAttribute="trailing" secondItem="Qok-xN-cFa" secondAttribute="trailing" id="6Rk-zv-4tg"/>
-                            <constraint firstItem="Qok-xN-cFa" firstAttribute="top" secondItem="0du-fo-sli" secondAttribute="top" id="X3f-pC-sEh"/>
-                            <constraint firstItem="0du-fo-sli" firstAttribute="bottom" secondItem="Qok-xN-cFa" secondAttribute="bottom" id="syL-et-RKE"/>
-                            <constraint firstItem="Qok-xN-cFa" firstAttribute="leading" secondItem="0du-fo-sli" secondAttribute="leading" id="wlg-3p-rzi"/>
-                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="MDa-O9-gm5"/>
                     <connections>
@@ -112,7 +100,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6Ik-Wx-5KT" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1165.6488549618321" y="1417.605633802817"/>
+            <point key="canvasLocation" x="1165.5999999999999" y="1417.2413793103449"/>
         </scene>
         <!--설정-->
         <scene sceneID="REW-La-MBn">
