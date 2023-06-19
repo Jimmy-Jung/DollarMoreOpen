@@ -5,7 +5,7 @@
 //  Created by 정준영 on 2023/06/15.
 //
 
-import Foundation
+import UIKit
 
 @propertyWrapper
 struct UserDefault<T> {
@@ -32,19 +32,9 @@ struct FirstLaunch {
     static var launchedBefore: Bool
 }
 
-struct RegisterDate {
-    @UserDefault(key: keyEnum.firstRegisteredDate.rawValue, defaultValue: Date())
-    static var firstRegisteredDate: Date
-}
-
-struct UserName {
-    @UserDefault(key: keyEnum.username.rawValue, defaultValue: "User")
-    static var username: String
-}
-
-struct MaximumCost {
-    @UserDefault(key: keyEnum.maximum.rawValue, defaultValue: 0)
-    static var maximum: Int
+struct DarkMode {
+    @UserDefault(key: keyEnum.isDarkMode.rawValue, defaultValue: false)
+    static var isDarkMode: Bool
 }
 
 struct UserFont {
@@ -52,16 +42,9 @@ struct UserFont {
     static var customFont: Int
 }
 
-struct DarkMode {
-    @UserDefault(key: keyEnum.isDarkMode.rawValue, defaultValue: false)
-    static var isDarkMode: Bool
+enum keyEnum: String {
+    case launchedBefore = "hasShownAdConsentScreen"
+    case isDarkMode = "isDarkMode"
+    case customFont = "customFont"
 }
 
-enum keyEnum: String {
-    case launchedBefore = "launchedBefore"
-    case firstRegisteredDate = "firstRegisteredDate"
-    case username = "username"
-    case maximum = "maximum"
-    case customFont = "customFont"
-    case isDarkMode = "isDarkMode"
-}

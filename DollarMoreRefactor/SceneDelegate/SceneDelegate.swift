@@ -48,16 +48,14 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         // to restore the scene back to its current state.
     }
     private func hasShownAdConsentScreen() {
-        if !UserDefaults.standard.bool(forKey: "hasShownAdConsentScreen") {
-                // "무료 앱은 광고로 유지됩니다" 라벨과 "계속" 버튼이 있는 뷰컨트롤러를 생성합니다.
-                let adConsentVC = AdConsentViewController()
-
-                // 뷰컨트롤러를 표시합니다.
+        if !FirstLaunch.launchedBefore {
+            // "무료 앱은 광고로 유지됩니다" 라벨과 "계속" 버튼이 있는 뷰컨트롤러를 생성합니다.
+            let adConsentVC = AdConsentViewController()
+            // 뷰컨트롤러를 표시합니다.
             window?.rootViewController = adConsentVC
-
-                // 뷰컨트롤러가 표시된 것을 저장합니다.
-                UserDefaults.standard.set(true, forKey: "hasShownAdConsentScreen")
-            }
+            // 뷰컨트롤러가 표시된 것을 저장합니다.
+            FirstLaunch.launchedBefore = true
+        }
     }
     
 }

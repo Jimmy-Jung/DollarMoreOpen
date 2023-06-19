@@ -8,16 +8,16 @@
 import UIKit
 import Charts
 
+/// 차트데이터셋
+struct DualChartDataSet {
+    let data1: ChartData
+    let data2: ChartData
+    let lineColor1: [UIColor]
+    let lineColor2: [UIColor]
+    let chartRange: ChartRange
+}
+
 final class DualChartView: UIView, ChartViewDelegate {
-   
-    /// 차트데이터셋
-    struct ChartDataSet {
-        let data1: ChartData
-        let data2: ChartData
-        let lineColor1: [UIColor]
-        let lineColor2: [UIColor]
-        let chartRange: ChartRange
-    }
     // MARK: - Properties
     private let customMarkerView = CustomMarkerView()
     private let dateFormatter = DateFormatter()
@@ -84,7 +84,7 @@ final class DualChartView: UIView, ChartViewDelegate {
     }
     
     // MARK: - Public Methods
-    public func configure(with chartDataSet: ChartDataSet) {
+    public func configure(with chartDataSet: DualChartDataSet) {
         entries1 = [ChartDataEntry]()
         entries2 = [ChartDataEntry]()
         fetchEntries(with: chartDataSet)
@@ -101,7 +101,7 @@ final class DualChartView: UIView, ChartViewDelegate {
     }
     
     // MARK: - Private Methods
-    private func fetchEntries(with chartDataSet: ChartDataSet) {
+    private func fetchEntries(with chartDataSet: DualChartDataSet) {
         chartDataSet.data1.indicators.forEach { indicator in
             let timestamp = indicator.timestamp.timeIntervalSince1970 * 1000
             let entry = ChartDataEntry(x: timestamp, y: indicator.close)
@@ -134,7 +134,7 @@ final class DualChartView: UIView, ChartViewDelegate {
     }
     
     /// 데이터셋 구성하기
-    private func configureDataSet(with chartDataSet: ChartDataSet) {
+    private func configureDataSet(with chartDataSet: DualChartDataSet) {
         var label1: String
         var label2: String
         var toggle: YAxis.AxisDependency
@@ -175,7 +175,7 @@ final class DualChartView: UIView, ChartViewDelegate {
     }
     /// 하이라이트 선택시 데이터 포멧
     /// - Parameter chartDataSet: 뷰모델 데이터
-    private func dateFormat(with chartDataSet: ChartDataSet) {
+    private func dateFormat(with chartDataSet: DualChartDataSet) {
         switch chartDataSet.chartRange {
         case .oneDay, .oneWeek:
             dateFormatter.dateFormat = "MM.dd HH:mm"

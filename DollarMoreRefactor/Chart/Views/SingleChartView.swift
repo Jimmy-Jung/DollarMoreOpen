@@ -8,14 +8,15 @@
 import UIKit
 import Charts
 
+/// 차트데이터셋
+struct SingleChartDataSet {
+    let data: ChartData
+    let preClose: Double
+    let lineColor: [UIColor]
+    let chartRange: ChartRange
+}
+
 final class SingleChartView: UIView, ChartViewDelegate {
-    /// 차트데이터셋
-    struct ChartDataSet {
-        let data: ChartData
-        let preClose: Double
-        let lineColor: [UIColor]
-        let chartRange: ChartRange
-    }
     
     // MARK: - Properties
     private let customMarkerView = CustomMarkerView()
@@ -51,7 +52,7 @@ final class SingleChartView: UIView, ChartViewDelegate {
     }()
     
     // MARK: - Public Methods
-    public func configure(with chartDataSet: ChartDataSet) {
+    public func configure(with chartDataSet: SingleChartDataSet) {
         entries1 = [ChartDataEntry]()
         entries2 = [ChartDataEntry]()
         fetchEntries(with: chartDataSet)
@@ -67,7 +68,7 @@ final class SingleChartView: UIView, ChartViewDelegate {
     }
     
     // MARK: - Private Methods
-    private func fetchEntries(with chartDataSet: ChartDataSet) {
+    private func fetchEntries(with chartDataSet: SingleChartDataSet) {
         chartDataSet.data.indicators.forEach { indicator in
             let timestamp = indicator.timestamp.timeIntervalSince1970 * 1000
             let entry = ChartDataEntry(x: timestamp, y: indicator.close)
@@ -77,7 +78,7 @@ final class SingleChartView: UIView, ChartViewDelegate {
     
     /// 이전 데이터 패치
     /// - Parameter chartDataSet: 차트 데이터 셋
-    private func fetchPreviousEntries(with chartDataSet: ChartDataSet) {
+    private func fetchPreviousEntries(with chartDataSet: SingleChartDataSet) {
         let previousClose = chartDataSet.preClose
         let indicators = chartDataSet.data.indicators
         let firstXAxis = (indicators.first?.timestamp.timeIntervalSince1970 ?? Date().timeIntervalSince1970) * 1000
@@ -92,7 +93,7 @@ final class SingleChartView: UIView, ChartViewDelegate {
     
     /// 데이터셋
     /// - Parameter chartDataSet: 뷰모델 데이터
-    private func fetchDataSet(with chartDataSet: ChartDataSet) -> LineChartDataSet {
+    private func fetchDataSet(with chartDataSet: SingleChartDataSet) -> LineChartDataSet {
         let dataSet = LineChartDataSet(entries: entries1)
         dataSet.fillColor = .clear
         dataSet.colors = chartDataSet.lineColor
@@ -121,7 +122,7 @@ final class SingleChartView: UIView, ChartViewDelegate {
     
     /// 하이라이트 선택시 데이터 포멧
     /// - Parameter chartDataSet: 뷰모델 데이터
-    private func dateFormat(with chartDataSet: ChartDataSet) {
+    private func dateFormat(with chartDataSet: SingleChartDataSet) {
         switch chartDataSet.chartRange {
         case .oneDay, .oneWeek:
             dateFormatter.dateFormat = "MM.dd HH:mm"

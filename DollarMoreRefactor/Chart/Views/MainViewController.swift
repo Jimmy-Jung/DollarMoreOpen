@@ -131,6 +131,8 @@ final class MainViewController: UIViewController {
     // MARK: - Properties
     /// 뷰모델
     private let mainViewModel = MainViewModel()
+    /// 차트매니저 싱글톤
+    private let chartsManager = ChartsManager.shared
     
     // cancellable을 저장하기 위한 Set 선언
     private var cancellables = Set<AnyCancellable>()
@@ -167,9 +169,7 @@ final class MainViewController: UIViewController {
                 self.singleChartView = SingleChartView()
             }
             Task{
-                activityIndicatorView.startAnimating()
                 await makeChart(with: currentButtonState)
-                activityIndicatorView.stopAnimating()
             }
             
         }
@@ -379,6 +379,15 @@ final class MainViewController: UIViewController {
         symbol2: StocksSymbol,
         range: ChartRange
     ) async {
+        switch (symbol1, symbol2) {
+        case (_, .dollar_Index):
+            dualChartView.configure(with: chartsManager.dual_Won_Index)
+        case (_, .hanaBank):
+            dualChartView.configure(with: chartsManager.dual_Hana_Won)
+        default: break
+        }
+        addDualChartViewToGraphView()
+        activityIndicatorView.startAnimating()
         let chartDatas = await mainViewModel.updateDualChartData(
             symbol1: symbol1,
             symbol2: symbol2,
@@ -393,7 +402,7 @@ final class MainViewController: UIViewController {
                 chartRange: range
             )
         )
-        addDualChartViewToGraphView()
+        activityIndicatorView.stopAnimating()
     }
     
     /// 듀얼차트뷰를 그래프뷰에 추가하기
@@ -426,12 +435,22 @@ final class MainViewController: UIViewController {
         stockSymbol: StocksSymbol,
         range: ChartRange
     ) async {
+        switch stockSymbol {
+        case .hanaBank:
+            singleChartView.configure(with: chartsManager.hanaBank)
+        case .dollar_Won:
+            singleChartView.configure(with: chartsManager.dollar_Won)
+        case .dollar_Index:
+            singleChartView.configure(with: chartsManager.dollar_Index)
+        }
+        addSingleChartViewToGraphView()
+        activityIndicatorView.startAnimating()
         let chartData = await mainViewModel.updateSingleChartData(
             symbol: stockSymbol,
             range: range
         )
         singleChartView.configure(with: chartData)
-        addSingleChartViewToGraphView()
+        activityIndicatorView.stopAnimating()
     }
     
     /// 싱글차트뷰를 그래프뷰에 추가하기

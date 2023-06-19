@@ -23,6 +23,7 @@ final class MainViewModel: ObservableObject {
     }
     
     // MARK: - Properies
+    private let chartsManager = ChartsManager.shared
     private var usdData: ChartData? {
         didSet {
             usdLabelSet = updateLabelSet(chartData: usdData)
@@ -74,7 +75,7 @@ final class MainViewModel: ObservableObject {
     public func updateSingleChartData(
         symbol: StocksSymbol,
         range: ChartRange
-    ) async -> SingleChartView.ChartDataSet {
+    ) async -> SingleChartDataSet {
         let emptyData = ChartData(
             meta: ChartMeta(regularMarketPrice: 0, previousClose: 0),
             indicators: [Indicator]()
@@ -83,12 +84,21 @@ final class MainViewModel: ObservableObject {
         let resultData = await fetchSymbolData(symbol: symbol, range: range)
         switch resultData {
         case .success(let data):
-            return .init(
+            let result = SingleChartDataSet(
                 data: data ?? emptyData,
                 preClose: getPreviousClose(symbol: symbol),
                 lineColor: getColor(symbol: symbol),
                 chartRange: range
             )
+            switch symbol {
+            case .hanaBank:
+                chartsManager.hanaBank = result
+            case .dollar_Won:
+                chartsManager.dollar_Won = result
+            case .dollar_Index:
+                chartsManager.dollar_Index = result
+            }
+            return result
         case .failure(_):
             return .init(
                 data: emptyData,
@@ -103,7 +113,7 @@ final class MainViewModel: ObservableObject {
         symbol1: StocksSymbol,
         symbol2: StocksSymbol,
         range: ChartRange
-    ) async -> DualChartView.ChartDataSet {
+    ) async -> DualChartDataSet {
         let emptyData = ChartData(
             meta: ChartMeta(regularMarketPrice: 0, previousClose: 0),
             indicators: [Indicator]()
@@ -151,14 +161,22 @@ final class MainViewModel: ObservableObject {
                 data1 = emptyData
             }
         }
-        
-        return .init(
+        let result = DualChartDataSet(
             data1: data1 ?? emptyData,
             data2: data2 ?? emptyData,
             lineColor1: getColor(symbol: symbol1),
             lineColor2: getColor(symbol: symbol2),
             chartRange: range
         )
+        switch (symbol1, symbol2) {
+        case (_, .dollar_Index):
+            chartsManager.dual_Won_Index = result
+        case (_, .hanaBank):
+            chartsManager.dual_Hana_Won = result
+        default: break
+        }
+        
+        return result
         
     }
     // MARK: - Private Methods
