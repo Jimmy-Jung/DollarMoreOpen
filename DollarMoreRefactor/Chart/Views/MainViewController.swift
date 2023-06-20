@@ -178,8 +178,11 @@ final class MainViewController: UIViewController {
     // MARK: - LifeCycle
     override func viewDidLoad() {
         super.viewDidLoad()
+        Task {
+            await firstLoad()
+            await updateChartData()
+        }
         iPadButtonSize()
-        Task { await updateChartData() }
         makeTimer()
         setUpGraphButton()
         initCurrentButton()
@@ -281,6 +284,32 @@ final class MainViewController: UIViewController {
             await updateChartData()
             activityIndicatorView.stopAnimating()
         }
+    }
+    
+    /// 첫 시작할때 차트 업테이트
+    private func firstLoad() async {
+        chartsManager.hanaBank = await mainViewModel.updateSingleChartData(
+            symbol: .hanaBank,
+            range: .oneDay
+        )
+        chartsManager.dollar_Index = await mainViewModel.updateSingleChartData(
+            symbol: .dollar_Index,
+            range: .oneDay
+        )
+        chartsManager.dollar_Won = await mainViewModel.updateSingleChartData(
+            symbol: .dollar_Won,
+            range: .oneDay
+        )
+        chartsManager.dual_Hana_Won = await mainViewModel.updateDualChartData(
+            symbol1: .dollar_Won,
+            symbol2: .hanaBank,
+            range: .oneDay
+        )
+        chartsManager.dual_Won_Index = await mainViewModel.updateDualChartData(
+            symbol1: .dollar_Won,
+            symbol2: .dollar_Index,
+            range: .oneDay
+        )
     }
     
     /// 차트데이터, 레이블 데이터 업데이트
