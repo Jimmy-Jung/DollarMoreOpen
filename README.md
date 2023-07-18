@@ -10,15 +10,19 @@
 
 국내외 채권 및 외환 시장의 최신 뉴스와 동향을 실시간으로 파악할 수 있는 기능도 있습니다.
 
+
 # 기본 개념
 
 이 앱은 MVVM과 Combine의 조합을 사용했다. Async/Await를 통한 직관적인 비동기코드를 전달합니다.
+
 
 ## 디자인 목표
 
 - 테스트 가능성: MVVM 아키텍처를 통해 ViewController와 로직을 분리하고 의존성 주입 (DI)을 사용하여 코드를 테스트할 수 있습니다.
 - 직관적인 코드: Combine을 사용하여 데이터 전달에 대한 델리게이트(delegate)나 클로저(closer) 대신 더 직관적인 코드를 제공합니다. 또한 Async/Await을 사용하여 콜백 지옥을 극복하고 직관적인 비동기 코드를 사용합니다.
 - 직관적인 UI: 앱의 디자인은 명확한 아이콘과 레이블을 통해 사용자를 다양한 기능으로 안내하는 사용하기 쉬운 구조로 구성합니다
+
+
 
 ---
 
@@ -27,6 +31,7 @@
 <img width="780" alt="image" src="https://github.com/Jimmy-Jung/DollarMoreOpen/assets/115251866/dcb10931-49c7-49d4-a1c1-cb18a2f53152">
 
 <img width="776" alt="image" src="https://github.com/Jimmy-Jung/DollarMoreOpen/assets/115251866/69b6a695-b76c-435c-8c2e-d84c76ce69f6">
+
 
 ---
 
@@ -38,6 +43,7 @@
 
 앱스토어 심사를 통과하기 위해 유도성 글은 제외하고 내용을 채웠습니다. 또한, 버튼으로 유도하는 것도 리젝 사유이므로, 다음으로 넘어가는 버튼만 생성하였습니다.
 
+
 ### SwiftRater
 
 [https://github.com/takecian/SwiftRater](https://github.com/takecian/SwiftRater)
@@ -48,6 +54,7 @@ SwiftRater 라이브러리를 사용하여 앱스토어에서 앱에 대한 리�
 
 1. SwiftRater 라이브러리를 프로젝트에 추가합니다.
 2. AppDelegate 파일에 다음과 같이 코드를 추가합니다.
+   
 
 ```swift
 import SwiftRater
@@ -64,11 +71,12 @@ func application(_ application: UIApplication, didFinishLaunchingWithOptions lau
 }
 ```
 
+
 ---
 
 # 달러 차트
 
-<img width="799" alt="image" src="https://github.com/Jimmy-Jung/DollarMoreOpen/assets/115251866/52596a60-8e80-41aa-b057-c56460ffd814">
+<img width="600" alt="image" src="https://github.com/Jimmy-Jung/DollarMoreOpen/assets/115251866/52596a60-8e80-41aa-b057-c56460ffd814">
 
 차트는 Charts 라이브러리를 통해 제공됩니다.
 
@@ -76,11 +84,13 @@ func application(_ application: UIApplication, didFinishLaunchingWithOptions lau
 
 지난 날의 종가와 함께 단순한 싱글 차트를 제공합니다.
 
+
 ### 문제와 해결
 
 차트의 종류를 바꾸면 네트워킹을 통해 차트 데이터를 받아오는 도중에 차트가 뜨지 않는 문제가 발생했습니다.
 
 이를 해결하기 위해 Singleton 객체를 만들어 최초 호출 시에만 로딩하고, 그 이후에는 저장되어 있는 차트를 먼저 보여주고 네트워킹이 완료되면 차트를 업데이트하였습니다.
+
 
 ---
 
@@ -92,18 +102,19 @@ AutoLayout을 이용하여 자동으로 크기가 조절됩니다.
 
 iPhone과 iPad에서 각각 최적화된 디자인과 텍스트 크기를 제공합니다.
 
-<img width="319" alt="image" src="https://github.com/Jimmy-Jung/DollarMoreOpen/assets/115251866/3cee97a2-a3fd-48c2-b804-96c7f02405f1">
-<img width="780" alt="image" src="https://github.com/Jimmy-Jung/DollarMoreOpen/assets/115251866/b6a53aa6-c6ea-4148-aafd-5720e079698d">
+<img width="250" alt="image" src="https://github.com/Jimmy-Jung/DollarMoreOpen/assets/115251866/3cee97a2-a3fd-48c2-b804-96c7f02405f1">
+<img width="650" alt="image" src="https://github.com/Jimmy-Jung/DollarMoreOpen/assets/115251866/b6a53aa6-c6ea-4148-aafd-5720e079698d">
+
 
 ---
 
----
 
 # 차트 데이터
 
 <img width="748" alt="image" src="https://github.com/Jimmy-Jung/DollarMoreOpen/assets/115251866/4a5d3c83-019a-400d-bd9f-f7b7d7eac377">
 
 차트 데이터는 YahooFinance API와 하나은행 웹 크롤링을 통해 제공됩니다.
+
 
 ## YahooFinance API
 
@@ -114,6 +125,7 @@ yahooFinance에서 제공하는 API URL을 URLSession을 사용해 데이터를 
 3. URLSessionDataTask를 실행하고, 응답 데이터를 처리합니다.
 4. 응답 데이터를 JSONSerialization을 사용하여 원하는 데이터 형식으로 변환합니다.
 5. 변환된 데이터를 사용합니다.
+   
 
 ### 하나은행 웹 크롤링
 
@@ -126,6 +138,7 @@ Alamofire와 SwiftSoup 라이브러리를 사용해 웹페이지를 크롤링하
 3. `Alamofire`를 사용하여 URL에 GET 요청을 보냅니다.
 4. 응답으로 받은 HTML 데이터를 `SwiftSoup`으로 파싱합니다.
 5. 파싱한 데이터를 이용하여 데이터 모델을 만듭니다.
+   
 
 ### 문제와 해결
 
@@ -133,9 +146,11 @@ Alamofire와 SwiftSoup 라이브러리를 사용해 웹페이지를 크롤링하
 
 이를 해결하기 위해 HTTPHeader를 수정하여 데스크탑으로 요청하였습니다.
 
+
 ---
 
 # 뉴스 RSS
+
 
 <img width="342" alt="image" src="https://github.com/Jimmy-Jung/DollarMoreOpen/assets/115251866/100127f8-6244-420b-b89b-3e6ebbb5a84f">
 
