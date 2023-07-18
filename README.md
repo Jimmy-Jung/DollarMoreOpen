@@ -157,7 +157,9 @@ Alamofire와 SwiftSoup 라이브러리를 사용해 웹페이지를 크롤링하
 
 <img width="381" alt="image" src="https://github.com/Jimmy-Jung/DollarMoreOpen/assets/115251866/9f50f4df-4bdb-473d-94c2-5778eed49058">
  
-차트 변동에 따른 실시간 뉴스를 제공하기 위해 연합인포맥스에서 제공하는 RSS데이터를 사용해 뉴스를 TableView로 제공합니다. 뉴스를 클릭하면 SafariService를 통해 뉴스페이지로 이동합니다.
+차트 변동에 따른 실시간 뉴스를 제공하기 위해 연합인포맥스에서 제공하는 RSS데이터를 사용해 뉴스를 TableView로 제공합니다. 
+
+뉴스를 클릭하면 SafariService를 통해 뉴스페이지로 이동합니다.
 
  `XMLParserDelegate` 프로토콜을 구현하여 `XMLParser` 객체를 사용하여 XML 데이터를 파싱합니다. 
 
