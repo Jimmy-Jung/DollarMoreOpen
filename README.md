@@ -19,7 +19,10 @@
 ## 디자인 목표
 
 - 테스트 가능성: MVVM 아키텍처를 통해 ViewController와 로직을 분리하고 의존성 주입 (DI)을 사용하여 코드를 테스트할 수 있습니다.
-- 직관적인 코드: Combine을 사용하여 데이터 전달에 대한 델리게이트(delegate)나 클로저(closer) 대신 더 직관적인 코드를 제공합니다. 또한 Async/Await을 사용하여 콜백 지옥을 극복하고 직관적인 비동기 코드를 사용합니다.
+  
+- 직관적인 코드: Combine을 사용하여 데이터 전달에 대한 델리게이트(delegate)나 클로저(closer) 대신 더 직관적인 코드를 제공합니다.
+  또한 Async/Await을 사용하여 콜백 지옥을 극복하고 직관적인 비동기 코드를 사용합니다.
+  
 - 직관적인 UI: 앱의 디자인은 명확한 아이콘과 레이블을 통해 사용자를 다양한 기능으로 안내하는 사용하기 쉬운 구조로 구성합니다
 
 
@@ -37,20 +40,19 @@
 
 ## 리뷰 요청 팝업 알람 띄우기
 
-리뷰요청을 띄우기 전에 리뷰를 유도하는 페이지 생성
+<img width="264" alt="image" src="https://github.com/Jimmy-Jung/DollarMoreOpen/assets/115251866/c840112e-1001-4777-b01b-3e2fb91f5269">
 
-<img width="262" alt="image" src="https://github.com/Jimmy-Jung/DollarMoreOpen/assets/115251866/23679983-dcba-4f25-a3fd-3e6b1226b8c5">
+리뷰를 유도하는 팝업을 생성하여 사용자가 앱 리뷰를 작성할 수 있도록 했습니다.
 
-앱스토어 심사를 통과하기 위해 유도성 글은 제외하고 내용을 채웠습니다. 또한, 버튼으로 유도하는 것도 리젝 사유이므로, 다음으로 넘어가는 버튼만 생성하였습니다.
+이 페이지는 앱스토어 심사를 통과하고 사용자들에게 앱에 대한 피드백을 얻기 위해 중요합니다. 
+
+이렇게 하면 사용자가 리뷰 작성 페이지로 쉽게 이동할 수 있으며, 앱스토어 심사에서도 문제가 발생하지 않습니다.
 
 
 ### SwiftRater
 
-[https://github.com/takecian/SwiftRater](https://github.com/takecian/SwiftRater)
-
 SwiftRater 라이브러리를 사용하여 앱스토어에서 앱에 대한 리뷰를 요청하는 팝업을 띄울 수 있습니다.
 
-<img width="264" alt="image" src="https://github.com/Jimmy-Jung/DollarMoreOpen/assets/115251866/c840112e-1001-4777-b01b-3e2fb91f5269">
 
 1. SwiftRater 라이브러리를 프로젝트에 추가합니다.
 2. AppDelegate 파일에 다음과 같이 코드를 추가합니다.
@@ -89,7 +91,9 @@ func application(_ application: UIApplication, didFinishLaunchingWithOptions lau
 
 차트의 종류를 바꾸면 네트워킹을 통해 차트 데이터를 받아오는 도중에 차트가 뜨지 않는 문제가 발생했습니다.
 
-이를 해결하기 위해 Singleton 객체를 만들어 최초 호출 시에만 로딩하고, 그 이후에는 저장되어 있는 차트를 먼저 보여주고 네트워킹이 완료되면 차트를 업데이트하였습니다.
+이를 해결하기 위해 Singleton 객체를 만들어 최초 호출 시에만 로딩하고, 
+
+그 이후에는 저장되어 있는 차트를 먼저 보여주고 네트워킹이 완료되면 차트를 업데이트하였습니다.
 
 
 ---
@@ -111,7 +115,7 @@ iPhone과 iPad에서 각각 최적화된 디자인과 텍스트 크기를 제공
 
 # 차트 데이터
 
-<img width="748" alt="image" src="https://github.com/Jimmy-Jung/DollarMoreOpen/assets/115251866/4a5d3c83-019a-400d-bd9f-f7b7d7eac377">
+<img width="600" alt="image" src="https://github.com/Jimmy-Jung/DollarMoreOpen/assets/115251866/4a5d3c83-019a-400d-bd9f-f7b7d7eac377">
 
 차트 데이터는 YahooFinance API와 하나은행 웹 크롤링을 통해 제공됩니다.
 
@@ -151,14 +155,14 @@ Alamofire와 SwiftSoup 라이브러리를 사용해 웹페이지를 크롤링하
 
 # 뉴스 RSS
 
-
-<img width="342" alt="image" src="https://github.com/Jimmy-Jung/DollarMoreOpen/assets/115251866/100127f8-6244-420b-b89b-3e6ebbb5a84f">
-
+<img width="381" alt="image" src="https://github.com/Jimmy-Jung/DollarMoreOpen/assets/115251866/9f50f4df-4bdb-473d-94c2-5778eed49058">
+ 
 차트 변동에 따른 실시간 뉴스를 제공하기 위해 연합인포맥스에서 제공하는 RSS데이터를 사용해 뉴스를 TableView로 제공합니다. 뉴스를 클릭하면 SafariService를 통해 뉴스페이지로 이동합니다.
 
  `XMLParserDelegate` 프로토콜을 구현하여 `XMLParser` 객체를 사용하여 XML 데이터를 파싱합니다. 
 
 파싱한 데이터는 `News` 구조체에 저장되며, `UITableView`를 사용하여 구성됩니다.
+ 
 
 연합인포맥스에서 제공하는 뉴스 RSS 데이터를 사용하여 TableView를 생성하는 방법은 다음과 같습니다.
 
