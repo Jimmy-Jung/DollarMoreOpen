@@ -1,6 +1,4 @@
-#달러모아 개인프로젝트 정리
-
-# 깃허브 업로드
+# 달러모아 개인프로젝트 정리
 
 <img width="281" alt="image" src="https://github.com/Jimmy-Jung/DollarMoreOpen/assets/115251866/021c7494-24d3-47e3-a18e-5167cfeda8be">
 
