@@ -115,7 +115,7 @@ iPhone과 iPad에서 각각 최적화된 디자인과 텍스트 크기를 제공
 
 # 차트 데이터
 
-<img width="450" alt="image" src="https://github.com/Jimmy-Jung/DollarMoreOpen/assets/115251866/4a5d3c83-019a-400d-bd9f-f7b7d7eac377">
+<img width="400" alt="image" src="https://github.com/Jimmy-Jung/DollarMoreOpen/assets/115251866/4a5d3c83-019a-400d-bd9f-f7b7d7eac377">
 
 차트 데이터는 YahooFinance API와 하나은행 웹 크롤링을 통해 제공됩니다.
 
@@ -155,7 +155,7 @@ Alamofire와 SwiftSoup 라이브러리를 사용해 웹페이지를 크롤링하
 
 # 뉴스 RSS
 
-<img width="381" alt="image" src="https://github.com/Jimmy-Jung/DollarMoreOpen/assets/115251866/9f50f4df-4bdb-473d-94c2-5778eed49058">
+<img width="300" alt="image" src="https://github.com/Jimmy-Jung/DollarMoreOpen/assets/115251866/9f50f4df-4bdb-473d-94c2-5778eed49058">
  
 차트 변동에 따른 실시간 뉴스를 제공하기 위해 연합인포맥스에서 제공하는 RSS데이터를 사용해 뉴스를 TableView로 제공합니다. 
 
