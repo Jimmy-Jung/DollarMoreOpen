@@ -115,7 +115,7 @@ iPhone과 iPad에서 각각 최적화된 디자인과 텍스트 크기를 제공
 
 # 차트 데이터
 
-<img width="600" alt="image" src="https://github.com/Jimmy-Jung/DollarMoreOpen/assets/115251866/4a5d3c83-019a-400d-bd9f-f7b7d7eac377">
+<img width="450" alt="image" src="https://github.com/Jimmy-Jung/DollarMoreOpen/assets/115251866/4a5d3c83-019a-400d-bd9f-f7b7d7eac377">
 
 차트 데이터는 YahooFinance API와 하나은행 웹 크롤링을 통해 제공됩니다.
 
