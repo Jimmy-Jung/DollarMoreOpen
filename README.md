@@ -1,5 +1,16 @@
 # 달러모아 개인프로젝트 정리
 
+## 목차
+1. [기본 개념](#기본-개념)
+2. [앱의 구성](#앱의-구성)
+3. [UI 디자인](#UI-디자인)
+4. [달러 차트](#달러-차트)
+5. [차트 데이터](#차트-데이터)
+6. [뉴스 RSS](#뉴스-RSS)
+7. [설정 탭](#설정-탭)
+   
+---
+
 <img width="281" alt="image" src="https://github.com/Jimmy-Jung/DollarMoreOpen/assets/115251866/021c7494-24d3-47e3-a18e-5167cfeda8be">
 
 달러모아는 직관적이고 깔끔한 차트를 제공하여 달러 시장을 한눈에 볼 수 있는 앱입니다. 
@@ -13,7 +24,7 @@
 
 # 기본 개념
 
-이 앱은 MVVM과 Combine의 조합을 사용했다. Async/Await를 통한 직관적인 비동기코드를 전달합니다.
+이 앱은 MVVM과 Combine의 조합을 사용했습니다. Async/Await를 통한 직관적인 비동기코드를 전달합니다.
 
 
 ## 디자인 목표
@@ -76,6 +87,19 @@ func application(_ application: UIApplication, didFinishLaunchingWithOptions lau
 
 ---
 
+# UI 디자인
+
+UI 디자인을 Storyboard를 사용하여 구현했습니다.
+
+AutoLayout을 이용하여 자동으로 크기가 조절됩니다.
+
+iPhone과 iPad에서 각각 최적화된 디자인과 텍스트 크기를 제공합니다.
+
+<img width="250" alt="image" src="https://github.com/Jimmy-Jung/DollarMoreOpen/assets/115251866/3cee97a2-a3fd-48c2-b804-96c7f02405f1">
+<img width="650" alt="image" src="https://github.com/Jimmy-Jung/DollarMoreOpen/assets/115251866/b6a53aa6-c6ea-4148-aafd-5720e079698d">
+
+---
+
 # 달러 차트
 
 <img width="600" alt="image" src="https://github.com/Jimmy-Jung/DollarMoreOpen/assets/115251866/52596a60-8e80-41aa-b057-c56460ffd814">
@@ -95,19 +119,6 @@ func application(_ application: UIApplication, didFinishLaunchingWithOptions lau
 
 그 이후에는 저장되어 있는 차트를 먼저 보여주고 네트워킹이 완료되면 차트를 업데이트하였습니다.
 
-
----
-
-# UI 디자인
-
-UI 디자인을 Storyboard를 사용하여 구현했습니다.
-
-AutoLayout을 이용하여 자동으로 크기가 조절됩니다.
-
-iPhone과 iPad에서 각각 최적화된 디자인과 텍스트 크기를 제공합니다.
-
-<img width="250" alt="image" src="https://github.com/Jimmy-Jung/DollarMoreOpen/assets/115251866/3cee97a2-a3fd-48c2-b804-96c7f02405f1">
-<img width="650" alt="image" src="https://github.com/Jimmy-Jung/DollarMoreOpen/assets/115251866/b6a53aa6-c6ea-4148-aafd-5720e079698d">
 
 
 ---
@@ -131,7 +142,7 @@ yahooFinance에서 제공하는 API URL을 URLSession을 사용해 데이터를 
 5. 변환된 데이터를 사용합니다.
    
 
-### 하나은행 웹 크롤링
+## 하나은행 웹 크롤링
 
 Alamofire와 SwiftSoup 라이브러리를 사용해 웹페이지를 크롤링하고 Struct로 변환해 데이터를 사용합니다.
 
