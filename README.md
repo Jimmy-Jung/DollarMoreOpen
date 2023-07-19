@@ -174,3 +174,108 @@ Alamofire와 SwiftSoup 라이브러리를 사용해 웹페이지를 크롤링하
 4. 파싱한 데이터를 `News` 객체에 저장합니다.
 5. `News` 객체를 사용하여 `UITableView`를 구성합니다.
 
+---
+
+# 설정 탭
+
+<img width="350" alt="image" src="https://github.com/Jimmy-Jung/DollarMoreOpen/assets/115251866/13ccd050-925f-4618-bff7-7da37b610cdc">
+
+
+설정 탭에서는 다크모드와 뉴스탭의 텍스트 크기를 조절할 수 있습니다. 다크모드는 앱을 사용하는 환경에 따라 밝은 모드에서 눈이 편안하지 않을 때 유용합니다. 또한, 사용자가 선호하는 텍스트 크기에 맞춰 뉴스탭의 내용을 더욱 편리하게 볼 수 있도록 조절할 수 있습니다.
+
+문의하기는 이메일 앱으로 자동으로 연결되도록 구성되어 있습니다. 사용자가 앱 내의 문의하기 버튼을 누르면, 이메일 앱이 있으면 자동으로 이메일 앱으로 연결됩니다. 그렇지 않은 경우, 구글 폼으로 연결됩니다. 이러한 방식으로 사용자가 쉽고 편리하게 개발자와의 문의를 할 수 있도록 구성되어 있습니다.
+
+## 다크모드
+
+다크모드는 propertyWrapper를 사용해 UserDefault를 감싸 코드의 재사용율을 높였고 코드의 가독성을 높였습니다. 
+
+이를 통해 다른 뷰에서도 동일한 방식으로 UserDefault를 사용할 수 있습니다.
+
+또한, propertyWrapper를 사용하여 UserDefault의 키 값을 간결하게 유지할 수 있습니다.
+
+```swift
+@propertyWrapper
+struct UserDefault<T> {
+    private let key: String
+    private let defaultValue: T
+    
+    init(key: String, defaultValue: T) {
+        self.key = key
+        self.defaultValue = defaultValue
+    }
+    
+    var wrappedValue: T {
+        get {
+            return UserDefaults.standard.object(forKey: key) as? T ?? defaultValue
+        }
+        set {
+            UserDefaults.standard.set(newValue, forKey: key)
+        }
+    }
+}
+
+struct DarkMode {
+    @UserDefault(key: keyEnum.isDarkMode.rawValue, defaultValue: false)
+    static var isDarkMode: Bool
+}
+
+enum keyEnum: String {
+    case launchedBefore = "hasShownAdConsentScreen"
+    case isDarkMode = "isDarkMode"
+    case customFont = "customFont"
+}
+```
+
+## 텍스트크기
+
+<img width="350" alt="image" src="https://github.com/Jimmy-Jung/DollarMoreOpen/assets/115251866/36affe2b-fb07-418c-a742-804f718ae624">
+
+
+텍스트 크기 조절 탭에서는 상단에 예시 헤더뷰가 있습니다. 
+
+예시 헤더뷰는 기본 설정에 따라 보여지며, 하단에서 글씨 크기별 탭을 누르면 상단의 헤더뷰가 자동으로 크기가 조절됩니다.
+
+탭을 누르면 해당 크기의 글씨로 변경되는 데모를 제공하여 사용자가 원하는 크기를 선택할 수 있도록 도와줍니다. 사용자가 선택한 크기는 앱 내의 다른 뷰에서도 적용됩니다.
+
+또한, 글씨 크기 설정은 propertyWrapper를 사용해 UserDefault를 감싸 코드의 재사용성을 높였고, 코드의 가독성을 높였습니다.
+
+코드의 사용은 UIFont를 확장해 코드의 재사용성을 높였습니다.
+
+```swift
+struct UserFont {
+    @UserDefault(key: keyEnum.customFont.rawValue, defaultValue: CustomFont.system.rawValue)
+    static var customFont: Int
+}
+
+enum keyEnum: String {
+    case launchedBefore = "hasShownAdConsentScreen"
+    case isDarkMode = "isDarkMode"
+    case customFont = "customFont"
+}
+
+enum CustomFont: Int, CaseIterable {
+    case system = 0
+    case size1 = 1
+    case size2 = 2
+    case size3 = 3
+    case size4 = 4
+}
+
+extension UIFont {
+    func customFont(ofSize fontSize: CGFloat, isBold: Bool = false) -> UIFont {
+        switch UserFont.customFont {
+        case CustomFont.size1.rawValue:
+            return UIFont.systemFont(ofSize: fontSize + 1)
+        case CustomFont.size2.rawValue:
+            return UIFont.systemFont(ofSize: fontSize + 2)
+        case CustomFont.size3.rawValue:
+            return UIFont.systemFont(ofSize: fontSize + 3)
+        case CustomFont.size4.rawValue:
+            return UIFont.systemFont(ofSize: fontSize + 4)
+        default:
+            return UIFont.systemFont(ofSize: fontSize)
+        }
+    }
+}
+
+```
